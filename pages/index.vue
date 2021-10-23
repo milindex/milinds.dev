@@ -1,5 +1,6 @@
 <template>
-  <Tutorial/>
+  <!-- <Tutorial/> -->
+  <App/>
 </template>
 
 <script>
