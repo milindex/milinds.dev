@@ -1,5 +1,5 @@
 <template>
-  <section class="flex justify-between bg-primary text-rest pl-2 top-title-bar">
+  <section class="flex justify-between bg-primary text-rest pl-2 top-title-bar text-sm">
     <div class="menu-bar flex items-center flex-1">
       <VSCodeIcon class="" />
       <ul class="linear flex">
@@ -46,14 +46,19 @@ export default {
 </script>
 
 
-<style scoped>
-  .menu-bar ul li{
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+<style lang="scss" scoped>
+.menu-bar{
+  ul{
+    li{
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+      cursor: pointer;
+      &:hover {
+        background-color: #2C313A;
+      }
+    }
   }
-  .menu-bar ul li:hover{
-    background-color: #3E4249;
-  }
+}
 </style>

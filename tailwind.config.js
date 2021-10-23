@@ -21,6 +21,13 @@ module.exports = {
       'special-skyblue': '#4F79CA',
       'special-white': '#CDEDF7',
       'special-active': '#2C313A',
+      'pages-primary': '#5DC986',
+      'activity-rest': '#ABB2BF',
+    },
+    extend: {
+      width: {
+        '275' : '275px',
+      }
     }
   },
   variants: {
