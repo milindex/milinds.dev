@@ -35,9 +35,9 @@
         </div>
         <div class="project">
           <div class="pane-header expanded">
-            <div class="title bg-primary text-active pl-4 flex items-center justify-items-start">
+            <div class="title bg-primary text-active pl-4 flex items-center justify-items-start ">
               <DownArrow class="h-4 w-4 fill-current"/>
-              <span class="ml-0.5">milinds.dev</span>
+              <span class="ml-0.5 uppercase font-medium text-xs-11 px-2 py-1 text-rest">milinds.dev (Workspace)</span>
             </div>
             <div class="list-of-files flex flex-col px-2 pl-6">
               <ul>
@@ -125,6 +125,13 @@
         color: #d7dae0;
       }
     }
+    .title{
+      cursor: pointer;
+    }
   }
+  .sub-file-list{
+    margin-bottom: 5px;
+  }
+
 
 </style>
