@@ -42,10 +42,10 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/eslint-parser@^7.12.16", "@babel/eslint-parser@^7.14.7":
-  version "7.15.8"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.15.8.tgz#8988660b59d739500b67d0585fd4daca218d9f11"
-  integrity sha512-fYP7QFngCvgxjUuw8O057SVH5jCXsbFFOoE77CFDcvzwBVgTOkMD/L4mIC5Ud1xf8chK/no2fRbSSn1wvNmKuQ==
+"@babel/eslint-parser@^7.12.16", "@babel/eslint-parser@^7.14.7", "@babel/eslint-parser@^7.15.8":
+  version "7.16.0"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.16.0.tgz#032cf6c8d844a95ad62f779d2708fb4f77e1a81c"
+  integrity sha512-c+AsYOHjI+FgCa+ifLd8sDXp4U4mjkfFgL9NdQWhuA731kAUJs0WdJIXET4A14EJAR9Jv9FFF/MzPWJfV9Oirw==
   dependencies:
     eslint-scope "^5.1.1"
     eslint-visitor-keys "^2.1.0"
@@ -6571,11 +6571,12 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-naive-ui@^2.19.11:
-  version "2.19.11"
-  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.19.11.tgz#a65f047b2e53f72a4955b91856f76eb01e35e76d"
-  integrity sha512-cbrsaTfqevwvE/TxbFKhDAYIZZfGdGeLWKPvoRuxQyKqjnldtP5t6cXfMSLmRPExqs/lQcH+eilfrNPpVj4xpA==
+naive-ui@^2.20.1:
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.20.1.tgz#3845c0b21aa829e6106af784d5ebfdcfdb7a6f26"
+  integrity sha512-ijUlRHfgvV/SaZ3WBhib0Ryxj7yhoPw7HkaPxZaIbad94nR/pjk/zs5Q3pp5QU+R7/TmO+NYn59NR2jqCcN/EQ==
   dependencies:
+    "@babel/eslint-parser" "^7.15.8"
     "@css-render/plugin-bem" "^0.15.6"
     "@css-render/vue3-ssr" "^0.15.6"
     "@types/lodash" "^4.14.170"
@@ -6593,7 +6594,7 @@ naive-ui@^2.19.11:
     vdirs "^0.1.4"
     vfonts "^0.1.0"
     vooks "^0.2.10"
-    vueuc "^0.4.13"
+    vueuc "^0.4.15"
 
 nan@^2.12.1:
   version "2.15.0"
@@ -10232,7 +10233,7 @@ vue@^2.6.12:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
 
-vueuc@^0.4.13:
+vueuc@^0.4.15:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/vueuc/-/vueuc-0.4.15.tgz#7e98682eb54118c65a53c5d86163b1c49431a916"
   integrity sha512-VTYDA2avdHRlkqJunsE4d9P3eBPgfW4tiA6sTt3iiVU69d+y25xMEbU8P+stQgptd34A9qMUwYSfvOXDbteW6w==
