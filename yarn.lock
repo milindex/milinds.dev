@@ -42,10 +42,10 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/eslint-parser@^7.12.16", "@babel/eslint-parser@^7.14.7":
-  version "7.15.8"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.15.8.tgz#8988660b59d739500b67d0585fd4daca218d9f11"
-  integrity sha512-fYP7QFngCvgxjUuw8O057SVH5jCXsbFFOoE77CFDcvzwBVgTOkMD/L4mIC5Ud1xf8chK/no2fRbSSn1wvNmKuQ==
+"@babel/eslint-parser@^7.12.16", "@babel/eslint-parser@^7.14.7", "@babel/eslint-parser@^7.15.8":
+  version "7.16.3"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.16.3.tgz#2a6b1702f3f5aea48e00cea5a5bcc241c437e459"
+  integrity sha512-iB4ElZT0jAt7PKVaeVulOECdGe6UnmA/O0P9jlF5g5GBOwDVbna8AXhHRu4s27xQf6OkveyA8iTDv1jHdDejgQ==
   dependencies:
     eslint-scope "^5.1.1"
     eslint-visitor-keys "^2.1.0"
@@ -4284,10 +4284,10 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-evtd@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/evtd/-/evtd-0.2.2.tgz#bebbe27e15aedc1d5c18bc2620dfc90f260787c3"
-  integrity sha512-YRUY9BHnnOmeeaOOLlIfUEp3itg4oFEd+uWPGMs0m4WUJaGcEgxFx8PLRRQaaDKvN2B+19lYzhATILGfXuprnA==
+evtd@^0.2.2, evtd@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/evtd/-/evtd-0.2.3.tgz#185158d533b4440ee831a0fa0cffde16e8bda504"
+  integrity sha512-tmiT1YUVqFjTY+BSBOAskL83xNx41iUfpvKP6Gcd/xMHjg3mnER98jXGXJyKnxCG19uPc6EhZiUC+MUyvoqCtw==
 
 execa@^5.0.0:
   version "5.1.1"
@@ -6571,11 +6571,12 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-naive-ui@^2.19.11:
-  version "2.19.11"
-  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.19.11.tgz#a65f047b2e53f72a4955b91856f76eb01e35e76d"
-  integrity sha512-cbrsaTfqevwvE/TxbFKhDAYIZZfGdGeLWKPvoRuxQyKqjnldtP5t6cXfMSLmRPExqs/lQcH+eilfrNPpVj4xpA==
+naive-ui@^2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.20.3.tgz#af90efc852ba725141c4fd5ccaa4fbd65902e6c9"
+  integrity sha512-I9JFNgRiF89YehcGC0h/xCK0xfMLB9qWob6W9aVt84HpqspyFhyMfIym+LDWHMRgwKYzhwd6cS+xv6riiau9RA==
   dependencies:
+    "@babel/eslint-parser" "^7.15.8"
     "@css-render/plugin-bem" "^0.15.6"
     "@css-render/vue3-ssr" "^0.15.6"
     "@types/lodash" "^4.14.170"
@@ -6584,7 +6585,7 @@ naive-ui@^2.19.11:
     css-render "^0.15.6"
     date-fns "^2.19.0"
     date-fns-tz "^1.1.6"
-    evtd "^0.2.2"
+    evtd "^0.2.3"
     highlight.js "^11.0.1"
     lodash "^4.17.21"
     lodash-es "^4.17.21"
@@ -6593,7 +6594,7 @@ naive-ui@^2.19.11:
     vdirs "^0.1.4"
     vfonts "^0.1.0"
     vooks "^0.2.10"
-    vueuc "^0.4.13"
+    vueuc "^0.4.15"
 
 nan@^2.12.1:
   version "2.15.0"
@@ -10232,7 +10233,7 @@ vue@^2.6.12:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
 
-vueuc@^0.4.13:
+vueuc@^0.4.15:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/vueuc/-/vueuc-0.4.15.tgz#7e98682eb54118c65a53c5d86163b1c49431a916"
   integrity sha512-VTYDA2avdHRlkqJunsE4d9P3eBPgfW4tiA6sTt3iiVU69d+y25xMEbU8P+stQgptd34A9qMUwYSfvOXDbteW6w==
