@@ -1,0 +1,37 @@
+@import url(fonts.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #FD5735;
+  --secondary-color: #f83500;
+}
+
+body {
+	font-family: 'TwitterChirp', sans-serif;
+	font-size: 16px;
+}
+
+html{
+	background-color: #FCFCFD;
+	color: #141416;
+}
+
+html.dark {
+	background-color: #141416;
+	color: #FCFCFD;
+}
+
+a{
+	color: var(--primary-color);
+}
+
+a:hover{
+	color: var(--secondary-color);
+}
+
+body.show-mobile-visible main .container {
+	backdrop-filter: blur(10px);
+}
