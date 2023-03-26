@@ -23,10 +23,12 @@ function toggleMobileMenu(elem: any, mobileMenu: any, setMobileMenu: any) {
     setMobileMenu(true);
     hamburger.classList.add('isactive');
     menu.classList.add('active');
+    document.body.style.overflow = 'hidden';
   } else {
     setMobileMenu(false);
     hamburger.classList.remove('isactive');
     menu.classList.remove('active');
+    document.body.style.overflow = 'auto';
   }
 }
 
@@ -84,7 +86,7 @@ function Navigation({ theme, setTheme }: any) {
             <div className="line"></div>
             <div className="line"></div>
           </div>
-          <menu className="navbar">
+          <menu className="navbar z-10">
             <ul>
               <li>
                 <Link

@@ -48,3 +48,4 @@ local
 .vercel
 *.lock
 dist
+package-lock.json

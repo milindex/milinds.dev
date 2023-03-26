@@ -34,12 +34,12 @@ function DarkModeToggle({ theme, setTheme }: any) {
               viewBox="0,0,256,256"
               width="100px"
               height="100px"
-              fill-rule="nonzero"
+              fillRule="nonzero"
               className="icon icon-sun top-3"
             >
               <g
                 fill="#ffffff"
-                fill-rule="nonzero"
+                fillRule="nonzero"
                 stroke="none"
                 strokeWidth="1"
                 strokeLinecap="butt"
@@ -47,10 +47,10 @@ function DarkModeToggle({ theme, setTheme }: any) {
                 strokeMiterlimit="10"
                 strokeDasharray=""
                 strokeDashoffset="0"
-                font-family="none"
-                font-weight="none"
-                font-size="none"
-                text-anchor="none"
+                fontFamily="none"
+                fontWeight="none"
+                fontSize="none"
+                textAnchor="none"
                 className="mix-blend-normal"
               >
                 <g transform="scale(5.12,5.12)">

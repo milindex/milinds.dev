@@ -1,4 +1,8 @@
-import Splide from '@splidejs/splide';
+/* eslint-disable import/no-extraneous-dependencies */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import '@splidejs/react-splide/css';
+
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Link from 'next/link';
 
 import ResumeCTA from '@/components/header/resumeCTA';
@@ -42,24 +46,6 @@ const Index = () => {
     const isEven = date.getDate() % 2 === 0;
     return isEven ? 0 : 1;
   };
-
-  const splide = new Splide('.indian-clients', {
-    destroy: true,
-    breakpoints: {
-      640: {
-        type: 'slide',
-        rewind: true,
-        rewindByDrag: true,
-        perPage: 1,
-        arrows: false,
-        autoplay: false,
-        pauseOnHover: false,
-        paginationDirection: 'ltr',
-        destroy: false,
-      },
-    },
-  });
-  splide.mount();
 
   return (
     <Main
@@ -119,41 +105,54 @@ const Index = () => {
           </p>
 
           {/* splide slider */}
-          <div className="indian-clients splide mb-8">
-            <div className="splide__track my-4">
-              <ul className="splide__list my-2 lg:flex lg:items-center lg:justify-center lg:gap-4">
-                {/* clients */}
-                {clients.map((client, index) => (
-                  <li className="splide__slide" key={index}>
-                    <img
-                      src={`/assets/images/clients/${
-                        Object.keys(client)[0]
-                      }.png`}
-                      alt={Object.values(client)[0]}
-                      title={Object.values(client)[0]}
-                      className={`h-[50px] w-auto ${
-                        Object.keys(client)[0]
-                      } grayscale transition-all duration-500 ease-in-out hover:grayscale-0`}
-                    />
-                  </li>
-                ))}
-                <style jsx>{`
-                  .acko {
-                    height: unset;
-                    width: unset;
-                    display: flex;
-                    align-items: center;
-                  }
-                  .atomberg {
-                    background-color: #000;
-                  }
-                  .kapiva {
-                    background-color: #fff;
-                  }
-                `}</style>
-              </ul>
-            </div>
-          </div>
+
+          <Splide
+            options={{
+              type: 'slide',
+              rewind: false,
+              rewindByDrag: false,
+              perPage: 5,
+              arrows: false,
+              autoplay: false,
+              pauseOnHover: false,
+              paginationDirection: 'ltr',
+              breakpoints: {
+                640: {
+                  perPage: 1,
+                  rewind: true,
+                  rewindByDrag: true,
+                },
+              },
+            }}
+            className="indian-clients-slider mt-4 mb-10 pb-10 lg:mt-8 lg:pb-0"
+          >
+            {clients.map((client, index) => (
+              <SplideSlide key={index}>
+                <img
+                  src={`/assets/images/clients/${Object.keys(client)[0]}.png`}
+                  alt={Object.values(client)[0]}
+                  title={Object.values(client)[0]}
+                  className={`h-[50px] w-auto ${
+                    Object.keys(client)[0]
+                  } mx-auto lg:grayscale lg:transition-all lg:duration-500 lg:ease-in-out lg:hover:grayscale-0`}
+                />
+              </SplideSlide>
+            ))}
+            <style jsx>{`
+              .acko {
+                height: unset;
+                width: unset;
+                display: flex;
+                align-items: center;
+              }
+              .atomberg {
+                background-color: #000;
+              }
+              .kapiva {
+                background-color: #fff;
+              }
+            `}</style>
+          </Splide>
 
           <p className="mx-auto mb-8 text-center lg:max-w-2xl">
             While working on multiple projects, I&apos;ve gained experience in a
