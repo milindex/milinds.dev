@@ -30,8 +30,30 @@ a{
 
 a:hover{
 	color: var(--secondary-color);
+	cursor: pointer;
 }
 
 body.show-mobile-visible main .container {
 	backdrop-filter: blur(10px);
+}
+
+/*Scrollbars*/
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #141416;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #141416;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border: 3px solid #141416;
+  border-radius: 10px;
+}
+
+* {
+	user-select: none;
 }

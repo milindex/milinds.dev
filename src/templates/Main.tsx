@@ -30,7 +30,7 @@ function Main(props: IMainProps) {
         <Navigation theme={theme} setTheme={setTheme} />
       </header>
 
-      <main className="container mx-auto py-16">{props.children}</main>
+      <main className="container mx-auto">{props.children}</main>
 
       <footer className="">
         <Footer />
