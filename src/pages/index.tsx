@@ -28,25 +28,6 @@ const Index = () => {
     },
   ];
 
-  const currentState = [
-    `I'm working on a project for AngelOne at{' '}
-		<a
-			href="https://kraftpixel.com/"
-			target="_blank"
-			rel="noreferrer"
-		>
-			KraftPixel
-		</a>`,
-    `I'm working on my personal Portfolio website`,
-  ];
-
-  const chooseRandomState = () => {
-    // if date is even, return 0, else return 1
-    const date = new Date();
-    const isEven = date.getDate() % 2 === 0;
-    return isEven ? 0 : 1;
-  };
-
   return (
     <Main
       meta={
@@ -72,9 +53,17 @@ const Index = () => {
                 I make Websites & Softwares
               </h3>
               <p className="text-center lg:max-w-2xl lg:text-justify">
-                I’m a Full Stack Developer specializing in building (and
+                I&apos;m a Full Stack Developer specializing in building (and
                 occasionally designing) complex digital experiences. Currently,{' '}
-                {currentState[chooseRandomState()]}.
+                I&apos;m working on a project for AngelOne at{' '}
+                <a
+                  href="https://kraftpixel.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  KraftPixel
+                </a>
+                .
               </p>
 
               <div className="my-4 flex items-center justify-center gap-4 lg:mb-0 lg:justify-start">
