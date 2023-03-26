@@ -21,4 +21,8 @@ module.exports = withBundleAnalyzer({
   },
   output: 'export',
   distDir: 'dist',
+  experimental: {
+    runtime: 'experimental-edge',
+  },
+  swcMinify: true,
 });
