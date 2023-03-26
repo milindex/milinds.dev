@@ -19,10 +19,4 @@ module.exports = withBundleAnalyzer({
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  output: 'export',
-  distDir: 'dist',
-  experimental: {
-    runtime: 'experimental-edge',
-  },
-  swcMinify: true,
 });
