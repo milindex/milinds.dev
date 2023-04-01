@@ -49,3 +49,4 @@ local
 *.lock
 dist
 package-lock.json
+.env

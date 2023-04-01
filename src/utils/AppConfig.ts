@@ -1,6 +1,4 @@
 // FIXME: Update this configuration file based on your project information
-
-// check darkMode
 export const AppConfig = {
   site_name: 'Milind Sonawane',
   title: 'Milind Sonawane | Full Stack Developer',

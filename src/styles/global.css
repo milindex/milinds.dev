@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #FD5735;
-  --secondary-color: #f83500;
+	--primary-color: #FD5735;
+	--secondary-color: #f83500;
 }
 
 body {
@@ -39,21 +39,47 @@ body.show-mobile-visible main .container {
 
 /*Scrollbars*/
 html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary-color) #141416;
+	scrollbar-width: thin;
 }
-::-webkit-scrollbar {
-  width: 12px;
+
+html.light{
+	scrollbar-color: var(--primary-color) #FCFCFD;
 }
-::-webkit-scrollbar-track {
-  background: #141416;
+
+html.dark{
+	scrollbar-color: var(--primary-color) #141416;
 }
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
-  border: 3px solid #141416;
-  border-radius: 10px;
+
+html.light::-webkit-scrollbar, html.dark::-webkit-scrollbar {
+	width: 12px;
+}
+
+html.light::-webkit-scrollbar-track, html.dark::-webkit-scrollbar-track {
+	background:transparent;
+}
+
+html.light::-webkit-scrollbar-thumb {
+	background-color: var(--primary-color);
+	border: 3px solid #FCFCFD;
+	border-radius: 10px;
+}
+html.dark::-webkit-scrollbar-thumb {
+	background-color: var(--primary-color);
+	border: 3px solid #141416;
+	border-radius: 10px;
 }
 
 * {
 	user-select: none;
+}
+
+@media (min-width: 640px) {
+	.indian-clients-slider .splide__list{
+		display: flex !important;
+		flex-wrap: wrap;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		gap: 40px;
+	}
 }

@@ -7,7 +7,7 @@ function ResumeCTA() {
         href="/assets/files/resume.pdf"
         target="_blank"
         rel="noreferrer"
-        className="resume-btn flex rounded-full border border-primary-main p-2 pr-3 text-primary-main hover:border-primary-hover hover:text-primary-hover"
+        className="resume-btn flex rounded-full border border-primary-main p-2 pr-3 text-primary-main transition-all duration-500 hover:border-primary-hover hover:text-primary-hover"
       >
         <svg
           className="h-5 w-5 hover:animate-bounce"

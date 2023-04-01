@@ -42,7 +42,7 @@ const Index = () => {
 
         <section className="hero py-[30px] lg:py-[80px]">
           <div className="lg:grid lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-7">
               <h1 className="text-center font-bold text-primary-main lg:text-left lg:text-xl">
                 Hi, my name is
               </h1>
@@ -55,34 +55,26 @@ const Index = () => {
               <p className="text-center lg:max-w-2xl lg:text-justify">
                 I&apos;m a Full Stack Developer specializing in building (and
                 occasionally designing) complex digital experiences. Currently,{' '}
-                I&apos;m working on a project for AngelOne at{' '}
-                <a
-                  href="https://kraftpixel.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  KraftPixel
-                </a>
-                .
+                I&apos;m working on a React Project.
               </p>
 
               <div className="my-4 flex items-center justify-center gap-4 lg:mb-0 lg:justify-start">
                 <Link
                   href="/contact"
-                  className="flex rounded-full border border-primary-main bg-primary-hover p-2 pr-3 text-og-text hover:border-transparent hover:bg-primary-main hover:text-og-text"
+                  className="flex rounded-full border border-primary-main bg-primary-hover p-2 pr-3 text-og-text transition-all duration-500 hover:border-transparent hover:bg-primary-main hover:text-og-text"
                 >
                   Let&apos;s Talk?
                 </Link>
                 <ResumeCTA />
               </div>
             </div>
-            <div className="lg:col-span-4">
+            <div className="banner-image-container lg:col-span-5">
               <img
                 src="/assets/images/hero-banner.jpg"
                 alt="I make Websites & Softwares"
                 height={368}
                 width={490}
-                className="rounded-2xl grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
+                className="banner-image w-full rounded-2xl grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
               />
             </div>
           </div>
@@ -97,19 +89,18 @@ const Index = () => {
 
           <Splide
             options={{
-              type: 'slide',
-              rewind: false,
-              rewindByDrag: false,
-              perPage: 5,
-              arrows: false,
-              autoplay: false,
-              pauseOnHover: false,
-              paginationDirection: 'ltr',
+              destroy: true,
               breakpoints: {
                 640: {
-                  perPage: 1,
+                  type: 'slide',
                   rewind: true,
                   rewindByDrag: true,
+                  perPage: 1,
+                  arrows: false,
+                  autoplay: false,
+                  pauseOnHover: false,
+                  paginationDirection: 'ltr',
+                  destroy: false,
                 },
               },
             }}
@@ -123,7 +114,7 @@ const Index = () => {
                   title={Object.values(client)[0]}
                   className={`h-[50px] w-auto ${
                     Object.keys(client)[0]
-                  } mx-auto lg:grayscale lg:transition-all lg:duration-500 lg:ease-in-out lg:hover:grayscale-0`}
+                  } mx-auto hover:scale-110 lg:grayscale lg:transition-all lg:duration-500 lg:ease-in-out lg:hover:grayscale-0`}
                 />
               </SplideSlide>
             ))}
@@ -152,7 +143,7 @@ const Index = () => {
           <div className="flex items-center justify-center text-center">
             <Link
               href="/projects"
-              className="rounded-full border border-primary-main p-2 pr-3 text-primary-main hover:border-transparent hover:bg-primary-hover hover:text-og-text"
+              className="rounded-full border border-primary-main p-2 pr-3 text-primary-main transition-all duration-500 hover:border-transparent hover:bg-primary-hover hover:text-og-text"
             >
               Checkout all Projects
             </Link>
