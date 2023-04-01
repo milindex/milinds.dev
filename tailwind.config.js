@@ -30,6 +30,8 @@ module.exports = {
         barlow: ['Barlow', 'sans-serif'],
       },
       colors: {
+        error: '#ef5854',
+        success: '#21b7a8',
         og: {
           background: '#141416',
           text: '#FCFCFD',
@@ -43,16 +45,27 @@ module.exports = {
             primary: '#FCFCFD',
             secondary: '#777E90',
           },
+          textfield: {
+            primary: '#DF9696',
+            border: '#291A1A',
+            placeholder: '#F95342',
+          },
         },
         light: {
           heading: {
             primary: '#141416',
             secondary: '#777E90',
           },
+          textfield: {
+            primary: '#111111',
+            border: '#291A1A',
+            placeholder: '#F95342',
+          },
         },
       },
       animation: {
         shockwave: 'shockwave 1s ease-in 20;',
+        'pulse-twice': 'pulse 3s linear 2',
       },
       keyframes: {
         shockwave: {
