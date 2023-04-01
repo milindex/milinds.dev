@@ -85,5 +85,9 @@
         "project": "./cypress/tsconfig.json"
       }
     }
-  ]
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  }
 }

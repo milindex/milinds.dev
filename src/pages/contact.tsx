@@ -9,30 +9,27 @@ import { database } from '@/utils/firebase';
 const dbInstance = collection(database, 'contact-us');
 
 function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [senderName, setSenderName] = useState('');
+  const [senderEmail, setsenderEmail] = useState('');
+  const [senderMessage, setsenderMessage] = useState('');
 
   const saveMessage = () => {
-    // check if all fields are filled
-    console.log(name, email, message);
-
-    // save message to firebase
-    addDoc(dbInstance, {
-      name,
-      email,
-      message,
-    })
-      .then(() => {
-        alert('Message sent successfully');
+    try {
+      addDoc(dbInstance, {
+        senderName,
+        senderEmail,
+        senderMessage,
+      }).then((resp) => {
         // reset form
-        setName('');
-        setEmail('');
-        setMessage('');
-      })
-      .catch((error) => {
-        console.log(error);
+        setSenderName('');
+        setsenderEmail('');
+        setsenderMessage('');
+
+        console.log(resp);
       });
+    } catch (error) {
+      // console.log(error);
+    }
   };
 
   return (
@@ -58,7 +55,7 @@ function Contact() {
               type="text"
               name="name"
               id="name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setSenderName(e.target.value)}
             />
           </div>
 
@@ -68,7 +65,7 @@ function Contact() {
               type="text"
               name="email"
               id="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setsenderEmail(e.target.value)}
             />
           </div>
 
@@ -79,7 +76,7 @@ function Contact() {
               id="message"
               cols={30}
               rows={10}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => setsenderMessage(e.target.value)}
             />
           </div>
 
