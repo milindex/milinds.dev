@@ -5,8 +5,8 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
-import { useThrottle } from 'use-throttle';
 
+import useThrottle from '@/hooks/useThrottle';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 import { database } from '@/utils/firebase';
@@ -128,7 +128,7 @@ function Contact() {
     return Object.keys(formErrors || {}).length === 0;
   };
 
-  useThrottle(runValidation, 3000, { leading: false });
+  useThrottle(runValidation, 1000);
 
   const saveMessage = () => {
     if (
@@ -139,12 +139,12 @@ function Contact() {
       return;
 
     // save data to firestore
-    addDoc(dbInstance, {
-      debouncedSenderName,
-      debouncedSenderEmail,
-      debouncedSenderMessage,
-    })
-      .then((resp) => {
+    try {
+      addDoc(dbInstance, {
+        debouncedSenderName,
+        debouncedSenderEmail,
+        debouncedSenderMessage,
+      }).then(() => {
         // reset form
         setSenderName('');
         setsenderEmail('');
@@ -157,10 +157,10 @@ function Contact() {
         setTimeout(() => {
           setSuccessMessage('');
         }, 3000);
-      })
-      .catch((error) => {
-        console.error('Error adding document: ', error);
       });
+    } catch (error) {
+      console.error('Error adding document: ', error);
+    }
   };
 
   const handleSubmit = () => {
