@@ -75,7 +75,9 @@ function Navigation({ theme, setTheme }: any) {
           </nav>
         </div>
         {/* Dark Mode Toggle */}
-        <DarkModeToggle theme={theme} setTheme={setTheme} />
+        <div className="hidden lg:block">
+          <DarkModeToggle theme={theme} setTheme={setTheme} />
+        </div>
         {/* Mobile Nav */}
         <div className="lg:hidden">
           <div
@@ -115,6 +117,15 @@ function Navigation({ theme, setTheme }: any) {
                   </Link>
                 </li>
               ))}
+              <li>
+                {/* Dark Mode Toggle */}
+                <DarkModeToggle
+                  className="mobile-toggle"
+                  theme={theme}
+                  setTheme={setTheme}
+                />
+                {/* Mobile Nav */}
+              </li>
             </ul>
           </menu>
           <style jsx>{`
@@ -125,7 +136,7 @@ function Navigation({ theme, setTheme }: any) {
               display: none;
               position: absolute;
               left: 0;
-              top: 64px;
+              top: 60px;
               backdrop-filter: blur(10px);
               background: rgba(0, 0, 0, 0.6);
             }

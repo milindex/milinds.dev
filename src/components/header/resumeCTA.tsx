@@ -2,7 +2,7 @@
 
 function ResumeCTA() {
   return (
-    <div className="resume-container">
+    <div className="resume-container select-none">
       <a
         href="/assets/files/resume.pdf"
         target="_blank"

@@ -75,11 +75,11 @@ function DarkModeToggle({ theme, setTheme }: any) {
           justify-content: center;
           align-content: center;
         }
-        @media (max-width: 768px) {
+        @media (min-width: 1024px) {
           .dark-light-mode-container .theme {
             position: absolute;
-            top: 60px;
-            right: 28px;
+            top: 12px;
+            right: 32px;
           }
         }
         .dark-light-mode-container .theme .input {

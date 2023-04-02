@@ -26,6 +26,10 @@ html{
 		background-color: #141416;
 		color: #FCFCFD;
 	}
+	html.light{
+		background-color: #FCFCFD;
+		color: #141416;
+	}
 }
 
 html.dark {
