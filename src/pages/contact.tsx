@@ -144,14 +144,17 @@ function Contact() {
         debouncedSenderName,
         debouncedSenderEmail,
         debouncedSenderMessage,
-      }).then(() => {
-        // reset form
-        setSenderName('');
-        setsenderEmail('');
-        setsenderMessage('');
+      }).then((resp) => {
+        if (resp.id) {
+          setSenderName('');
+          setsenderEmail('');
+          setsenderMessage('');
+          setSuccessMessage(`Message sent successfully!`);
+        } else {
+          alert('Something went wrong. Please try again later.');
+        }
 
-        // show success message
-        setSuccessMessage('Message sent successfully!');
+        // reset form
 
         // hide success message after 5 seconds
         setTimeout(() => {
@@ -210,7 +213,7 @@ function Contact() {
           <div className="relative">
             <input
               value={senderName || ''}
-              className={`mt-2 w-full rounded-lg border border-light-textfield-border bg-dark-textfield-primary p-3 text-light-textfield-primary placeholder:text-light-heading-primary focus:outline-none dark:border-light-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-secondary dark:placeholder:text-dark-heading-primary${
+              className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary ${
                 formErrors?.senderEmail ? ' input-error' : ''
               }`}
               type="text"
@@ -233,7 +236,7 @@ function Contact() {
             <input
               // initial value of the field from state
               value={senderEmail || ''}
-              className={`mt-2 w-full rounded-lg border border-light-textfield-border bg-dark-textfield-primary p-3 text-light-textfield-primary placeholder:text-light-heading-primary focus:outline-none dark:border-light-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-secondary dark:placeholder:text-dark-heading-primary${
+              className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary ${
                 formErrors?.senderEmail ? ' input-error' : ''
               }`}
               type="email"
@@ -254,7 +257,7 @@ function Contact() {
           <div className="relative mt-8">
             <textarea
               value={senderMessage || ''}
-              className={`mt-2 w-full rounded-lg border border-light-textfield-border bg-dark-textfield-primary p-3 text-light-textfield-primary placeholder:text-light-heading-primary focus:outline-none dark:border-light-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-secondary dark:placeholder:text-dark-heading-primary${
+              className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary ${
                 formErrors?.senderEmail ? ' input-error' : ''
               }`}
               onChange={(e) => {

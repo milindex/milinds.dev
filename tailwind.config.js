@@ -46,9 +46,11 @@ module.exports = {
             secondary: '#777E90',
           },
           textfield: {
-            primary: '#DF9696',
-            border: '#291A1A',
+            primary: '#212123',
+            border: '#FA7D70',
             placeholder: '#F95342',
+            background: '#B0B0B0',
+            color: '#111111',
           },
         },
         light: {
@@ -57,9 +59,11 @@ module.exports = {
             secondary: '#777E90',
           },
           textfield: {
-            primary: '#111111',
+            primary: '#E0E0E0',
             border: '#291A1A',
             placeholder: '#F95342',
+            background: '#E0E0E0',
+            color: '#111111',
           },
         },
       },
