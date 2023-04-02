@@ -6,7 +6,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
-import useThrottle from '@/hooks/useThrottle';
+import ContactUsSVG from '@/components/svg/contactus';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 import { database } from '@/utils/firebase';
@@ -128,7 +128,7 @@ function Contact() {
     return Object.keys(formErrors || {}).length === 0;
   };
 
-  useThrottle(runValidation, 1000);
+  // useThrottle(runValidation, 1000);
 
   const saveMessage = () => {
     if (
@@ -180,7 +180,7 @@ function Contact() {
       }
     >
       <section className="mx-auto grid max-w-screen-xl grid-cols-1 gap-8 rounded-lg px-8 py-16 text-light-heading-secondary dark:text-dark-heading-secondary md:grid-cols-2 md:px-12 lg:px-16 xl:px-32">
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-start">
           <h2 className="text-4xl font-bold leading-tight text-light-heading-primary dark:text-dark-heading-primary lg:text-5xl">
             Lets talk about everything!
           </h2>
@@ -191,11 +191,14 @@ function Contact() {
             </span>{' '}
             instead.
           </div>
-          <div className="mt-8 text-center">
-            <object
+          <div className="mt-8 bg-[var(--light-bg)] text-center dark:bg-[var(----dark-bg)]">
+            {/* <object
               data="/assets/images/svg/contact-us.svg"
               type="image/svg+xml"
-            />
+            /> */}
+            <div className="h-auto w-3/4">
+              <ContactUsSVG />
+            </div>
           </div>
         </div>
 
@@ -220,7 +223,7 @@ function Contact() {
               required
             />
             {formErrors?.senderName && (
-              <div className="absolute w-full text-center text-red-500 lg:text-left">
+              <div className="absolute w-full animate-pulse-twice text-center text-red-500 lg:text-left">
                 {formErrors.senderName}
               </div>
             )}
@@ -262,7 +265,7 @@ function Contact() {
               placeholder="Your message"
             ></textarea>
             {formErrors?.senderMessage && (
-              <div className="absolute w-full text-center text-red-500 lg:text-left">
+              <div className="absolute w-full animate-pulse-twice text-center text-red-500 lg:text-left">
                 {formErrors.senderMessage}
               </div>
             )}

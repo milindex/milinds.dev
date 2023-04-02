@@ -73,9 +73,9 @@ function Navigation({ theme, setTheme }: any) {
               ))}
             </ul>
           </nav>
-          {/* Dark Mode Toggle */}
-          <DarkModeToggle theme={theme} setTheme={setTheme} />
         </div>
+        {/* Dark Mode Toggle */}
+        <DarkModeToggle theme={theme} setTheme={setTheme} />
         {/* Mobile Nav */}
         <div className="lg:hidden">
           <div
