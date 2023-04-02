@@ -21,6 +21,13 @@ html{
 	color: #141416;
 }
 
+@media (prefers-color-scheme: dark) {
+	html {
+		background-color: #141416;
+		color: #FCFCFD;
+	}
+}
+
 html.dark {
 	background-color: #141416;
 	color: #FCFCFD;
