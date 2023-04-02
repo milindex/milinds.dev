@@ -61,7 +61,7 @@ const Index = () => {
               <div className="my-4 flex items-center justify-center gap-4 lg:mb-0 lg:justify-start">
                 <Link
                   href="/contact"
-                  className="flex rounded-full border border-primary-main bg-primary-hover p-2 pr-3 text-og-text transition-all duration-500 hover:border-transparent hover:bg-primary-main hover:text-og-text"
+                  className="user-select-none flex rounded-full border border-primary-main bg-primary-hover p-2 pr-3 text-og-text transition-all duration-500 hover:border-transparent hover:bg-primary-main hover:text-og-text"
                 >
                   Let&apos;s Talk?
                 </Link>

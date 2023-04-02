@@ -276,7 +276,7 @@ function Contact() {
               <div className="text-green-500">{successMessage}</div>
             ) : (
               <button
-                className="mx-auto flex rounded-full border border-primary-main bg-primary-hover p-2 pr-3 text-og-text transition-all duration-500 hover:border-transparent hover:bg-primary-main hover:text-og-text"
+                className="user-select-none mx-auto flex rounded-full border border-primary-main bg-primary-hover p-2 pr-3 text-og-text transition-all duration-500 hover:border-transparent hover:bg-primary-main hover:text-og-text"
                 onClick={handleSubmit}
                 type="submit"
               >
