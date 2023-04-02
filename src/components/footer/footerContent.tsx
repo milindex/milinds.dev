@@ -43,7 +43,7 @@ const Footer = () => (
           </a>
           <a
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
-            href="mailto:milind4j@gmail.com"
+            href="mailto:connect@milinds.dev"
             target="__blank"
           >
             <svg
