@@ -1,10 +1,12 @@
 ### Portfolio Website
 
-Hi, my name is Milind and I’ve created a repository for a portfolio website. It features multiple pages, a contact form with custom validation connected to Firebase, and even a dark mode option.
+Hi, my name is Milind and I’ve created this repository for my portfolio website. It features multiple pages, a contact form with custom validation connected to Firebase, and even a dark mode option.
+
 
 ### Requirements
 
 - Node.js 14+ and npm
+
 
 ### Getting started
 
@@ -24,11 +26,11 @@ npm run dev
 
 Open http://localhost:3000 with your favorite browser to see your project.
 
+
 ### Deploy to Clouflare Pages
 
-Read More:
+Read More: [Deploy with Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/)
 
-[![Deploy with Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/)]
 
 ### VSCode information (optional)
 
@@ -38,12 +40,13 @@ With the plugins installed on your VSCode, ESLint and Prettier can automatically
 
 Pro tips: if you need a project wide type checking with TypeScript, you can run a build with <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> on Mac.
 
+
 ### Contributions
 
 Everyone is welcome to contribute to this project. Feel free to open an issue if you have question or found a bug. Totally open to any suggestions and improvements.
 
 <!-- add https://nextlessjs.com/ -->
-Special Thanks: [![Nextless.js SaaS Boilerplate](https://nextlessjs.com/)]
+Special Thanks: [Nextless.js SaaS Boilerplate](https://nextlessjs.com/)
 
 
 ### License
