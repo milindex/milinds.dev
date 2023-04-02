@@ -78,10 +78,6 @@ html.dark::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 }
 
-* {
-	user-select: none;
-}
-
 @media (min-width: 640px) {
 	.indian-clients-slider .splide__list{
 		display: flex !important;
