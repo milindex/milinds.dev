@@ -5,6 +5,7 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
+import Validator from 'validatorjs';
 
 import ContactUsSVG from '@/components/svg/contactus';
 import { Meta } from '@/layouts/Meta';
@@ -13,79 +14,30 @@ import { database } from '@/utils/firebase';
 
 const dbInstance = collection(database, 'contact-us');
 
-const schema: any = {
-  senderName: {
-    required: true,
-    minLength: 3,
-    maxLength: 50,
-    pattern: /^[a-zA-Z ]{2,30}$/,
-  },
-  senderEmail: {
-    required: true,
-    pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-  },
-  senderMessage: {
-    required: true,
-  },
-};
+const runValidation = (formFields: any) => {
+  const rules = {
+    Name: 'required|min:3|regex:/^[a-zA-Z ]{2,30}$/', // alpha_spaces
+    Email: 'required|email',
+    Message: 'required|min:2|max:500', // alpha_spaces
+  };
 
-const errors: any = {
-  senderName: {
-    required: 'Please enter your name',
-    minLength: 'Name should be at least 3 characters long',
-    maxLength: 'Name should be at most 50 characters long',
-    pattern: 'Please enter a valid name',
-  },
-  senderEmail: {
-    required: 'Please enter your email',
-    pattern: 'Please enter a valid email',
-  },
-  senderMessage: {
-    required: 'Please enter your message',
-  },
-};
+  const errorMessages = {
+    'Name.required': 'Name is required',
+    'Name.min': 'Name must be at least 3 characters',
+    'Name.regex': 'Name must be only letters and spaces',
+    'Email.required': 'Email is required',
+    'Email.email': 'Email is invalid',
+    'Message.required': 'Message is required',
+    'Message.min': 'Message must be at least 2 characters',
+    'Message.max': 'Message must be less than 500 characters',
+  };
 
-const validate = (field: string, value: string, rules: any) => {
-  let isValid = true;
-  let error = null;
+  const validation = new Validator(formFields, rules, errorMessages);
 
-  // validation for all rules provided for the field
-  Object.keys(rules).forEach((rule) => {
-    if (isValid) {
-      switch (rule) {
-        case 'required':
-          isValid = value.trim() !== '';
-          if (!isValid) {
-            error = errors[field][rule];
-          }
-          break;
-        case 'minLength':
-          isValid = value.length >= rules[rule];
-          if (!isValid) {
-            error = errors[field][rule];
-          }
-          break;
-        case 'maxLength':
-          isValid = value.length <= rules[rule];
-          if (!isValid) {
-            error = errors[field][rule];
-          }
-          break;
-        case 'pattern':
-          isValid = rules[rule].test(value);
-          if (!isValid) {
-            error = errors[field][rule];
-          }
-          break;
-        default:
-          isValid = true;
-      }
-    }
-  });
+  validation.passes(); // true
+  validation.fails(); // false
 
-  // console.log(isValid, error);
-
-  return { isValid, error };
+  return validation;
 };
 
 function Contact() {
@@ -94,83 +46,77 @@ function Contact() {
   const [senderMessage, setsenderMessage] = useState('');
   const [formErrors, setFormErrors] = useState<any>(null);
   const [successMessage, setSuccessMessage] = useState('');
+  const [unexpectedError, setUnexpectedError] = useState<boolean>(false);
 
   // use debounce hook to delay the senderName, senderEmail, senderMessage state updates
   const [debouncedSenderName] = useDebounce(senderName, 50);
   const [debouncedSenderEmail] = useDebounce(senderEmail, 50);
   const [debouncedSenderMessage] = useDebounce(senderMessage, 50);
 
-  const runValidation = () => {
-    setFormErrors(null);
-    const currentValues: any = {
-      senderName,
-      senderEmail,
-      senderMessage,
-    };
-
-    // validate all fields
-    Object.keys(schema).forEach((field) => {
-      const { isValid, error } = validate(
-        field,
-        currentValues[field],
-        schema[field]
-      );
-
-      if (isValid === false) {
-        // formErrors[field] = error;
-        setFormErrors((prevState: any) => ({
-          ...prevState,
-          [field]: error,
-        }));
-      }
+  const liveValidation = () => {
+    const validation = runValidation({
+      Name: debouncedSenderName,
+      Email: debouncedSenderEmail,
+      Message: debouncedSenderMessage,
     });
 
-    return Object.keys(formErrors || {}).length === 0;
+    if (validation.fails()) {
+      setFormErrors(validation.errors.all());
+      return;
+    }
+
+    setFormErrors(null);
   };
 
-  // useThrottle(runValidation, 1000);
-
   const saveMessage = () => {
-    if (
-      !debouncedSenderName ||
-      !debouncedSenderEmail ||
-      !debouncedSenderMessage
-    )
+    const validation = runValidation({
+      Name: debouncedSenderName,
+      Email: debouncedSenderEmail,
+      Message: debouncedSenderMessage,
+    });
+
+    if (validation.fails()) {
+      setFormErrors(validation.errors.all());
       return;
+    }
+
+    setFormErrors(null);
 
     // save data to firestore
     try {
       addDoc(dbInstance, {
-        debouncedSenderName,
-        debouncedSenderEmail,
-        debouncedSenderMessage,
+        Name: debouncedSenderName,
+        Email: debouncedSenderEmail,
+        Message: debouncedSenderMessage,
       }).then((resp) => {
         if (resp.id) {
           setSenderName('');
           setsenderEmail('');
           setsenderMessage('');
-          setSuccessMessage(`Message sent successfully!`);
+          setSuccessMessage(
+            `Your messages has been sent successfully. I'll get back to you soon.`
+          );
+          setUnexpectedError(false);
         } else {
-          alert('Something went wrong. Please try again later.');
+          setUnexpectedError(true);
+          setTimeout(() => {
+            setUnexpectedError(false);
+          }, 3000);
         }
-
-        // reset form
-
-        // hide success message after 5 seconds
         setTimeout(() => {
           setSuccessMessage('');
         }, 3000);
       });
     } catch (error) {
-      console.error('Error adding document: ', error);
+      setUnexpectedError(true);
+      setTimeout(() => {
+        setUnexpectedError(false);
+      }, 3000);
     }
   };
 
   const handleSubmit = () => {
-    const isValid = runValidation();
-    if (isValid) {
-      saveMessage();
-    }
+    saveMessage();
   };
 
   return (
@@ -184,6 +130,9 @@ function Contact() {
     >
       <section className="mx-auto grid max-w-screen-xl grid-cols-1 gap-8 rounded-lg px-8 py-16 text-light-heading-secondary dark:text-dark-heading-secondary md:grid-cols-2 md:px-12 lg:px-16 xl:px-32">
         <div className="flex flex-col justify-start">
+          {/* <div>
+            <pre>{JSON.stringify(formErrors, null, 2)}</pre>
+          </div> */}
           <h2 className="text-4xl font-bold leading-tight text-light-heading-primary dark:text-dark-heading-primary lg:text-5xl">
             Lets talk about everything!
           </h2>
@@ -209,25 +158,29 @@ function Contact() {
           {/* <div>
             <pre>{JSON.stringify(formErrors, null, 2)}</pre>
           </div> */}
+
+          {/* run validation as user types */}
+          {/* <form> */}
           {/* {senderName} */}
           <div className="relative">
             <input
               value={senderName || ''}
-              className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary ${
-                formErrors?.senderEmail ? ' input-error' : ''
-              }`}
+              className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary`}
               type="text"
               placeholder="Name*"
               // setSenderName & perform validation
               onChange={(e) => {
                 setSenderName(e.target.value);
-                runValidation();
               }}
               required
+              pattern="/^[a-zA-Z ]{2,30}$/"
+              onBlur={() => {
+                liveValidation();
+              }}
             />
-            {formErrors?.senderName && (
-              <div className="absolute w-full animate-pulse-twice text-center text-red-500 lg:text-left">
-                {formErrors.senderName}
+            {formErrors?.Name && (
+              <div className="absolute w-full animate-pulse-twice text-center text-sm text-red-500 lg:text-left">
+                {formErrors.Name[0]}
               </div>
             )}
           </div>
@@ -237,19 +190,22 @@ function Contact() {
               // initial value of the field from state
               value={senderEmail || ''}
               className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary ${
-                formErrors?.senderEmail ? ' input-error' : ''
+                formErrors?.Email ? ' input-error' : ''
               }`}
               type="email"
               placeholder="Email*"
               onChange={(e) => {
                 setsenderEmail(e.target.value);
-                runValidation();
               }}
               required
+              pattern="/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/"
+              onBlur={() => {
+                liveValidation();
+              }}
             />
-            {formErrors?.senderEmail && (
-              <div className="absolute w-full animate-pulse-twice text-center text-red-500 lg:text-left">
-                {formErrors.senderEmail}
+            {formErrors?.Email && (
+              <div className="absolute w-full animate-pulse-twice text-center text-sm text-red-500 lg:text-left">
+                {formErrors.Email[0]}
               </div>
             )}
           </div>
@@ -258,18 +214,20 @@ function Contact() {
             <textarea
               value={senderMessage || ''}
               className={`placeholder:text-heading-secondary mt-2 w-full rounded-lg border border-light-textfield-border bg-light-textfield-primary p-3 text-light-textfield-color focus:outline-none dark:border-dark-textfield-border dark:bg-dark-textfield-primary dark:text-dark-heading-primary ${
-                formErrors?.senderEmail ? ' input-error' : ''
+                formErrors?.Email ? ' input-error' : ''
               }`}
               onChange={(e) => {
                 setsenderMessage(e.target.value);
-                runValidation();
               }}
               required
               placeholder="Your message"
+              onBlur={() => {
+                liveValidation();
+              }}
             ></textarea>
-            {formErrors?.senderMessage && (
-              <div className="absolute w-full animate-pulse-twice text-center text-red-500 lg:text-left">
-                {formErrors.senderMessage}
+            {formErrors?.Message && (
+              <div className="absolute w-full animate-pulse-twice text-center text-sm text-red-500 lg:text-left">
+                {formErrors.Message[0]}
               </div>
             )}
           </div>
@@ -286,7 +244,16 @@ function Contact() {
                 Send Message
               </button>
             )}
+
+            {/* if there is any other error print here */}
+            {unexpectedError && (
+              <div className="mt-4 animate-pulse-twice text-orange-500">
+                ⚠️ Your message was not sent. Please email me{' '}
+                <a href="mailto:connect@milinds.dev">here</a> ⚠️
+              </div>
+            )}
           </div>
+          {/* </form> */}
         </div>
         <style jsx>{`
           .input-error {

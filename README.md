@@ -1,11 +1,30 @@
-### Portfolio Website
 
-Hi, my name is Milind and I’ve created this repository for my portfolio website. It features multiple pages, a contact form with custom validation connected to Firebase, and even a dark mode option.
+<div align="center">
+	<img alt="Logo" src="https://milinds.dev/assets/images/logo.png" width="100" />
+</div>
+<div>
+	<h1 align="center">
+		milinds.dev
+	</h1>
+	<h5 align="center">
+		v1 Beta
+	</h5>
+</div>
+<p align="center">
+	This is <a  href="https://milinds.dev"  target="_blank">milinds.dev</a> built with <a  href="https://nextjs.org/">Next.js</a> and hosted with <a  href="https://pages.cloudflare.com/"  target="_blank">Cloudflare Pages</a>
+</p>
 
+![demo](https://i.imgur.com/9DoVzmS.png)
 
-### Requirements
+## FAQs
 
-- Node.js 14+ and npm
+Can I use this repository for my personal use ? **yes, with attribution**.
+
+If you have any questions regarding Implementation, Please refer to the [Next.js 13 Docs](https://nextjs.org/docs). Leave a comment if you need anything else - [# milinds.dev Discussions!](https://github.com/milindex/milinds.dev/discussions/1)
+
+### TL;DR
+
+Fork away, my friend! Just don’t forget to give a shoutout to [milinds.dev](https://milinds.dev/). It’s the polite thing to do, and it’ll make you look cool. 😉
 
 
 ### Getting started

@@ -221,7 +221,7 @@ const Index = () => {
                 </p>
               </blockquote>
             </div>
-            <div className="flex flex-col items-center justify-start rounded-t-lg border-b border-primary-main p-8 text-center md:rounded-t-none md:rounded-tl-lg md:border-b-0 md:border-r">
+            <div className="flex flex-col items-center justify-start rounded-t-lg border-primary-main p-8 text-center md:rounded-t-none md:rounded-tl-lg md:border-b-0 md:border-r">
               <blockquote className="mx-auto max-w-2xl text-light-heading-secondary">
                 <h3 className="mb-4 text-lg font-semibold text-light-heading-primary dark:text-dark-heading-primary">
                   Server Management/Hosting
