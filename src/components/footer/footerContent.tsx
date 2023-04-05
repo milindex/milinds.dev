@@ -17,6 +17,7 @@ const Footer = () => (
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://github.com/milindex"
             target="__blank"
+            title="Github"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +32,7 @@ const Footer = () => (
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://www.linkedin.com/in/milindks/"
             target="__blank"
+            title="LinkedIn"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,6 +47,7 @@ const Footer = () => (
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="mailto:connect@milinds.dev"
             target="__blank"
+            title="Email"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,6 +62,7 @@ const Footer = () => (
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://gitlab.com/milindks"
             target="__blank"
+            title="GitLab"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +77,7 @@ const Footer = () => (
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://www.instagram.com/milind2k/"
             target="__blank"
+            title="Instagram"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +92,7 @@ const Footer = () => (
             className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://twitter.com/milind2k"
             target="__blank"
+            title="Twitter"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -49,7 +49,12 @@ function Navigation({ theme, setTheme }: any) {
               isHome ? ' active-home' : ''
             }`}
           >
-            <img src="/assets/images/logo.png" alt="" height={42} width={42} />
+            <img
+              src="/assets/images/logo.png"
+              alt="milinds.dev"
+              height={42}
+              width={42}
+            />
           </Link>
         </div>
         {/* Jumplinks */}

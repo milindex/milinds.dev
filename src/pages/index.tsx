@@ -15,16 +15,35 @@ const Index = () => {
     //   '5paisa': '5paisa is a leading discount stockbroker in India',
     // },
     {
-      acko: 'Acko General Insurance is a private sector general insurance company in India',
+      acko: {
+        title:
+          'Acko General Insurance is a private sector general insurance company in India',
+        width: 82,
+        height: 26,
+      },
     },
-    { angelone: 'Angel One is an Indian stockbroker firm established in 1996' },
     {
-      atomberg:
-        "Atomberg is in the business of revolutionizing India's home appliances",
+      angelone: {
+        title: 'Angel One is an Indian stockbroker firm established in 1996',
+        width: 208,
+        height: 50,
+      },
     },
     {
-      kapiva:
-        'Kapiva is a modern Ayurvedic nutrition brand that is dedicated to the ideas of sustenance and quality at its core',
+      atomberg: {
+        title:
+          "Atomberg is in the business of revolutionizing India's home appliances",
+        width: 178,
+        height: 50,
+      },
+    },
+    {
+      kapiva: {
+        title:
+          'Kapiva is a modern Ayurvedic nutrition brand that is dedicated to the ideas of sustenance and quality at its core',
+        width: 155,
+        height: 50,
+      },
     },
   ];
 
@@ -116,7 +135,9 @@ const Index = () => {
                 <img
                   src={`/assets/images/clients/${Object.keys(client)[0]}.png`}
                   alt={Object.values(client)[0]}
-                  title={Object.values(client)[0]}
+                  width={Object.values(client)[0].width}
+                  height={Object.values(client)[0].height}
+                  title={Object.values(client)[0].title}
                   className={`h-[50px] w-auto ${
                     Object.keys(client)[0]
                   } mx-auto select-none hover:scale-110 lg:grayscale lg:transition-all lg:duration-500 lg:ease-in-out lg:hover:grayscale-0`}
