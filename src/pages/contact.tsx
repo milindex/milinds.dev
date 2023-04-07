@@ -129,10 +129,7 @@ function Contact() {
       }
     >
       <section className="mx-auto grid max-w-screen-xl grid-cols-1 gap-8 rounded-lg px-8 py-16 text-light-heading-secondary dark:text-dark-heading-secondary md:grid-cols-2 md:px-12 lg:px-16 xl:px-32">
-        <div className="flex flex-col justify-start">
-          {/* <div>
-            <pre>{JSON.stringify(formErrors, null, 2)}</pre>
-          </div> */}
+        <div className="flex flex-col text-center lg:text-left">
           <h2 className="text-4xl font-bold leading-tight text-light-heading-primary dark:text-dark-heading-primary lg:text-5xl">
             Lets talk about everything!
           </h2>
@@ -148,7 +145,7 @@ function Contact() {
               data="/assets/images/svg/contact-us.svg"
               type="image/svg+xml"
             /> */}
-            <div className="h-auto w-3/4">
+            <div className="mx-auto h-auto w-3/4 md:mx-0">
               <ContactUsSVG />
             </div>
           </div>

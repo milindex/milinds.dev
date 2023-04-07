@@ -2,7 +2,7 @@ import { useTheme } from 'next-themes';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 
-import Footer from '@/components/footer/footerContent';
+import FooterContent from '@/components/footer/Content';
 import Navigation from '@/components/header/navigation';
 
 type IMainProps = {
@@ -33,7 +33,7 @@ function Main(props: IMainProps) {
       <main className="container mx-auto">{props.children}</main>
 
       <footer className="">
-        <Footer />
+        <FooterContent />
       </footer>
     </div>
   );

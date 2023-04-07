@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import DarkModeToggle from '@/components/support/darkModeToggle';
+import Logo from '@/components/svg/Logo';
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -49,12 +50,7 @@ function Navigation({ theme, setTheme }: any) {
               isHome ? ' active-home' : ''
             }`}
           >
-            <img
-              src="/assets/images/logo.png"
-              alt="milinds.dev"
-              height={42}
-              width={42}
-            />
+            <Logo />
           </Link>
         </div>
         {/* Jumplinks */}
@@ -65,7 +61,7 @@ function Navigation({ theme, setTheme }: any) {
                 <li key={href}>
                   {/* add Class active to current page */}
                   <Link
-                    className={`border-b-2 pb-1 text-primary-main transition duration-300 ease-in-out hover:border-primary-hover hover:text-primary-hover${
+                    className={`border-b-2 pb-1 text-lg text-primary-main transition duration-300 ease-in-out hover:border-primary-hover hover:text-primary-hover${
                       router.pathname === href
                         ? ' active-page border-primary-main'
                         : ' border-transparent'
@@ -80,7 +76,7 @@ function Navigation({ theme, setTheme }: any) {
           </nav>
         </div>
         {/* Dark Mode Toggle */}
-        <div className="hidden lg:block">
+        <div className="relative hidden lg:block">
           <DarkModeToggle theme={theme} setTheme={setTheme} />
         </div>
         {/* Mobile Nav */}

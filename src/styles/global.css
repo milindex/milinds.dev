@@ -6,7 +6,7 @@
 
 :root {
 	--primary-color: #FD5735;
-	--secondary-color: #f83500;
+	--secondary-color: #E80526;
 	--dark-bg: #141416;
 	--light-bg: #FCFCFD;
 }
@@ -56,11 +56,11 @@ html {
 }
 
 html.light{
-	scrollbar-color: var(--primary-color) #FCFCFD;
+	scrollbar-color: var(--primary-color);
 }
 
 html.dark{
-	scrollbar-color: var(--primary-color) #141416;
+	scrollbar-color: var(--primary-color);
 }
 
 html.light::-webkit-scrollbar, html.dark::-webkit-scrollbar {
@@ -80,15 +80,4 @@ html.dark::-webkit-scrollbar-thumb {
 	background-color: var(--primary-color);
 	border: 3px solid #141416;
 	border-radius: 10px;
-}
-
-@media (min-width: 640px) {
-	.indian-clients-slider .splide__list{
-		display: flex !important;
-		flex-wrap: wrap;
-		align-content: center;
-		justify-content: center;
-		align-items: center;
-		gap: 40px;
-	}
 }

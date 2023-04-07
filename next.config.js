@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
+const withPlugins = require('next-compose-plugins');
+const withTM = require('next-transpile-modules')(['@svgr/webpack']);
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
 const path = require('path');
 
-module.exports = withBundleAnalyzer({
+module.exports = withPlugins([withTM, withBundleAnalyzer], {
   eslint: {
     dirs: ['.'],
   },

@@ -3,7 +3,7 @@ import React from 'react';
 // get current year
 const year = new Date().getFullYear();
 
-const Footer = () => (
+const FooterContent = () => (
   <div className="container">
     {/* get in touch with me */}
     <div className="flex flex-col items-center justify-center py-8">
@@ -109,4 +109,4 @@ const Footer = () => (
   </div>
 );
 
-export default Footer;
+export default FooterContent;

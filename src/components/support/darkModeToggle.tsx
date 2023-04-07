@@ -78,8 +78,9 @@ function DarkModeToggle({ theme, setTheme }: any) {
         @media (min-width: 1024px) {
           .dark-light-mode-container .theme {
             position: absolute;
-            top: 12px;
-            right: 32px;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
           }
         }
         .dark-light-mode-container .theme .input {
