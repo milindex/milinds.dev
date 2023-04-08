@@ -2,6 +2,8 @@ import Link from 'next/link';
 
 import ResumeCTA from '@/components/header/resumeCTA';
 
+import AccentImage from '../support/AccentImage';
+
 function Introduction() {
   return (
     <section className="py-[30px] lg:py-[80px]">
@@ -37,12 +39,11 @@ function Introduction() {
           </div>
         </div>
         <div className="lg:col-span-5">
-          <img
+          <AccentImage
             src="/assets/images/hero-banner.jpg"
             alt="I make Websites & Softwares"
             height={368}
             width={490}
-            className="w-full rounded-2xl grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
             title="No, this is not a filter, I just happen to look like this person"
           />
         </div>

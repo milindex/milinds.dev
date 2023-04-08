@@ -126,7 +126,7 @@ function DarkModeToggle({ theme, setTheme }: any) {
           display: inline-block;
           border: 2px solid #f4533a;
           border-radius: 24px;
-          transition: all 0.2s;
+          transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .dark-light-mode-container .theme .box {
           position: relative;
@@ -136,7 +136,7 @@ function DarkModeToggle({ theme, setTheme }: any) {
           box-shadow: inset 0 0 0 1px rgba(119, 126, 144, 0.4);
           background: rgba(253, 87, 53, 0.3);
           border-radius: 16px;
-          transition: all 0.2s;
+          transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .dark-light-mode-container .theme .box:before {
           content: '';
@@ -149,7 +149,7 @@ function DarkModeToggle({ theme, setTheme }: any) {
           border-radius: 50%;
           background: #fd5735;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          transition: all 0.2s;
+          transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .dark-light-mode-container .theme .icon .icon {
           position: absolute;
@@ -158,7 +158,7 @@ function DarkModeToggle({ theme, setTheme }: any) {
           height: 24px;
           transform: translatey(-35%);
           fill: #b1b5c3;
-          transition: all 0.2s;
+          transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .dark-light-mode-container .theme .icon .icon.icon-moon {

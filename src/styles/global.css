@@ -39,6 +39,7 @@ html.dark {
 
 a{
 	color: var(--primary-color);
+	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 a:hover{
@@ -47,6 +48,7 @@ a:hover{
 }
 
 body.show-mobile-visible main .container {
+	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	backdrop-filter: blur(10px);
 }
 

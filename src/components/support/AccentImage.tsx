@@ -18,21 +18,18 @@ function AccentImage(props: any) {
           .accent-image-container {
             position: relative;
           }
+          .accent-image-container * {
+            transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+          }
           .accent-image-container .accent-overlay {
             position: absolute;
-            background-color: rgba(251, 85, 60, 0.8);
+            background-color: var(--primary-color);
             height: 100%;
             width: 100%;
-            transition-property: all;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
           }
           .accent-image-container .accent-image {
             mix-blend-mode: multiply;
             filter: grayscale(100%);
-            transition-property: all;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
           }
           .accent-image-container:hover .accent-overlay {
             display: none;
@@ -41,9 +38,11 @@ function AccentImage(props: any) {
             filter: none;
             mix-blend-mode: normal;
           }
-          .accent-image-container:hover:after {
-            top: 10px;
-            left: 10px;
+          @media screen and (min-width: 768px) {
+            .accent-image-container:hover:after {
+              top: 5px;
+              left: 5px;
+            }
           }
           .accent-image-container:before,
           .accent-image-container:after {
@@ -53,16 +52,17 @@ function AccentImage(props: any) {
             width: 100%;
             height: 100%;
             border-radius: 1rem;
-            z-index: -1;
-            transition-property: all;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
+            transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
           }
           .accent-image-container:after {
             border: 2px solid #fb553c;
-            top: 20px;
-            left: 20px;
             z-index: -1;
+          }
+          @media screen and (min-width: 768px) {
+            .accent-image-container:after {
+              top: 15px;
+              left: 15px;
+            }
           }
         `}
       </style>
