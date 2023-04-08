@@ -53,6 +53,7 @@ function AccentImage(props: any) {
             height: 100%;
             border-radius: 1rem;
             transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+            top: 15px;
           }
           .accent-image-container:after {
             border: 2px solid #fb553c;

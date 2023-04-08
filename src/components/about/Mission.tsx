@@ -4,7 +4,7 @@ function Mission() {
   return (
     <section className="py-[30px] lg:py-[60px]">
       <div className="gap-8 lg:grid lg:grid-cols-12 lg:items-center lg:gap-12">
-        <div className="lg:order-1 lg:col-span-5">
+        <div className="mb-16 lg:order-1 lg:col-span-5 lg:mb-0">
           <AccentImage
             src="/assets/images/freelance.jpg"
             alt="I make Websites & Softwares"
