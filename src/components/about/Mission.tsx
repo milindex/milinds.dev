@@ -7,14 +7,14 @@ function Mission() {
         <div className="order-2 col-span-7">
           <h2 className="mb-6 text-3xl font-bold lg:text-4xl">My Mission</h2>
           <div className="">
-            <p className="mb-4 text-lg lg:text-xl">
+            <p className="mb-4 text-lg lg:text-lg">
               My mission is to create digital experiences that are beautiful,
               fast, user-friendly, and accessible to all. Whether you&apos;re a
               small business owner or a large corporation, I believe that a
               great website or software can help you achieve your goals and
               reach your audience more effectively.
             </p>
-            <p className="mb-4 text-lg lg:text-xl">
+            <p className="mb-4 text-lg lg:text-lg">
               My expertise lies primarily in back-end development, but I also
               have a strong interest in design. By combining these skills,
               I&apos;m able to create seamless and intuitive user experiences
@@ -22,7 +22,7 @@ function Mission() {
               always strive to exceed your expectations with high-quality work
               and a commitment to excellence.
             </p>
-            <p className="mb-4 text-lg lg:text-xl">
+            <p className="mb-4 text-lg lg:text-lg">
               To achieve this, I analyze metrics and make data-driven decisions
               to continuously improve and optimize your digital products. I
               believe that every project is an opportunity to learn, grow, and

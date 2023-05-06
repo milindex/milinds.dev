@@ -84,10 +84,10 @@ function Services() {
       <div className="flex items-center justify-center text-center">
         <Link
           href="/contact"
-          className="group relative inline-block bg-primary-main text-sm font-medium focus:outline-none focus:ring active:bg-primary-hover"
+          className="group relative inline-block bg-primary-main text-sm font-medium outline-none active:bg-primary-hover"
         >
           <span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-primary-main transition-transform group-hover:translate-y-0 group-hover:translate-x-0"></span>
-          <span className="relative block border border-current bg-darkbg px-8 py-3">
+          <span className="relative block border border-current bg-lightbg px-8 py-3 dark:bg-darkbg">
             Enquire Now
           </span>
         </Link>
