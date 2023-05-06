@@ -46,7 +46,7 @@
 			mix-blend-mode: normal;
 		}
 		&:after {
-			@media screen and (min-width: 768px) {
+			@media screen and (min-width: 640px) {
 				top: 15px;
 				left: 15px;
 			}
@@ -63,7 +63,7 @@
 	}
 	&:after {
 		border: 2px solid #FB553C;
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 640px) {
 			top: 25px;
 			left: 25px;
 		}

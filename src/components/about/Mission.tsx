@@ -2,9 +2,36 @@ import AccentImage from '../support/AccentImage';
 
 function Mission() {
   return (
-    <section className="py-[30px] lg:py-[60px]">
-      <div className="gap-8 lg:grid lg:grid-cols-12 lg:items-center lg:gap-12">
-        <div className="mb-16 lg:order-1 lg:col-span-5 lg:mb-0">
+    <section className="py-6 lg:py-12">
+      <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+        <div className="order-2 col-span-7">
+          <h2 className="mb-6 text-3xl font-bold lg:text-4xl">My Mission</h2>
+          <div className="">
+            <p className="mb-4 text-lg lg:text-xl">
+              My mission is to create digital experiences that are beautiful,
+              fast, user-friendly, and accessible to all. Whether you&apos;re a
+              small business owner or a large corporation, I believe that a
+              great website or software can help you achieve your goals and
+              reach your audience more effectively.
+            </p>
+            <p className="mb-4 text-lg lg:text-xl">
+              My expertise lies primarily in back-end development, but I also
+              have a strong interest in design. By combining these skills,
+              I&apos;m able to create seamless and intuitive user experiences
+              that integrate design, server technology, and user interaction. I
+              always strive to exceed your expectations with high-quality work
+              and a commitment to excellence.
+            </p>
+            <p className="mb-4 text-lg lg:text-xl">
+              To achieve this, I analyze metrics and make data-driven decisions
+              to continuously improve and optimize your digital products. I
+              believe that every project is an opportunity to learn, grow, and
+              push the boundaries of what&apos;s possible. Let&apos;s work
+              together to create something amazing.
+            </p>
+          </div>
+        </div>
+        <div className="order-1 col-span-5">
           <AccentImage
             src="/assets/images/freelance.jpg"
             alt="I make Websites & Softwares"
@@ -12,29 +39,6 @@ function Mission() {
             width={490}
             title="No, this is not a filter, I just happen to look like this person"
           />
-        </div>
-        <div className="lg:order-2 lg:col-span-7">
-          <div className="">
-            <p className="mb-4 text-[18px]">
-              I’m on a mission to make the web faster, easier to use, prettier,
-              accessible to all, and frustration-free. No matter your business
-              needs, tackling these challenges will lead to online success.
-            </p>
-            <p className="mb-4 text-[18px]">
-              My primary expertise is in back-end development, but I also have
-              an interest in design. Creating a modern website requires
-              integrating design, server technology, and user interaction.
-              Knowing both design and development allows me to craft exceptional
-              user experiences.
-            </p>
-            <p className="mb-4 text-[18px]">
-              I strive to not only meet but exceed your expectations with
-              high-quality work. I enjoy learning about your company and its
-              goals to contribute to the success of your website. By analyzing
-              metrics and making data-driven decisions, I aim to achieve higher
-              levels of success.
-            </p>
-          </div>
         </div>
       </div>
     </section>

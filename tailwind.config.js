@@ -15,6 +15,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '9xl': '9rem',
     },
     container: {
       center: true,
@@ -32,6 +33,8 @@ module.exports = {
       colors: {
         error: '#ef5854',
         success: '#21b7a8',
+        lightbg: 'var(--light-bg)',
+        darkbg: 'var(--dark-bg)',
         og: {
           background: '#141416',
           text: '#FCFCFD',

@@ -20,9 +20,12 @@ function Clientale() {
       <div className="flex items-center justify-center text-center">
         <Link
           href="/projects"
-          className="select-none rounded-full border border-primary-main p-2 px-5 text-primary-main transition-all duration-500 hover:border-transparent hover:bg-primary-hover hover:text-og-text"
+          className="group relative inline-block bg-primary-main text-sm font-medium focus:outline-none focus:ring active:bg-primary-hover"
         >
-          Checkout all Projects
+          <span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-primary-main transition-transform group-hover:translate-y-0 group-hover:translate-x-0"></span>
+          <span className="relative block border border-current bg-darkbg px-8 py-3">
+            Checkout all Projects
+          </span>
         </Link>
       </div>
     </section>

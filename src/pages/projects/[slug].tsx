@@ -1,47 +1,39 @@
-import type {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from 'next';
+import { useRouter } from 'next/router';
 
+import Custom404 from '@/components/Custom404';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
+import projects from '@/utils/Projects';
 
-type IProjectURL = {
-  slug: string;
-};
+const ProjectPage = () => {
+  const router = useRouter();
+  const { slug } = router.query;
 
-export const getStaticPaths: GetStaticPaths<IProjectURL> = async () => {
-  return {
-    paths: [...Array(10)].map((_, index) => ({
-      params: { slug: `project-${index}` },
-    })),
-    fallback: false,
-  };
-};
+  if (!slug) {
+    return <Custom404 />;
+  }
 
-export const getStaticProps: GetStaticProps<IProjectURL, IProjectURL> = async ({
-  params,
-}) => {
-  return {
-    props: {
-      slug: params!.slug,
-    },
-  };
-};
+  const myProject = projects.find((project) => project.slug === slug);
 
-const Project = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  if (!myProject) {
+    return <Custom404 />;
+  }
+
   return (
-    <Main meta={<Meta title={props.slug} description="Lorem ipsum" />}>
-      <h1 className="capitalize">{props.slug}</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore eos
-        earum doloribus, quibusdam magni accusamus vitae! Nisi, sunt! Aliquam
-        iste expedita cupiditate a quidem culpa eligendi, aperiam saepe dolores
-        ipsum!
-      </p>
+    <Main
+      meta={
+        <Meta
+          title="Projects | Your Name"
+          description="Check out my latest projects and collaborations."
+        />
+      }
+    >
+      <div>
+        <h1>Project {slug}</h1>
+        {/* Add your project details here */}
+      </div>
     </Main>
   );
 };
 
-export default Project;
+export default ProjectPage;

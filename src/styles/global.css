@@ -7,42 +7,43 @@
 :root {
 	--primary-color: #FD5735;
 	--secondary-color: #E80526;
-	--dark-bg: #141416;
+	--dark-bg: #0E0F10;
 	--light-bg: #FCFCFD;
 }
 
 body {
-	font-family: 'TwitterChirp' , 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'TwitterChirp', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 16px;
 }
 
-html{
-	background-color: #FCFCFD;
-	color: #141416;
+html {
+	background-color: var(--light-bg);
+	color: var(--dark-bg);
 }
 
 @media (prefers-color-scheme: dark) {
 	html {
-		background-color: #141416;
-		color: #FCFCFD;
+		background-color: var(--dark-bg);
+		color: var(--light-bg);
 	}
-	html.light{
-		background-color: #FCFCFD;
-		color: #141416;
+	
+	html.light {
+		background-color: var(--light-bg);
+		color: var(--dark-bg);
 	}
 }
 
 html.dark {
-	background-color: #141416;
-	color: #FCFCFD;
+	background-color: var(--dark-bg);
+	color: var(--light-bg);
 }
 
-a{
+a {
 	color: var(--primary-color);
 	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-a:hover{
+a:hover {
 	color: var(--secondary-color);
 	cursor: pointer;
 }
@@ -52,34 +53,58 @@ body.show-mobile-visible main .container {
 	backdrop-filter: blur(10px);
 }
 
-/*Scrollbars*/
+/* Scrollbars */
 html {
 	scrollbar-width: thin;
 }
 
-html.light{
+html.light {
 	scrollbar-color: var(--primary-color);
 }
 
-html.dark{
+html.dark {
 	scrollbar-color: var(--primary-color);
 }
 
-html.light::-webkit-scrollbar, html.dark::-webkit-scrollbar {
+html.light::-webkit-scrollbar,
+html.dark::-webkit-scrollbar {
 	width: 12px;
 }
 
-html.light::-webkit-scrollbar-track, html.dark::-webkit-scrollbar-track {
-	background:transparent;
+html.light::-webkit-scrollbar-track,
+html.dark::-webkit-scrollbar-track {
+	background: transparent;
 }
 
 html.light::-webkit-scrollbar-thumb {
 	background-color: var(--primary-color);
-	border: 3px solid #FCFCFD;
+	border: 3px solid var(--light-bg);
 	border-radius: 10px;
 }
+
 html.dark::-webkit-scrollbar-thumb {
 	background-color: var(--primary-color);
-	border: 3px solid #141416;
+	border: 3px solid var(--dark-bg);
 	border-radius: 10px;
+}
+
+.desk-navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	backdrop-filter: blur(5px);
+	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.desk-navbar.scrolled {
+	background-color: var(--light-bg);;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	opacity: 0.95;
+	z-index: 1;
+}
+
+html.dark .desk-navbar.scrolled {
+	background-color: #000;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }

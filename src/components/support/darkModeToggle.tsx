@@ -1,4 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
+import { useEffect } from 'react';
+
 function toggleDarkMode(theme: any, setTheme: any) {
   const input = document.querySelector('.input') as HTMLInputElement;
   if (theme === 'dark') {
@@ -13,6 +15,14 @@ function toggleDarkMode(theme: any, setTheme: any) {
 }
 
 function DarkModeToggle({ theme, setTheme }: any) {
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      const input = document.querySelector('.input') as HTMLInputElement;
+      input.checked = true;
+    }
+  }, [theme]);
+
   return (
     <div className="dark-light-mode-container">
       <label className="theme">

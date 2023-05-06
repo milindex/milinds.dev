@@ -14,7 +14,7 @@ const FooterContent = () => (
         </p>
         <div className="flex items-center justify-center gap-4">
           <a
-            className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
+            className="h-12 w-12 border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://github.com/milindex"
             target="__blank"
             title="Github"
@@ -29,7 +29,7 @@ const FooterContent = () => (
             </svg>
           </a>
           <a
-            className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
+            className="h-12 w-12 border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://www.linkedin.com/in/milindks/"
             target="__blank"
             title="LinkedIn"
@@ -44,7 +44,7 @@ const FooterContent = () => (
             </svg>
           </a>
           <a
-            className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
+            className="h-12 w-12 border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="mailto:connect@milinds.dev"
             target="__blank"
             title="Email"
@@ -59,7 +59,7 @@ const FooterContent = () => (
             </svg>
           </a>
           <a
-            className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
+            className="h-12 w-12 border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://gitlab.com/milindks"
             target="__blank"
             title="GitLab"
@@ -74,7 +74,7 @@ const FooterContent = () => (
             </svg>
           </a>
           <a
-            className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
+            className="h-12 w-12 border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://www.instagram.com/milind2k/"
             target="__blank"
             title="Instagram"
@@ -89,7 +89,7 @@ const FooterContent = () => (
             </svg>
           </a>
           <a
-            className="h-12 w-12 rounded-full border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
+            className="h-12 w-12 border border-primary-main p-2 text-primary-main hover:border-2 hover:text-primary-hover"
             href="https://twitter.com/milind2k"
             target="__blank"
             title="Twitter"

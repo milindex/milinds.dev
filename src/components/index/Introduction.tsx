@@ -19,21 +19,21 @@ function Introduction() {
             I make Websites & Softwares
           </h3>
           <p className="mb-8 text-center lg:max-w-2xl lg:text-left">
-            As a Full Stack Developer, I specialize in building complex digital
-            experiences that are both functional and visually appealing. With
-            expertise in both front-end and back-end development, I have the
-            skills and knowledge to bring your vision to life. Whether it’s
-            designing a user-friendly interface or implementing advanced
-            features, I am dedicated to delivering exceptional results that
-            exceed your expectations.
+            With a track record of delivering exceptional results, I specialize
+            in building complex digital experiences that are both functional and
+            visually appealing. Whether it&apos;s designing a user-friendly
+            interface or implementing advanced features, I am committed to
+            exceeding your expectations and bringing your vision to life.
           </p>
-
-          <div className="my-8 flex items-center justify-center gap-4 lg:mb-0 lg:justify-start">
+          <div className="my-8 flex items-center justify-center gap-8 lg:mb-0 lg:justify-start">
             <Link
               href="/contact"
-              className="flex select-none rounded-full bg-primary-main p-2 pr-3 text-og-text transition-all duration-500 hover:bg-primary-hover hover:text-og-text"
+              className="group relative inline-block bg-primary-main text-sm font-medium outline-none active:bg-primary-hover"
             >
-              Get in Touch
+              <span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-primary-main transition-transform group-hover:translate-y-0 group-hover:translate-x-0"></span>
+              <span className="relative block border border-current bg-lightbg px-8 py-3 dark:bg-darkbg">
+                Let&apos;s Work Together
+              </span>
             </Link>
             <ResumeCTA />
           </div>
@@ -41,7 +41,7 @@ function Introduction() {
         <div className="lg:col-span-5">
           <AccentImage
             src="/assets/images/hero-banner.jpg"
-            alt="I make Websites & Softwares"
+            alt="Milind Sonawane, a full-stack developer"
             height={368}
             width={490}
             title="No, this is not a filter, I just happen to look like this person"

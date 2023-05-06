@@ -40,8 +40,11 @@ function Navigation({ theme, setTheme }: any) {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
+    // {`navbar${scrolled ? ' scrolled' : ''}`}
     <>
-      <div className="container relative mx-auto flex w-full flex-row flex-wrap items-center justify-between py-2 shadow-md md:shadow-none">
+      <div
+        className={`container relative mx-auto flex w-full flex-row flex-wrap items-center justify-between py-2`}
+      >
         {/* site logo */}
         <div className="site-logo rounded-full">
           <Link
@@ -54,7 +57,7 @@ function Navigation({ theme, setTheme }: any) {
           </Link>
         </div>
         {/* Jumplinks */}
-        <div className="bottom-1 hidden flex-row flex-wrap items-center justify-between gap-3 lg:flex">
+        <div className="bottom-1 hidden flex-row flex-wrap items-center justify-between gap-3 md:flex">
           <nav>
             <ul className="flex flex-row flex-wrap items-center justify-between gap-3">
               {navLinks.map(({ href, label }) => (
@@ -76,11 +79,11 @@ function Navigation({ theme, setTheme }: any) {
           </nav>
         </div>
         {/* Dark Mode Toggle */}
-        <div className="relative hidden lg:block">
+        <div className="relative hidden md:block">
           <DarkModeToggle theme={theme} setTheme={setTheme} />
         </div>
         {/* Mobile Nav */}
-        <div className="lg:hidden">
+        <div className="md:hidden">
           <div
             className="hamburger"
             onClick={(e) => toggleMobileMenu(e, mobileMenu, setMobileMenu)}
@@ -137,7 +140,7 @@ function Navigation({ theme, setTheme }: any) {
               display: none;
               position: absolute;
               left: 0;
-              top: 60px;
+              top: 65px;
               backdrop-filter: blur(10px);
               background: rgba(0, 0, 0, 0.6);
             }

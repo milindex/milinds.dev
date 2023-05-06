@@ -32,7 +32,7 @@ function Services() {
             </p>
           </blockquote>
         </div>
-        <div className="flex flex-col items-center justify-start rounded-t-lg border-b border-primary-main p-8 text-center lg:rounded-t-none lg:rounded-tl-lg lg:border-r">
+        <div className="flex flex-col items-center justify-start rounded-t-lg border-b border-primary-main p-8 text-center lg:rounded-t-none lg:rounded-tl-lg">
           <blockquote className="mx-auto max-w-2xl text-light-heading-secondary">
             <h3 className="mb-4 text-lg font-semibold text-light-heading-primary dark:text-dark-heading-primary">
               E-commerce Websites
@@ -67,7 +67,7 @@ function Services() {
             </p>
           </blockquote>
         </div>
-        <div className="flex flex-col items-center justify-start rounded-t-lg border-primary-main p-8 text-center lg:rounded-t-none lg:rounded-tl-lg lg:border-b-0 lg:border-r">
+        <div className="flex flex-col items-center justify-start rounded-t-lg border-primary-main p-8 text-center lg:rounded-t-none lg:rounded-tl-lg lg:border-b-0">
           <blockquote className="mx-auto max-w-2xl text-light-heading-secondary">
             <h3 className="mb-4 text-lg font-semibold text-light-heading-primary dark:text-dark-heading-primary">
               Server Management/Hosting
@@ -84,9 +84,12 @@ function Services() {
       <div className="flex items-center justify-center text-center">
         <Link
           href="/contact"
-          className="select-none rounded-full border border-primary-main p-2 px-5 text-primary-main transition-all duration-500 hover:border-transparent hover:bg-primary-hover hover:text-og-text"
+          className="group relative inline-block bg-primary-main text-sm font-medium focus:outline-none focus:ring active:bg-primary-hover"
         >
-          Enquire Now
+          <span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-primary-main transition-transform group-hover:translate-y-0 group-hover:translate-x-0"></span>
+          <span className="relative block border border-current bg-darkbg px-8 py-3">
+            Enquire Now
+          </span>
         </Link>
       </div>
     </section>
