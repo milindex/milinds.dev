@@ -1,6 +1,6 @@
 
 <div align="center">
-	<img alt="Logo" src="https://milinds.dev/assets/images/logo.png" width="100" />
+	<img alt="Logo" src="https://raw.githubusercontent.com/milindex/milinds.dev/master/public/assets/images/logo/logo-full-res.png" width="100" />
 </div>
 <div>
 	<h1 align="center">
