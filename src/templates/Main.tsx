@@ -34,7 +34,7 @@ function Main({ meta, children }: MainProps) {
       >
         <Navigation theme={theme} setTheme={setTheme} />
       </header>
-      <main className="container mx-auto mt-[65px]">{children}</main>
+      <main className="container z-10 mx-auto mt-[65px]">{children}</main>
       <footer className="">
         <FooterContent />
       </footer>

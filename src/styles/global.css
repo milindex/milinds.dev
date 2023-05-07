@@ -95,16 +95,28 @@ html.dark::-webkit-scrollbar-thumb {
 	right: 0;
 	backdrop-filter: blur(5px);
 	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+	z-index: 10;
+}
+@media (min-width: 768px) {
+
+	.desk-navbar.scrolled {
+		background-color: var(--light-bg);;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+		opacity: 0.95;
+		z-index: 1;
+	}
+
+	html.dark .desk-navbar.scrolled {
+		background-color: #000;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	}
 }
 
-.desk-navbar.scrolled {
-	background-color: var(--light-bg);;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-	opacity: 0.95;
-	z-index: 1;
+
+html.light .navbar {
+	background: rgba(252, 252, 253, 1);
 }
 
-html.dark .desk-navbar.scrolled {
-	background-color: #000;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+html.dark .navbar {
+	background: rgba(0, 0, 0, 0.9);
 }

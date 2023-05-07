@@ -99,12 +99,14 @@ function ClientsSlider() {
           .indian-clients-slider .splide__pagination {
             padding-top: 25px;
             gap: 0.25rem;
+            z-index: 0;
           }
           .indian-clients-slider .splide__pagination__page.is-active {
             background: var(--primary-color);
             width: 16px;
             border-radius: 9999px;
             transform: scale(1.2);
+            z-index: 0;
           }
         }
         @media (min-width: 640px) {

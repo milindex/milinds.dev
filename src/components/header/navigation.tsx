@@ -1,7 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import DarkModeToggle from '@/components/support/darkModeToggle';
 import Logo from '@/components/svg/Logo';
@@ -15,22 +15,26 @@ const navLinks = [
 
 function toggleMobileMenu(elem: any, mobileMenu: any, setMobileMenu: any) {
   const menu = document.querySelector('.navbar') as HTMLInputElement;
-
-  // console.log(elem);
-  // find closest parent with class name .hamburger
   const hamburger = elem.target.closest('.hamburger');
-
   if (!mobileMenu) {
     setMobileMenu(true);
     hamburger.classList.add('isactive');
     menu.classList.add('active');
     document.body.style.overflow = 'hidden';
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    window.addEventListener('beforeunload', resetOverflow);
   } else {
     setMobileMenu(false);
     hamburger.classList.remove('isactive');
     menu.classList.remove('active');
     document.body.style.overflow = 'auto';
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    window.removeEventListener('beforeunload', resetOverflow);
   }
+}
+
+function resetOverflow() {
+  document.body.style.overflow = 'auto';
 }
 
 function Navigation({ theme, setTheme }: any) {
@@ -38,6 +42,21 @@ function Navigation({ theme, setTheme }: any) {
   const isHome = router.pathname === '/';
 
   const [mobileMenu, setMobileMenu] = useState(false);
+
+  // check if .hamburger is isactive in useEffect
+  useEffect(() => {
+    const hamburger = document.querySelector('.hamburger') as HTMLInputElement;
+    const menu = document.querySelector('.navbar') as HTMLInputElement;
+    if (hamburger.classList.contains('isactive')) {
+      setMobileMenu(true);
+      menu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    } else {
+      setMobileMenu(false);
+      menu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  }, []);
 
   return (
     // {`navbar${scrolled ? ' scrolled' : ''}`}
@@ -134,7 +153,6 @@ function Navigation({ theme, setTheme }: any) {
           </menu>
           <style jsx>{`
             .navbar {
-              background-color: #333;
               width: 100%;
               height: 100vh;
               display: none;
@@ -142,7 +160,7 @@ function Navigation({ theme, setTheme }: any) {
               left: 0;
               top: 65px;
               backdrop-filter: blur(10px);
-              background: rgba(0, 0, 0, 0.6);
+              transition: transform 0.3s ease-in-out;
             }
 
             .navbar ul {
@@ -216,7 +234,7 @@ function Navigation({ theme, setTheme }: any) {
             }
 
             .navbar {
-              transition: all 2s ease-in-out;
+              transition: all 0.25s ease-in-out;
             }
 
             .navbar.active {
