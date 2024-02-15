@@ -12,7 +12,7 @@ const About = () => (
     meta={
       <Meta
         title="About Milind Sonawane | Full Stack Web Developer"
-        description="Meet Milind Sonawane, a full-stack web developer with expertise in HTML, CSS, JavaScript, and WordPress development. Discover his skills and passion for open-source technologies."
+        description="Meet Milind Sonawane, a full-stack web engineer with expertise in HTML, CSS, JavaScript, and WordPress development. Discover his skills and passion for open-source technologies."
       />
     }
   >
