@@ -1,10 +1,34 @@
 const projects = [
   {
+    id: 0,
+    slug: 'hdfcsky',
+    name: 'HDFC Sky',
+    client: 'HDFC Sky (HDFC Securities)',
+    duration: 'Jun 2024 - Present',
+    website: 'https://hdfcsky.com/',
+    description:
+      "Overseeing the design and implementation of the website's tech stack while leading a team of frontend and backend developers, with a strong focus on ensuring security, maintainability, scalability, and optimization.",
+    technologies: [
+      'Node.js',
+      'Docker',
+      'MySQL',
+      'Redis',
+      'WordPress',
+      'Next.js',
+    ],
+    achievements: [
+      // 'Led the development of a custom WordPress theme using modern workflow',
+      // 'Integrated lead management system with 3rd party LMS',
+      // 'Implemented Elasticsearch for the website and AMP pages',
+      // 'Optimized website to achieve 90+ score on Google PageSpeed Insights',
+    ],
+  },
+  {
     id: 1,
     slug: 'angelone',
     name: 'AngelOne Website Development',
     client: 'AngelOne (formerly known as Angel Broking)',
-    duration: 'July 2018 - Present',
+    duration: 'July 2018 - Jun 2024',
     website: 'https://www.angelone.in/',
     description:
       'Developed custom WordPress theme using modern workflow, integrated Gravity Forms lead management with 3rd party LMS, utilized Amazon Polly for text-to-speech, created frameworks for converting custom posts into AMP pages, implemented Elasticsearch, optimized for 90+ Google PageSpeed score, monitored and fixed issues with Google Search Console, and utilized Google APP Script to report PageSpeed score via Sheets, while finding better technical solutions.',

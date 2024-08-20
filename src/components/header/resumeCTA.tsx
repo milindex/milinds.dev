@@ -4,7 +4,7 @@ function ResumeCTA() {
   return (
     <div className="resume-container select-none">
       <a
-        href="/assets/files/resume.pdf"
+        href="/public/assets/milind_sonawane_full_stack_developer_6_years_v2.pdf"
         target="_blank"
         rel="noreferrer"
         className="duration-250 text-primary-main transition-all hover:pl-5 hover:text-primary-hover"

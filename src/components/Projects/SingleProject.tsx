@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 type Project = {
   id: number;
   slug: string;
@@ -51,7 +49,7 @@ const SingleProject = ({ project }: Props) => {
         </ul>
 
         <div className="my-8 flex items-center justify-center gap-8 lg:mb-0 lg:justify-start">
-          <Link
+          {/* <Link
             href={`/projects/${slug}`}
             className="group relative inline-block bg-primary-main text-sm font-medium outline-none active:bg-primary-hover"
           >
@@ -59,7 +57,7 @@ const SingleProject = ({ project }: Props) => {
             <span className="relative block border border-current bg-lightbg px-2 py-3 dark:bg-darkbg">
               Read More
             </span>
-          </Link>
+          </Link> */}
 
           <div className="select-none">
             <a
