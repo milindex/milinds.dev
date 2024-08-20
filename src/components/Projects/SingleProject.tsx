@@ -17,7 +17,7 @@ type Props = {
 const SingleProject = ({ project }: Props) => {
   const {
     // id,
-    slug,
+    // slug,
     name,
     client,
     duration,
