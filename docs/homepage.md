@@ -35,17 +35,17 @@
 ## Section Order
 
 ```
-1. HeroSection
-2. TrustBar
-3. CompanyMarquee
-4. FeaturedCaseStudies
-5. ExperienceTimeline
-6. TechnologyStack
-7. WritingInsights
-8. OpenSource
-9. Testimonials
-10. Availability
-11. ContactCTA
+1. HeroSection (`id="hero"`)
+2. TrustBar (`id="trust"`)
+3. CompanyMarquee (`id="clients"`)
+4. FeaturedCaseStudies (`id="work"`)
+5. CareerJourney (`id="timeline"`)
+6. TechnologyStack (`id="tech"`)
+7. WritingInsights (`id="writing"`)
+8. LabsExperiments (`id="experiments"`)
+9. Testimonials (`id="testimonials"`)
+10. Availability (`id="availability"`)
+11. ContactCTA (`id="contact"`)
 ```
 
 All sections are separated by `border-t border-white/[0.05]` (subtle 1px top border). Sections without an explicit border inherit it from the next section's top border.
@@ -255,7 +255,7 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 - Gap: `gap-6` (24px) / `md:gap-8` (32px)
 
 **Metric display:**
-- Values: `text-4xl` (36px) / `md:text-5xl` (48px), `font-bold`, `text-text-primary`
+- Values: `text-3xl` (30px) / `md:text-4xl` (36px), `font-bold`, `text-text-primary`
 - Labels: `mt-1` (4px above), `text-sm`, `text-text-muted` (#71717A)
 - All centered: `text-center`
 
@@ -361,12 +361,12 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 
 ---
 
-## 5. ExperienceTimeline
+## 5. CareerJourney
 
 ```
 ┌─────────────────────────────────────────────────────┐
 │  ┌─ Section heading ───────────────────────────┐    │
-│  │  Experience Timeline                         │    │
+│  │  Career Journey                              │    │
 │  │                                              │    │
 │  │  Alternate layout:                           │    │
 │  │                                              │    │
@@ -405,8 +405,8 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 └─────────────────────────────────────────────────────┘
 ```
 
-**Path:** `src/components/sections/ExperienceTimeline.tsx`
-**Wrapper:** `<Section heading="Experience Timeline">` (no subheading)
+**Path:** `src/components/sections/CareerJourney.tsx`
+**Wrapper:** `<Section id="timeline" heading="Career Journey">` (no subheading)
 
 **Timeline line:** `absolute left-4 md:left-1/2`, `w-px`, `bg-white/[0.08]`, full height.
 
@@ -429,7 +429,7 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 
 **Entries spacing:** `space-y-8` — 32px between entries
 
-**CTA:** `mt-8 text-center`, link `text-sm font-medium text-brand-primary hover:underline` → `/experience`
+**CTA:** `mt-8 text-center`, link `text-sm font-medium text-brand-primary hover:underline` → `/timeline`
 
 ---
 
@@ -531,12 +531,12 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 
 ---
 
-## 8. OpenSource
+## 8. LabsExperiments
 
 ```
 ┌─────────────────────────────────────────────────────┐
 │  ┌─ Section heading ───────────────────────────┐    │
-│  │  Open Source & Experiments                   │    │
+│  │  Labs & Experiments                          │    │
 │  │  Projects, experiments and contributions...  │    │
 │  │                                              │    │
 │  │  ┌──────────────┐ ┌──────────────┐ ┌──────┐│    │
@@ -556,7 +556,7 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 └─────────────────────────────────────────────────────┘
 ```
 
-**Path:** `src/components/sections/OpenSource.tsx`
+**Path:** `src/components/sections/LabsExperiments.tsx`
 **Grid:** `grid gap-6` (24px) / `md:grid-cols-3`
 
 **Card structure:**
@@ -701,8 +701,10 @@ HDFC Sky  Angel One  Kapiva  Atomberg   ← text-sm, font-medium
 ```
 
 **Path:** `src/components/sections/ContactCTA.tsx`
-**Section:** `border-t border-white/[0.05] bg-bg-primary py-12 md:py-16`
-- `py-12` (48px) on mobile, `py-16` (64px) on desktop
+**Section:** `id="contact" border-t border-white/[0.05] bg-bg-primary py-16 md:py-24 relative overflow-hidden`
+- `py-16` (64px) on mobile, `py-24` (96px) on desktop
+- Subtle brand glow: `h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]` centered behind content
+- Content has `relative z-10` to sit above glow
 - No `<Section>` wrapper (uses raw `<section>` + `<Container>`)
 
 **Content inner:** `mx-auto max-w-2xl text-center`
