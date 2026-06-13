@@ -35,7 +35,7 @@ function HeroCTA() {
       </MagneticButton>
       <a
         href="/assets/resume.pdf"
-        className="inline-flex h-[52px] items-center justify-center rounded-[12px] border border-white/20 px-6 text-base font-medium text-text-primary transition-colors hover:bg-surface-1"
+        className="inline-flex h-[52px] items-center justify-center rounded-[12px] border border-white/20 bg-white/[3%] px-6 text-base font-medium text-text-primary backdrop-blur-sm transition-colors hover:bg-surface-1"
       >
         Download Resume
       </a>
