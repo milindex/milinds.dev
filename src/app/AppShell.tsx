@@ -13,7 +13,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
       <CustomCursor />
       <SectionProgress />
       <FloatingCTA />
-      <main className="mt-[72px]">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );
