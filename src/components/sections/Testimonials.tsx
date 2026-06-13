@@ -66,6 +66,7 @@ function Testimonials() {
 
   return (
     <Section
+      id="testimonials"
       heading="What People Say"
       subheading="Feedback from clients, colleagues and teams I've worked with throughout my career."
     >

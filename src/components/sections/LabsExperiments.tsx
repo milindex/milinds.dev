@@ -27,6 +27,7 @@ const REPOS = [
 function LabsExperiments() {
   return (
     <Section
+      id="experiments"
       heading="Labs & Experiments"
       subheading="Projects, experiments and contributions that help me explore new technologies and ideas."
     >

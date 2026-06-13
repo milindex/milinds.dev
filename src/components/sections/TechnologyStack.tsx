@@ -47,6 +47,7 @@ function TechnologyStack() {
 
   return (
     <Section
+      id="tech"
       heading="Technologies I Work With"
       subheading="A modern toolkit built around performance, scalability and long-term maintainability."
     >

@@ -3,7 +3,7 @@ import Container from '@/components/ui/Container';
 
 function ContactCTA() {
   return (
-    <section className="border-t border-white/[0.05] bg-bg-primary py-16 md:py-24 relative overflow-hidden">
+    <section id="contact" className="border-t border-white/[0.05] bg-bg-primary py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]" />
       </div>

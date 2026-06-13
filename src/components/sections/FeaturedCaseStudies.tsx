@@ -52,6 +52,7 @@ const PROJECTS: Project[] = [
 function FeaturedCaseStudies() {
   return (
     <Section
+      id="work"
       heading="Selected Work"
       subheading="A selection of projects where I helped businesses solve technical challenges, improve performance and deliver better user experiences."
     >

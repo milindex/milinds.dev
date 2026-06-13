@@ -31,6 +31,7 @@ const ARTICLES = [
 function WritingInsights() {
   return (
     <Section
+      id="writing"
       heading="Writing & Insights"
       subheading="Thoughts on engineering, architecture, performance and building products."
     >
