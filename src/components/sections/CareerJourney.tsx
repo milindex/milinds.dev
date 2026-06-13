@@ -73,7 +73,7 @@ function CareerJourney() {
           <div className="space-y-8">
             {ENTRIES.map((entry, i) => (
               <div
-                key={entry.period}
+                key={entry.company}
                 data-cursor="explore"
                 className={`relative pl-10 md:pl-0 md:odd:pr-[52%] md:even:pl-[52%] ${i >= 2 ? 'hidden md:block' : ''}`}
               >
