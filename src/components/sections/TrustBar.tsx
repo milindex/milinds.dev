@@ -55,7 +55,7 @@ function TrustBar() {
         >
           {METRICS.map((metric) => (
             <div key={metric.label} className="text-center">
-              <span className="block text-4xl font-bold text-text-primary md:text-5xl">
+              <span className="block text-3xl font-bold text-text-primary md:text-4xl">
                 {metric.text ? (
                   metric.text
                 ) : (
