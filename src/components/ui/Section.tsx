@@ -15,7 +15,7 @@ function Section({ eyebrow, heading, subheading, children, className = '', id }:
           {eyebrow}
         </p>
       )}
-      <h2 className="text-4xl font-bold text-text-primary md:text-5xl lg:text-6xl">
+      <h2 className="text-left text-4xl font-bold text-text-primary md:text-5xl lg:text-6xl">
         {heading}
       </h2>
       {subheading && (

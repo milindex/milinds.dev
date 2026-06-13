@@ -9,7 +9,7 @@ function Availability() {
   return (
     <Section id="availability" heading="Available For New Opportunities">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="max-w-2xl">
           <p className="text-lg leading-relaxed text-text-secondary">
             I&apos;m currently available for freelance projects, consulting
             engagements and selected full-time opportunities.

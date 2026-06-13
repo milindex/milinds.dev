@@ -43,7 +43,7 @@ function CompanyMarquee() {
   return (
     <section id="clients" className="border-t border-white/[0.05] bg-bg-primary py-8 md:py-10">
       <Container>
-        <p className="mb-4 text-center text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
+        <p className="mb-4 text-left text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
           Worked With
         </p>
         <div className="overflow-hidden">

@@ -68,7 +68,7 @@ function CareerJourney() {
             ))}
           </div>
         </div>
-        <div className="mt-8 text-center">
+        <div className="mt-8">
           <Link
             href="/timeline"
             className="inline-flex items-center gap-1 text-sm font-medium text-brand-primary hover:underline"
