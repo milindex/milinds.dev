@@ -1,17 +1,7 @@
-import '@splidejs/react-splide/css';
-
-import Clientale from '@/components/index/Clientale';
-import Introduction from '@/components/index/Introduction';
-import Services from '@/components/index/Services';
+import HeroSection from '@/components/sections/HeroSection';
 
 const Index = () => {
-  return (
-    <>
-      <Introduction />
-      <Clientale />
-      <Services />
-    </>
-  );
+  return <HeroSection />;
 };
 
 export default Index;
