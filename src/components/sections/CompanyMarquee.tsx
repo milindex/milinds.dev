@@ -26,12 +26,18 @@ function CompanyMarquee() {
         ease: 'none',
         repeat: -1,
       });
-
-      el.addEventListener('mouseenter', () => tweenRef.current?.timeScale(0));
-      el.addEventListener('mouseleave', () => tweenRef.current?.timeScale(1));
     }, el);
 
-    return () => ctx.revert();
+    const handleMouseEnter = () => tweenRef.current?.timeScale(0);
+    const handleMouseLeave = () => tweenRef.current?.timeScale(1);
+    el.addEventListener('mouseenter', handleMouseEnter);
+    el.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      ctx.revert();
+      el.removeEventListener('mouseenter', handleMouseEnter);
+      el.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, []);
 
   return (
