@@ -19,15 +19,15 @@ function SectionHeadingBg({ text }: SectionHeadingBgProps) {
 
     const ctx = gsap.context(() => {
       gsap.fromTo(el,
-        { y: '25%' },
+        { y: '40%' },
         {
-          y: '-25%',
+          y: '-40%',
           ease: 'none',
           scrollTrigger: {
             trigger: el.parentElement,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: 1,
+            scrub: 1.5,
           },
         }
       );
@@ -46,8 +46,8 @@ function SectionHeadingBg({ text }: SectionHeadingBgProps) {
         className="whitespace-nowrap font-extrabold leading-none"
         style={{
           fontSize: 'clamp(140px, 22vw, 300px)',
-          color: 'transparent',
-          WebkitTextStroke: '2px rgba(253, 87, 53, 0.15)',
+          color: 'rgba(253, 87, 53, 0.04)',
+          WebkitTextStroke: '2px rgba(253, 87, 53, 0.25)',
         }}
       >
         {text}
