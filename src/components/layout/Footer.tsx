@@ -101,16 +101,6 @@ function Footer() {
     <footer className="border-t border-white/[0.05] bg-bg-primary">
       <div className="mx-auto max-w-[1200px] px-4 py-12 md:py-20">
         <div className="lg:grid lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">
-          {/* Column 1: Bio — always visible */}
-          <div className="pb-6 lg:pb-0">
-            <p className="text-sm leading-relaxed text-text-secondary max-w-xs">
-              {SiteConfig.tagline}
-            </p>
-            <p className="mt-6 text-xs text-text-muted">
-              {SiteConfig.copyright}
-            </p>
-          </div>
-
           {/* Accordion sections on mobile, normal columns on desktop */}
           <div className="lg:contents">
             <AccordionGroup
@@ -131,6 +121,16 @@ function Footer() {
               open={accordion === 'resources'}
               onToggle={() => toggle('resources')}
             />
+          </div>
+
+          {/* Bio — last on mobile, first on desktop */}
+          <div className="pt-6 lg:pt-0 lg:order-first lg:pb-0">
+            <p className="text-sm leading-relaxed text-text-secondary max-w-xs">
+              {SiteConfig.tagline}
+            </p>
+            <p className="mt-6 text-xs text-text-muted">
+              {SiteConfig.copyright}
+            </p>
           </div>
         </div>
       </div>
