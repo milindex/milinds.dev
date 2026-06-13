@@ -1,21 +1,12 @@
 'use client';
 
 import Footer from '@/components/layout/Footer';
-import Navigation from '@/components/header/navigation';
-import useScrollPosition from '@/hooks/useScrollPosition';
+import FloatingNav from '@/components/layout/FloatingNav';
 
 function AppShell({ children }: { children: React.ReactNode }) {
-  const isScrolled = useScrollPosition(50);
-
   return (
     <div>
-      <header
-        className={`desk-navbar flex h-20 w-full items-center justify-between shadow-md md:shadow-none${
-          isScrolled ? ' scrolled' : ''
-        }`}
-      >
-        <Navigation />
-      </header>
+      <FloatingNav />
       <main className="mx-auto mt-20 px-4 md:px-8">{children}</main>
       <Footer />
     </div>
