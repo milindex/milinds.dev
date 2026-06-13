@@ -203,9 +203,9 @@ function ContactForm() {
           </div>
 
           {/* Two Column Layout — form first on mobile */}
-          <div className="mt-10 grid gap-8 md:mt-16 md:gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-10 grid w-full gap-8 md:mt-16 md:gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Form Card (first on mobile, right on desktop) */}
-            <div id="contact-form" ref={formRef} className="lg:order-2 rounded-[20px] bg-surface-1 p-6 shadow-lg md:p-8">
+            <div id="contact-form" ref={formRef} className="lg:order-2 min-w-0 rounded-[20px] bg-surface-1 p-6 shadow-lg md:p-8">
               <div className="space-y-5">
                 {/* Name */}
                 <div>
@@ -324,7 +324,7 @@ function ContactForm() {
             </div>
 
             {/* Left: Contact Info Cards (second on mobile, left on desktop) */}
-            <div ref={cardsRef} className="lg:order-1 space-y-4">
+            <div ref={cardsRef} className="lg:order-1 min-w-0 space-y-4">
               {/* Availability */}
               <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-6 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <div className="flex items-start gap-3">
