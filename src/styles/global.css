@@ -1,122 +1,78 @@
 @import url(fonts.css);
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-	--primary-color: #FD5735;
-	--secondary-color: #E80526;
-	--dark-bg: #0E0F10;
-	--light-bg: #FCFCFD;
+  --primary-color: #FD5735;
+  --secondary-color: #E80526;
+  --dark-bg: #0E0F10;
+  --light-bg: #FCFCFD;
 }
 
 body {
-	font-family: 'TwitterChirp', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 16px;
+  font-family: 'TwitterChirp', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 html {
-	background-color: var(--light-bg);
-	color: var(--dark-bg);
-}
-
-@media (prefers-color-scheme: dark) {
-	html {
-		background-color: var(--dark-bg);
-		color: var(--light-bg);
-	}
-	
-	html.light {
-		background-color: var(--light-bg);
-		color: var(--dark-bg);
-	}
-}
-
-html.dark {
-	background-color: var(--dark-bg);
-	color: var(--light-bg);
+  background-color: var(--dark-bg);
+  color: var(--light-bg);
 }
 
 a {
-	color: var(--primary-color);
-	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  color: var(--primary-color);
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 a:hover {
-	color: var(--secondary-color);
-	cursor: pointer;
+  color: var(--secondary-color);
+  cursor: pointer;
 }
 
 body.show-mobile-visible main .container {
-	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-	backdrop-filter: blur(10px);
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  backdrop-filter: blur(10px);
 }
 
-/* Scrollbars */
 html {
-	scrollbar-width: thin;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color);
 }
 
-html.light {
-	scrollbar-color: var(--primary-color);
+html::-webkit-scrollbar {
+  width: 12px;
 }
 
-html.dark {
-	scrollbar-color: var(--primary-color);
+html::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-html.light::-webkit-scrollbar,
-html.dark::-webkit-scrollbar {
-	width: 12px;
-}
-
-html.light::-webkit-scrollbar-track,
-html.dark::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-html.light::-webkit-scrollbar-thumb {
-	background-color: var(--primary-color);
-	border: 3px solid var(--light-bg);
-	border-radius: 10px;
-}
-
-html.dark::-webkit-scrollbar-thumb {
-	background-color: var(--primary-color);
-	border: 3px solid var(--dark-bg);
-	border-radius: 10px;
+html::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border: 3px solid var(--dark-bg);
+  border-radius: 10px;
 }
 
 .desk-navbar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	backdrop-filter: blur(5px);
-	transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-	z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 10;
 }
+
 @media (min-width: 768px) {
-
-	.desk-navbar.scrolled {
-		background-color: var(--light-bg);;
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-		opacity: 0.95;
-		z-index: 1;
-	}
-
-	html.dark .desk-navbar.scrolled {
-		background-color: #000;
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-	}
+  .desk-navbar.scrolled {
+    background-color: #000;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+    z-index: 1;
+  }
 }
 
-
-html.light .navbar {
-	background: rgba(252, 252, 253, 1);
-}
-
-html.dark .navbar {
-	background: rgba(0, 0, 0, 0.9);
+.navbar {
+  background: rgba(0, 0, 0, 0.9);
 }
