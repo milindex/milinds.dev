@@ -1,9 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-import DarkModeToggle from '@/components/support/darkModeToggle';
 import Logo from '@/components/svg/Logo';
 
 const navLinks = [
@@ -37,9 +36,9 @@ function resetOverflow() {
   document.body.style.overflow = 'auto';
 }
 
-function Navigation({ theme, setTheme }: any) {
-  const router = useRouter();
-  const isHome = router.pathname === '/';
+function Navigation() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   const [mobileMenu, setMobileMenu] = useState(false);
 
@@ -84,7 +83,7 @@ function Navigation({ theme, setTheme }: any) {
                   {/* add Class active to current page */}
                   <Link
                     className={`border-b-2 pb-1 text-lg text-primary-main transition duration-300 ease-in-out hover:border-primary-hover hover:text-primary-hover${
-                      router.pathname === href
+                      pathname === href
                         ? ' active-page border-primary-main'
                         : ' border-transparent'
                     }`}
@@ -97,10 +96,7 @@ function Navigation({ theme, setTheme }: any) {
             </ul>
           </nav>
         </div>
-        {/* Dark Mode Toggle */}
-        <div className="relative hidden md:block">
-          <DarkModeToggle theme={theme} setTheme={setTheme} />
-        </div>
+
         {/* Mobile Nav */}
         <div className="md:hidden">
           <div
@@ -117,7 +113,7 @@ function Navigation({ theme, setTheme }: any) {
                 <Link
                   href="/"
                   className={`border-b-2 pb-1 text-primary-main transition duration-300 ease-in-out hover:border-primary-hover hover:text-primary-hover${
-                    router.pathname === '/'
+                    pathname === '/'
                       ? ' active-page border-primary-main'
                       : ' border-transparent'
                   }`}
@@ -130,7 +126,7 @@ function Navigation({ theme, setTheme }: any) {
                   {/* add Class active to current page */}
                   <Link
                     className={`border-b-2 pb-1 text-primary-main transition duration-300 ease-in-out hover:border-primary-hover hover:text-primary-hover${
-                      router.pathname === href
+                      pathname === href
                         ? ' active-page border-primary-main'
                         : ' border-transparent'
                     }`}
@@ -140,15 +136,7 @@ function Navigation({ theme, setTheme }: any) {
                   </Link>
                 </li>
               ))}
-              <li>
-                {/* Dark Mode Toggle */}
-                <DarkModeToggle
-                  className="mobile-toggle"
-                  theme={theme}
-                  setTheme={setTheme}
-                />
-                {/* Mobile Nav */}
-              </li>
+
             </ul>
           </menu>
           <style jsx>{`
