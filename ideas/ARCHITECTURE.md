@@ -5,6 +5,14 @@ Status: Planning
 Author: Milind Sonawane
 Last Updated: 2026
 
+Source of Truth Files:
+Main/Fallback: ARCHITECTURE.md
+Style Guide: STYLEGUIDE.md
+Animations: ANIMATION_SPEC.md
+Content: CONTENT_STRATEGY.md
+Case Studies: CASE_STUDIES.md
+Rules: AI_AGENT_RULES.md
+
 ---
 
 # 1. Executive Summary

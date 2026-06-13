@@ -16,7 +16,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
       >
         <Navigation />
       </header>
-      <main className="container z-10 mx-auto mt-20">{children}</main>
+      <main className="mx-auto mt-20">{children}</main>
       <Footer />
     </div>
   );
