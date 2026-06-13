@@ -2,6 +2,7 @@
 import '@splidejs/react-splide/css';
 
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
+import Image from 'next/image';
 
 function ClientsSlider() {
   const clients = [
@@ -63,9 +64,9 @@ function ClientsSlider() {
           <SplideTrack>
             {clients.map((client, index) => (
               <SplideSlide key={index}>
-                <img
+                <Image
                   src={`/assets/images/clients/${Object.keys(client)[0]}.png`}
-                  alt={Object.keys(client)[0]}
+                  alt={Object.keys(client)[0] ?? ''}
                   width={Object.values(client)[0].width}
                   height={Object.values(client)[0].height}
                   title={Object.values(client)[0].title}

@@ -1,10 +1,12 @@
+import Image from 'next/image';
+
 /* eslint-disable tailwindcss/no-custom-classname */
 function AccentImage(props: any) {
   return (
     <>
       <div className="accent-image-container">
         <div className="accent-overlay w-full rounded-2xl transition-all duration-500 ease-in-out"></div>
-        <img
+        <Image
           src={props.src}
           alt={props.alt}
           height={props.height}

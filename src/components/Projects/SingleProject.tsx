@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 type Project = {
   id: number;
   slug: string;
@@ -30,7 +32,7 @@ const SingleProject = ({ project }: Props) => {
   return (
     <div className="max-w-sm rounded-lg border border-gray-200 shadow">
       <a href="#">
-        <img className="rounded-t-lg" src="/project-thumbnail.png" alt="" />
+        <Image className="rounded-t-lg" src="/project-thumbnail.png" alt="" width={400} height={200} />
       </a>
       <div className="p-5">
         <a href="#">

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 /* eslint-disable tailwindcss/no-custom-classname */
 const Timeline = () => {
   return (
@@ -83,9 +85,12 @@ const Timeline = () => {
                   </div>
                 </div>
               </div>
-              <img
+              <Image
                 className="mx-auto -mt-36 md:-mt-36"
                 src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png"
+                alt="Timeline illustration"
+                width={800}
+                height={400}
               />
             </div>
           </div>
