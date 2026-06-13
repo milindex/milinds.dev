@@ -326,7 +326,7 @@ function ContactForm() {
             {/* Left: Contact Info Cards (second on mobile, left on desktop) */}
             <div ref={cardsRef} className="lg:order-1 space-y-4">
               {/* Availability */}
-              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
+              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-6 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <div className="flex items-start gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-success/10">
                     <span className="relative flex h-2.5 w-2.5">
@@ -343,7 +343,7 @@ function ContactForm() {
               </div>
 
               {/* Response Time */}
-              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
+              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-6 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <div className="flex items-start gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FD5735" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
@@ -356,7 +356,7 @@ function ContactForm() {
               </div>
 
               {/* Location */}
-              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
+              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-6 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <div className="flex items-start gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FD5735" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -369,7 +369,7 @@ function ContactForm() {
               </div>
 
               {/* Preferred Engagements */}
-              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
+              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-6 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <div className="flex items-start gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FD5735" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -386,7 +386,7 @@ function ContactForm() {
               </div>
 
               {/* Contact Methods */}
-              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
+              <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-6 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Contact Methods</p>
                 <div className="mt-3 space-y-2">
                   <a href={`mailto:${SiteConfig.email}`} className="flex items-center gap-3 rounded-[12px] bg-surface-2 px-3 py-2.5 text-sm text-text-secondary transition-all duration-200 hover:bg-surface-3 hover:text-text-primary">
