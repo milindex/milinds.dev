@@ -99,6 +99,7 @@ function Testimonials() {
       subheading="Feedback from clients, colleagues and teams I've worked with throughout my career."
       className="relative"
     >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-primary/[0.02] via-transparent to-brand-primary/[0.02]" />
       <SectionHeadingBg text="VOICE" />
       <Container>
         <div className="overflow-hidden">

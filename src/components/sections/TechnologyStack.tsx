@@ -53,6 +53,7 @@ function TechnologyStack() {
       subheading="A modern toolkit built around performance, scalability and long-term maintainability."
       className="relative"
     >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent/[0.02] via-transparent to-brand-primary/[0.02]" />
       <SectionHeadingBg text="TECH" />
       <Container>
         <div className="section-particle-container">

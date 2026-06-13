@@ -47,7 +47,8 @@ function TrustBar() {
   }, []);
 
   return (
-    <section id="trust" className="section-grid-bg border-t border-white/[0.05] bg-bg-primary py-12 md:py-20">
+    <section id="trust" className="section-grid-bg relative border-t border-white/[0.05] bg-bg-primary py-12 md:py-20">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-primary/[0.03] to-transparent" />
       <Container>
         <div
           ref={ref}

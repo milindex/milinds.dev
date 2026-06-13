@@ -67,6 +67,7 @@ function CareerJourney() {
 
   return (
     <Section id="timeline" heading="Career Journey" className="section-beam relative">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-primary/[0.02] to-transparent" />
       <SectionHeadingBg text="JOURNEY" />
       <Container>
         <div className="relative">

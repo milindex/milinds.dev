@@ -37,6 +37,7 @@ function WritingInsights() {
       subheading="Thoughts on engineering, architecture, performance and building products."
       className="section-noise relative"
     >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-primary/[0.02] to-transparent" />
       <SectionHeadingBg text="WRITE" />
       <Container>
         <div className="grid gap-6 md:grid-cols-3">

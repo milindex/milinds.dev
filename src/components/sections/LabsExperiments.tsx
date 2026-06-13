@@ -33,6 +33,7 @@ function LabsExperiments() {
       subheading="Projects, experiments and contributions that help me explore new technologies and ideas."
       className="section-dot-grid relative"
     >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-primary/[0.02] to-transparent" />
       <SectionHeadingBg text="BUILD" />
       <Container>
         <div className="grid gap-6 md:grid-cols-3">

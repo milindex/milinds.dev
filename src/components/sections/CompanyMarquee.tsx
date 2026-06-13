@@ -41,7 +41,8 @@ function CompanyMarquee() {
   }, []);
 
   return (
-    <section id="clients" className="border-t border-white/[0.05] bg-bg-primary py-12 md:py-20">
+    <section id="clients" className="relative border-t border-white/[0.05] bg-bg-primary py-12 md:py-20">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-primary/[0.03] via-transparent to-brand-primary/[0.03]" />
       <Container>
         <p className="mb-4 text-center text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
           Worked With
