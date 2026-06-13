@@ -1,13 +1,20 @@
 'use client';
 
 import { addDoc, collection } from 'firebase/firestore';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import Validator from 'validatorjs';
+import gsap from 'gsap';
 import { database } from '@/utils/firebase';
 import { SiteConfig } from '@/constants';
 
 const dbInstance = collection(database, 'contact-us');
+
+const INQUIRY_TYPES = ['Freelance Project', 'Technical Consulting', 'Performance Audit', 'Full-Time Opportunity', 'Other'] as const;
+
+const BUDGET_RANGES = ['Under \u20B950K', '\u20B950K\u2013\u20B92L', '\u20B92L\u2013\u20B95L', '\u20B95L+', 'Not Sure Yet'] as const;
+
+const COMPANIES = ['HDFC Sky', 'Angel One', 'Kapiva', 'Atomberg'];
 
 const runValidation = (formFields: { Name: string; Email: string; Message: string }) => {
   const rules = {
@@ -34,15 +41,65 @@ const runValidation = (formFields: { Name: string; Email: string; Message: strin
 function ContactForm() {
   const [senderName, setSenderName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
+  const [inquiryType, setInquiryType] = useState('');
+  const [budgetRange, setBudgetRange] = useState('');
   const [senderMessage, setSenderMessage] = useState('');
   const [formErrors, setFormErrors] = useState<Record<string, string[]> | null>(null);
   const [successMessage, setSuccessMessage] = useState('');
   const [unexpectedError, setUnexpectedError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const introRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+
   const [debouncedSenderName] = useDebounce(senderName, 50);
   const [debouncedSenderEmail] = useDebounce(senderEmail, 50);
   const [debouncedSenderMessage] = useDebounce(senderMessage, 50);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (introRef.current) {
+        gsap.from(introRef.current, {
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+        });
+      }
+      if (cardsRef.current) {
+        gsap.from(cardsRef.current.children, {
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'power3.out',
+          delay: 0.3,
+        });
+      }
+      if (formRef.current) {
+        gsap.from(formRef.current, {
+          y: 40,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          delay: 0.2,
+        });
+      }
+    });
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    if (successMessage && successRef.current) {
+      gsap.from(successRef.current, {
+        scale: 0.98,
+        duration: 0.4,
+        ease: 'power3.out',
+      });
+    }
+  }, [successMessage]);
 
   const validate = () => {
     const validation = runValidation({
@@ -66,13 +123,18 @@ function ContactForm() {
       const resp = await addDoc(dbInstance, {
         Name: debouncedSenderName,
         Email: debouncedSenderEmail,
+        InquiryType: inquiryType,
+        Budget: budgetRange,
         Message: debouncedSenderMessage,
+        CreatedAt: new Date().toISOString(),
       });
       if (resp.id) {
         setSenderName('');
         setSenderEmail('');
+        setInquiryType('');
+        setBudgetRange('');
         setSenderMessage('');
-        setSuccessMessage("Your message has been sent successfully. I'll get back to you soon.");
+        setSuccessMessage('Thanks for reaching out.');
         setTimeout(() => setSuccessMessage(''), 4000);
       }
     } catch {
@@ -90,178 +152,295 @@ function ContactForm() {
         : 'border-white/[0.05] focus:border-brand-primary/50'
     }`;
 
+  const pillClass = (isSelected: boolean) =>
+    `cursor-pointer rounded-full border px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
+      isSelected
+        ? 'border-brand-primary bg-brand-primary/10 text-brand-primary'
+        : 'border-white/[0.05] text-text-muted hover:border-white/20 hover:text-text-secondary'
+    }`;
+
+  const infoCardClass = 'rounded-[16px] border border-white/[0.05] bg-surface-1 p-4';
+
   return (
-    <div className="mx-auto max-w-[1200px] px-4 pt-28 pb-16 md:pt-32 md:pb-24">
-      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Left: Contact Info */}
-        <div>
-          <h1 className="text-4xl font-bold text-text-primary md:text-5xl">
-            Let&apos;s work together
-          </h1>
-          <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-            Whether you&apos;re launching a new product, improving an existing
-            platform or looking for technical leadership, I&apos;d be happy to
-            discuss how I can help.
-          </p>
+    <div className="relative">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
+        <div className="h-[500px] w-[800px] rounded-full bg-brand-primary/5 blur-[150px]" />
+      </div>
 
-          <div className="mt-10 space-y-6">
-            {/* Email */}
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-primary/10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FD5735" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
-                  Email
-                </p>
-                <a
-                  href={`mailto:${SiteConfig.email}`}
-                  className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+      <div className="section-noise relative">
+        <div className="mx-auto max-w-[1200px] px-4 pt-28 pb-16 md:pt-32 md:pb-24">
+          {/* Contact Introduction */}
+          <div ref={introRef}>
+            <h1 className="text-4xl font-bold text-text-primary md:text-5xl">
+              Have a product to build or a problem to solve?
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-text-secondary">
+              Whether you&apos;re launching a new product, improving an existing platform or looking for technical leadership, I&apos;d be happy to discuss how I can help.
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
+              <span className="text-xs font-medium uppercase tracking-wider text-text-muted">
+                Worked With
+              </span>
+              {COMPANIES.map((company) => (
+                <span
+                  key={company}
+                  className="rounded-full bg-surface-1 px-3 py-1 text-xs font-medium text-text-secondary"
                 >
-                  {SiteConfig.email}
-                </a>
-              </div>
-            </div>
-
-            {/* Availability */}
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-success/10">
-                <span className="relative flex h-3 w-3">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
-                  <span className="relative inline-flex h-3 w-3 rounded-full bg-success" />
+                  {company}
                 </span>
-              </div>
-              <div>
+              ))}
+            </div>
+          </div>
+
+          {/* Two Column Layout */}
+          <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left: Contact Info Cards */}
+            <div ref={cardsRef} className="space-y-4">
+              {/* Availability */}
+              <div className={infoCardClass}>
                 <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
                   Availability
                 </p>
-                <p className="text-sm text-text-secondary">
-                  Available for Select Projects
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-success" />
+                  </span>
+                  <span className="text-sm font-medium text-text-primary">
+                    Available for Select Projects
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-text-muted">
+                  Currently accepting freelance projects, consulting engagements and selected senior engineering opportunities.
                 </p>
               </div>
-            </div>
 
-            {/* Social */}
-            <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-primary/10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FD5735" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </div>
-              <div>
+              {/* Response Time */}
+              <div className={infoCardClass}>
                 <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
-                  Social
+                  Response Time
                 </p>
-                <div className="flex gap-4">
+                <p className="mt-2 text-sm text-text-primary">
+                  Usually within 24 hours
+                </p>
+              </div>
+
+              {/* Location */}
+              <div className={infoCardClass}>
+                <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
+                  Location
+                </p>
+                <p className="mt-2 text-sm text-text-primary">
+                  Mumbai, India
+                </p>
+              </div>
+
+              {/* Preferred Engagements */}
+              <div className={infoCardClass}>
+                <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
+                  Preferred Engagements
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {['Freelance', 'Consulting', 'Contract', 'Technical Leadership'].map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-medium text-brand-primary"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Methods */}
+              <div className={infoCardClass}>
+                <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
+                  Contact Methods
+                </p>
+                <div className="mt-2 space-y-2">
                   <a
-                    href={SiteConfig.social.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+                    href={`mailto:${SiteConfig.email}`}
+                    className="block text-sm text-text-secondary transition-colors hover:text-text-primary"
                   >
-                    GitHub
+                    {SiteConfig.email}
                   </a>
                   <a
                     href={SiteConfig.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+                    className="block text-sm text-text-secondary transition-colors hover:text-text-primary"
                   >
-                    LinkedIn
+                    Let&apos;s Connect
+                  </a>
+                  <a
+                    href={SiteConfig.social.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-text-secondary transition-colors hover:text-text-primary"
+                  >
+                    View Projects
                   </a>
                 </div>
               </div>
             </div>
+
+            {/* Right: Form Card */}
+            <div id="contact-form" ref={formRef} className="rounded-[20px] border border-white/[0.05] bg-surface-1 p-6 md:p-8">
+              <div className="space-y-5">
+                {/* Name */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
+                    Name
+                  </label>
+                  <input
+                    value={senderName}
+                    className={fieldClass(!!formErrors?.Name)}
+                    type="text"
+                    placeholder="Your name"
+                    onChange={(e) => setSenderName(e.target.value)}
+                    onBlur={validate}
+                  />
+                  {formErrors?.Name && (
+                    <p className="mt-1 text-xs text-error">{formErrors.Name[0]}</p>
+                  )}
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
+                    Email
+                  </label>
+                  <input
+                    value={senderEmail}
+                    className={fieldClass(!!formErrors?.Email)}
+                    type="email"
+                    placeholder="your@email.com"
+                    onChange={(e) => setSenderEmail(e.target.value)}
+                    onBlur={validate}
+                  />
+                  {formErrors?.Email && (
+                    <p className="mt-1 text-xs text-error">{formErrors.Email[0]}</p>
+                  )}
+                </div>
+
+                {/* Inquiry Type */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
+                    Inquiry Type
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {INQUIRY_TYPES.map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => setInquiryType(type === inquiryType ? '' : type)}
+                        className={pillClass(inquiryType === type)}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Budget */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
+                    Budget <span className="font-normal normal-case tracking-normal text-text-muted">(optional)</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {BUDGET_RANGES.map((range) => (
+                      <button
+                        key={range}
+                        type="button"
+                        onClick={() => setBudgetRange(range === budgetRange ? '' : range)}
+                        className={pillClass(budgetRange === range)}
+                      >
+                        {range}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
+                    Message
+                  </label>
+                  <textarea
+                    value={senderMessage}
+                    className={`${fieldClass(!!formErrors?.Message)} min-h-[120px] resize-y`}
+                    placeholder="Tell me about your project"
+                    onChange={(e) => setSenderMessage(e.target.value)}
+                    onBlur={validate}
+                  />
+                  {formErrors?.Message && (
+                    <p className="mt-1 text-xs text-error">{formErrors.Message[0]}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Submit */}
+              <button
+                onClick={saveMessage}
+                disabled={isSubmitting}
+                className="mt-6 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+              >
+                {isSubmitting && (
+                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                )}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+
+              {/* Success */}
+              {successMessage && (
+                <div
+                  ref={successRef}
+                  className="mt-4 rounded-[12px] bg-success/10 px-4 py-3 text-sm text-success"
+                >
+                  {successMessage}
+                  <br />
+                  <br />
+                  I&apos;ve received your message and will typically respond within 24 hours.
+                </div>
+              )}
+
+              {/* Error */}
+              {unexpectedError && (
+                <div className="mt-4 rounded-[12px] bg-error/10 px-4 py-3 text-sm text-error">
+                  Something went wrong.
+                  <br />
+                  <br />
+                  Please email me directly at{' '}
+                  <a href={`mailto:${SiteConfig.email}`} className="underline">
+                    {SiteConfig.email}
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Right: Form */}
-        <div className="rounded-[20px] border border-white/[0.05] bg-surface-1 p-6 md:p-8">
-          <div className="space-y-5">
-            {/* Name */}
-            <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
-                Name
-              </label>
-              <input
-                value={senderName}
-                className={fieldClass(!!formErrors?.Name)}
-                type="text"
-                placeholder="Your name"
-                onChange={(e) => setSenderName(e.target.value)}
-                onBlur={validate}
-              />
-              {formErrors?.Name && (
-                <p className="mt-1 text-xs text-error">{formErrors.Name[0]}</p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
-                Email
-              </label>
-              <input
-                value={senderEmail}
-                className={fieldClass(!!formErrors?.Email)}
-                type="email"
-                placeholder="your@email.com"
-                onChange={(e) => setSenderEmail(e.target.value)}
-                onBlur={validate}
-              />
-              {formErrors?.Email && (
-                <p className="mt-1 text-xs text-error">{formErrors.Email[0]}</p>
-              )}
-            </div>
-
-            {/* Message */}
-            <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
-                Message
-              </label>
-              <textarea
-                value={senderMessage}
-                className={`${fieldClass(!!formErrors?.Message)} min-h-[120px] resize-y`}
-                placeholder="Tell me about your project"
-                onChange={(e) => setSenderMessage(e.target.value)}
-                onBlur={validate}
-              />
-              {formErrors?.Message && (
-                <p className="mt-1 text-xs text-error">{formErrors.Message[0]}</p>
-              )}
-            </div>
+        {/* Footer CTA */}
+        <section className="border-t border-white/[0.05] bg-bg-primary">
+          <div className="mx-auto max-w-[1200px] px-4 py-16 md:py-24 text-center">
+            <h2 className="text-3xl font-bold text-text-primary md:text-4xl">
+              Ready to discuss your project?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
+              Whether you need help building a product, improving performance or solving a technical challenge, let&apos;s start a conversation.
+            </p>
+            <a
+              href="#contact-form"
+              className="mt-8 inline-flex h-[52px] items-center justify-center rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover hover:scale-[1.02]"
+            >
+              Start a Conversation
+            </a>
           </div>
-
-          {/* Submit */}
-          <button
-            onClick={saveMessage}
-            disabled={isSubmitting}
-            className="mt-6 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
-          >
-            {isSubmitting && (
-              <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-              </svg>
-            )}
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-
-          {/* Success */}
-          {successMessage && (
-            <div className="mt-4 rounded-[12px] bg-success/10 px-4 py-3 text-sm text-success">
-              {successMessage}
-            </div>
-          )}
-
-          {/* Error */}
-          {unexpectedError && (
-            <div className="mt-4 rounded-[12px] bg-error/10 px-4 py-3 text-sm text-error">
-              Something went wrong. Please email me at{' '}
-              <a href={`mailto:${SiteConfig.email}`} className="underline">
-                {SiteConfig.email}
-              </a>
-            </div>
-          )}
-        </div>
+        </section>
       </div>
     </div>
   );
