@@ -62,13 +62,13 @@ function TechnologyStack() {
           <div className="particle-dot" style={{ top: '30%', right: '35%', animation: 'float-up 7s ease-in-out infinite 2s' }} />
           <div className="particle-dot" style={{ top: '70%', left: '25%', animation: 'float-up 9s ease-in-out infinite 0.5s' }} />
         </div>
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-4 md:gap-8 md:grid-cols-4">
           {CATEGORIES.map((category) => (
             <div key={category.name}>
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.1em] text-text-muted">
+              <h3 className="mb-2 md:mb-4 text-xs md:text-sm font-semibold uppercase tracking-[0.1em] text-text-muted">
                 {category.name}
               </h3>
-              <div className="flex flex-wrap gap-3 md:flex-col md:flex-nowrap">
+              <div className="flex flex-wrap gap-1.5 md:gap-3 md:flex-col md:flex-nowrap">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
