@@ -41,7 +41,7 @@ function ContactCTA() {
       >
         <Container>
           <div ref={ref} className="relative z-10">
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center">
               <Link
                 href="/contact"
                 className="inline-flex h-[52px] items-center justify-center rounded-[12px] bg-brand-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-brand-hover hover:scale-[1.02]"

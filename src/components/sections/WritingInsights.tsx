@@ -61,7 +61,7 @@ function WritingInsights() {
             </Card>
           ))}
         </div>
-        <div className="mt-8">
+        <div className="mt-8 flex justify-center">
           <Link
             href="/blog"
             className="inline-flex items-center gap-1 text-sm font-medium text-brand-primary hover:underline"
