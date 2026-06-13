@@ -50,6 +50,9 @@ function ContactForm() {
   const [successMessage, setSuccessMessage] = useState('');
   const [unexpectedError, setUnexpectedError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
+
+  const turnstileRef = useRef<HTMLDivElement>(null);
 
   const introRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -86,6 +89,24 @@ function ContactForm() {
     }
   }, [successMessage]);
 
+  // Load Turnstile
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      if (turnstileRef.current && window.turnstile) {
+        window.turnstile.render(turnstileRef.current, {
+          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA',
+          callback: (token: string) => setTurnstileToken(token),
+        });
+      }
+    };
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
+
   const validate = useCallback(() => {
     const validation = runValidation({
       Name: debouncedSenderName,
@@ -114,6 +135,20 @@ function ContactForm() {
         CreatedAt: new Date().toISOString(),
       });
       if (resp.id) {
+        // Send email notification
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: debouncedSenderName,
+            email: debouncedSenderEmail,
+            inquiryType,
+            budget: budgetRange,
+            message: debouncedSenderMessage,
+            turnstileToken,
+          }),
+        });
+
         setSenderName('');
         setSenderEmail('');
         setInquiryType('');
@@ -167,10 +202,129 @@ function ContactForm() {
             </p>
           </div>
 
-          {/* Two Column Layout */}
+          {/* Two Column Layout — form first on mobile */}
           <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Left: Contact Info Cards */}
-            <div ref={cardsRef} className="space-y-4">
+            {/* Form Card (first on mobile, right on desktop) */}
+            <div id="contact-form" ref={formRef} className="lg:order-2 rounded-[20px] bg-surface-1 p-6 shadow-lg md:p-8">
+              <div className="space-y-5">
+                {/* Name */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Name</label>
+                  <input
+                    value={senderName}
+                    className={fieldClass(!!formErrors?.Name)}
+                    type="text"
+                    placeholder="Your name"
+                    onChange={(e) => setSenderName(e.target.value)}
+                    onBlur={validate}
+                  />
+                  {formErrors?.Name && <p className="mt-1 text-xs text-error">{formErrors.Name[0]}</p>}
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Email</label>
+                  <input
+                    value={senderEmail}
+                    className={fieldClass(!!formErrors?.Email)}
+                    type="email"
+                    placeholder="your@email.com"
+                    onChange={(e) => setSenderEmail(e.target.value)}
+                    onBlur={validate}
+                  />
+                  {formErrors?.Email && <p className="mt-1 text-xs text-error">{formErrors.Email[0]}</p>}
+                </div>
+
+                {/* Inquiry Type */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Inquiry Type</label>
+                  <div className="flex flex-wrap gap-2">
+                    {INQUIRY_TYPES.map((type) => (
+                      <button key={type} type="button" onClick={() => setInquiryType(type === inquiryType ? '' : type)} className={pillClass(inquiryType === type)}>
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Budget */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
+                    Budget <span className="font-normal normal-case tracking-normal text-text-muted">(optional)</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {BUDGET_RANGES.map((range) => (
+                      <button key={range} type="button" onClick={() => setBudgetRange(range === budgetRange ? '' : range)} className={pillClass(budgetRange === range)}>
+                        {range}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Message</label>
+                  <textarea
+                    value={senderMessage}
+                    className={`${fieldClass(!!formErrors?.Message)} min-h-[120px] resize-y`}
+                    placeholder="Tell me about your project"
+                    onChange={(e) => setSenderMessage(e.target.value)}
+                    onBlur={validate}
+                  />
+                  {formErrors?.Message && <p className="mt-1 text-xs text-error">{formErrors.Message[0]}</p>}
+                </div>
+              </div>
+
+              {/* Turnstile */}
+              <div ref={turnstileRef} className="mt-6 flex justify-center" />
+
+              {/* Submit */}
+              <div className="mt-4">
+                <MagneticButton
+                  as="button"
+                  onClick={saveMessage}
+                  disabled={isSubmitting}
+                  className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover active:scale-[0.98] disabled:opacity-60"
+                >
+                  {isSubmitting && (
+                    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  )}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </MagneticButton>
+              </div>
+
+              {/* Success */}
+              {successMessage && (
+                <div ref={successRef} className="mt-4 rounded-[12px] bg-success/10 px-4 py-3 text-sm text-success">
+                  <div className="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" className="mt-0.5 shrink-0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <div>
+                      <p className="font-medium">Thanks for reaching out.</p>
+                      <p className="mt-1">I&apos;ve received your message and will typically respond within 24 hours.</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Error */}
+              {unexpectedError && (
+                <div className="mt-4 rounded-[12px] bg-error/10 px-4 py-3 text-sm text-error">
+                  <div className="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" className="mt-0.5 shrink-0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <div>
+                      <p className="font-medium">Something went wrong.</p>
+                      <p>Please email me directly at{' '}<a href={`mailto:${SiteConfig.email}`} className="underline">{SiteConfig.email}</a></p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Left: Contact Info Cards (second on mobile, left on desktop) */}
+            <div ref={cardsRef} className="lg:order-1 space-y-4">
               {/* Availability */}
               <div className="group rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20 hover:shadow-[0_0_20px_rgba(253,87,53,0.06)]">
                 <div className="flex items-start gap-3">
@@ -251,121 +405,6 @@ function ContactForm() {
               </div>
             </div>
 
-            {/* Right: Form Card */}
-            <div id="contact-form" ref={formRef} className="rounded-[20px] bg-surface-1 px-6 pb-6 shadow-lg md:px-8 md:pb-8">
-              <div className="space-y-5">
-                {/* Name */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Name</label>
-                  <input
-                    value={senderName}
-                    className={fieldClass(!!formErrors?.Name)}
-                    type="text"
-                    placeholder="Your name"
-                    onChange={(e) => setSenderName(e.target.value)}
-                    onBlur={validate}
-                  />
-                  {formErrors?.Name && <p className="mt-1 text-xs text-error">{formErrors.Name[0]}</p>}
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Email</label>
-                  <input
-                    value={senderEmail}
-                    className={fieldClass(!!formErrors?.Email)}
-                    type="email"
-                    placeholder="your@email.com"
-                    onChange={(e) => setSenderEmail(e.target.value)}
-                    onBlur={validate}
-                  />
-                  {formErrors?.Email && <p className="mt-1 text-xs text-error">{formErrors.Email[0]}</p>}
-                </div>
-
-                {/* Inquiry Type */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Inquiry Type</label>
-                  <div className="flex flex-wrap gap-2">
-                    {INQUIRY_TYPES.map((type) => (
-                      <button key={type} type="button" onClick={() => setInquiryType(type === inquiryType ? '' : type)} className={pillClass(inquiryType === type)}>
-                        {type}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Budget */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">
-                    Budget <span className="font-normal normal-case tracking-normal text-text-muted">(optional)</span>
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {BUDGET_RANGES.map((range) => (
-                      <button key={range} type="button" onClick={() => setBudgetRange(range === budgetRange ? '' : range)} className={pillClass(budgetRange === range)}>
-                        {range}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-text-muted">Message</label>
-                  <textarea
-                    value={senderMessage}
-                    className={`${fieldClass(!!formErrors?.Message)} min-h-[120px] resize-y`}
-                    placeholder="Tell me about your project"
-                    onChange={(e) => setSenderMessage(e.target.value)}
-                    onBlur={validate}
-                  />
-                  {formErrors?.Message && <p className="mt-1 text-xs text-error">{formErrors.Message[0]}</p>}
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="mt-6">
-                <MagneticButton
-                  as="button"
-                  onClick={saveMessage}
-                  disabled={isSubmitting}
-                  className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover active:scale-[0.98] disabled:opacity-60"
-                >
-                  {isSubmitting && (
-                    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                  )}
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </MagneticButton>
-              </div>
-
-              {/* Success */}
-              {successMessage && (
-                <div ref={successRef} className="mt-4 rounded-[12px] bg-success/10 px-4 py-3 text-sm text-success">
-                  <div className="flex items-start gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" className="mt-0.5 shrink-0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <div>
-                      <p className="font-medium">Thanks for reaching out.</p>
-                      <p className="mt-1">I&apos;ve received your message and will typically respond within 24 hours.</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Error */}
-              {unexpectedError && (
-                <div className="mt-4 rounded-[12px] bg-error/10 px-4 py-3 text-sm text-error">
-                  <div className="flex items-start gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" className="mt-0.5 shrink-0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                    <div>
-                      <p className="font-medium">Something went wrong.</p>
-                      <p>Please email me directly at{' '}<a href={`mailto:${SiteConfig.email}`} className="underline">{SiteConfig.email}</a></p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </div>
 
