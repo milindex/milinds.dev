@@ -11,7 +11,7 @@ function Availability() {
     <Section id="availability" heading="Available For New Opportunities" className="section-ambient-glow relative">
       <SectionHeadingBg text="HIRE" />
       <Container>
-        <div className="max-w-2xl">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="text-lg leading-relaxed text-text-secondary">
             I&apos;m currently available for freelance projects, consulting
             engagements and selected full-time opportunities.

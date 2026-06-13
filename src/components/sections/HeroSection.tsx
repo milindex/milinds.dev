@@ -8,7 +8,6 @@ import HeroCTA from '@/components/sections/hero/HeroCTA';
 import Portrait from '@/components/sections/hero/Portrait';
 import AvailabilityBadge from '@/components/sections/hero/AvailabilityBadge';
 import TrustRow from '@/components/sections/hero/TrustRow';
-import HeroMetrics from '@/components/sections/hero/HeroMetrics';
 import ScrollIndicator from '@/components/sections/hero/ScrollIndicator';
 import { useScrollStory } from '@/hooks/useScrollStory';
 
@@ -51,7 +50,6 @@ function HeroSection() {
           <HeroCTA />
           <AvailabilityBadge />
           <TrustRow />
-          <HeroMetrics />
         </div>
 
         <div className="lg:flex-shrink-0">
