@@ -4,7 +4,16 @@ import Section from '@/components/ui/Section';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 
-const PROJECTS = [
+interface Project {
+  slug: string;
+  name: string;
+  industry: string;
+  role: string;
+  technologies: string[];
+  impact: string[];
+}
+
+const PROJECTS: Project[] = [
   {
     slug: 'hdfcsky',
     name: 'HDFC Sky',
