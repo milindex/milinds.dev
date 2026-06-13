@@ -18,8 +18,6 @@ const INQUIRY_TYPES = ['Freelance Project', 'Technical Consulting', 'Performance
 
 const BUDGET_RANGES = ['Under \u20B950K', '\u20B950K\u2013\u20B92L', '\u20B92L\u2013\u20B95L', '\u20B95L+', 'Not Sure Yet'] as const;
 
-const COMPANIES = ['HDFC Sky', 'Angel One', 'Kapiva', 'Atomberg'];
-
 const runValidation = (formFields: { Name: string; Email: string; Message: string }) => {
   const rules = {
     Name: 'required|min:3|regex:/^[a-zA-Z ]{2,30}$/',
@@ -64,17 +62,14 @@ function ContactForm() {
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.set(introRef.current, { opacity: 0, y: 30 })
-      .to(introRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo(introRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
 
     if (cardsRef.current) {
-      tl.set(cardsRef.current.children, { opacity: 0, y: 20 }, '>-0.4')
-        .to(cardsRef.current.children, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' }, '>');
+      tl.fromTo(cardsRef.current.children, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' }, '-=0.2');
     }
 
     if (formRef.current) {
-      tl.set(formRef.current, { opacity: 0, y: 40 }, '>-0.3')
-        .to(formRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '>');
+      tl.fromTo(formRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.3');
     }
 
     return () => { tl.kill(); };
@@ -160,7 +155,7 @@ function ContactForm() {
       <div className="section-noise relative">
         <div className="mx-auto max-w-[1200px] px-4 pt-28 pb-16 md:pt-32 md:pb-24">
           {/* Contact Introduction */}
-          <div ref={introRef} className="max-w-3xl">
+          <div ref={introRef} className="max-w-3xl relative z-10">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-primary">
               Get in Touch
             </p>
@@ -170,20 +165,6 @@ function ContactForm() {
             <p className="mt-4 text-lg leading-relaxed text-text-secondary max-w-2xl">
               Whether you&apos;re launching a new product, improving an existing platform or looking for technical leadership, I&apos;d be happy to discuss how I can help.
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="text-xs font-medium uppercase tracking-wider text-text-muted">
-                Worked With
-              </span>
-              {COMPANIES.map((company) => (
-                <span
-                  key={company}
-                  className="rounded-full bg-surface-1 border border-white/[0.05] px-3 py-1 text-xs font-medium text-text-secondary"
-                >
-                  {company}
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Two Column Layout */}

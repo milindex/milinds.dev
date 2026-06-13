@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -19,10 +20,14 @@ const SECTIONS = [
 ];
 
 function SectionProgress() {
+  const pathname = usePathname();
   const [activeIndex, setActiveIndex] = useState(0);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Only show on homepage
+    if (pathname !== '/') return;
+
     const ctx = gsap.context(() => {
       // Show after scrolling past hero
       ScrollTrigger.create({
