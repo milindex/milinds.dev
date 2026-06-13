@@ -39,13 +39,13 @@ function SectionHeadingBg({ text }: SectionHeadingBgProps) {
   return (
     <div
       ref={ref}
-      className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center select-none"
+      className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center select-none will-change-transform"
       style={{ userSelect: 'none' }}
     >
       <span
         className="whitespace-nowrap font-extrabold leading-none"
         style={{
-          fontSize: 'clamp(140px, 22vw, 300px)',
+          fontSize: '16vw',
           color: 'rgba(253, 87, 53, 0.04)',
           WebkitTextStroke: '2px rgba(253, 87, 53, 0.25)',
         }}
