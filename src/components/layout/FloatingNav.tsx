@@ -81,6 +81,26 @@ function FloatingNav() {
           mobileOpen ? '-translate-y-[3.5px] -rotate-45' : ''
         }`} />
       </button>
+      {mobileOpen && (
+        <div className="fixed inset-x-0 top-[72px] mx-auto w-[calc(100%-32px)] max-w-[1200px] md:hidden">
+          <nav className="rounded-[20px] border border-white/[0.08] bg-[rgba(10,10,10,0.95)] p-4 backdrop-blur-2xl">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-200 ${
+                  pathname === href
+                    ? 'text-brand-primary'
+                    : 'text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
