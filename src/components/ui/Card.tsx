@@ -10,7 +10,7 @@ type CardProps = {
 const variantStyles: Record<CardVariant, string> = {
   default: 'bg-surface-1 border border-white/[0.05]',
   interactive:
-    'bg-surface-1 border border-white/[0.05] hover:-translate-y-1 transition-all duration-300 hover:border-white/[0.1]',
+    'bg-surface-1 border border-white/[0.05] hover:-translate-y-[2px] hover:scale-[1.01] transition-all duration-300 hover:border-[rgba(253,87,53,0.3)] hover:bg-surface-2',
 };
 
 function Card({
