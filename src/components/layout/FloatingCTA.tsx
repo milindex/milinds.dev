@@ -73,30 +73,30 @@ function FloatingCTA() {
   }, [open]);
 
   return (
-    <div ref={ref} className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
+    <div ref={ref} className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
       {open && (
-        <div ref={menuRef} className="flex flex-col items-end gap-2">
+        <div ref={menuRef} className="flex flex-col items-end gap-1.5">
           <Link
             href="/contact"
-            className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/[0.08] bg-[rgba(17,17,17,0.85)] px-6 text-sm font-medium text-white backdrop-blur-xl transition-all duration-300 hover:border-brand-primary/30 hover:bg-[rgba(17,17,17,0.95)] hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(253,87,53,0.1)]"
+            className="group inline-flex h-11 items-center gap-2 rounded-full border border-white/[0.08] bg-[rgba(17,17,17,0.85)] px-5 text-sm font-medium text-white backdrop-blur-xl transition-all duration-300 hover:border-brand-primary/30 hover:bg-[rgba(17,17,17,0.95)] hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(253,87,53,0.1)]"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" className="text-brand-primary"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24" className="text-brand-primary"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <span>Get In Touch</span>
           </Link>
           <a
             href="/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/[0.08] bg-[rgba(17,17,17,0.85)] px-6 text-sm font-medium text-text-secondary backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-[rgba(17,17,17,0.95)] hover:text-text-primary hover:scale-[1.02]"
+            className="group inline-flex h-11 items-center gap-2 rounded-full border border-white/[0.08] bg-[rgba(17,17,17,0.85)] px-5 text-sm font-medium text-text-secondary backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-[rgba(17,17,17,0.95)] hover:text-text-primary hover:scale-[1.02]"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM6 20V4h5v7h7v9H6z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM6 20V4h5v7h7v9H6z"/></svg>
             <span>Download CV</span>
           </a>
         </div>
       )}
       <button
         onClick={toggle}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-cta-primary text-white shadow-lg transition-all duration-300 hover:bg-cta-hover hover:scale-110 hover:shadow-[0_0_30px_rgba(253,87,53,0.3)] active:scale-95"
+        className="group relative flex h-11 w-11 items-center justify-center rounded-full bg-cta-primary text-white shadow-lg transition-all duration-300 hover:bg-cta-hover hover:scale-110 hover:shadow-[0_0_30px_rgba(253,87,53,0.3)] active:scale-95"
         aria-label={open ? 'Close quick actions' : 'Quick actions'}
       >
         {/* Glow ring */}
@@ -106,8 +106,8 @@ function FloatingCTA() {
         {/* Icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
+          width="18"
+          height="18"
           fill="currentColor"
           viewBox="0 0 24 24"
           className="relative transition-transform duration-500 ease-out"
