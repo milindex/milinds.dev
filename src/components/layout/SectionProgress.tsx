@@ -7,9 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const SECTIONS = [
-  { id: 'hero', label: 'Hero' },
-  { id: 'trust', label: 'Trust Bar' },
-  { id: 'clients', label: 'Selected Work' },
+  { id: 'hero', label: 'Top' },
   { id: 'work', label: 'Case Studies' },
   { id: 'timeline', label: 'Career Journey' },
   { id: 'tech', label: 'Technology' },

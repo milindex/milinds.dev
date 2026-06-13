@@ -7,11 +7,11 @@ type CursorState = 'default' | 'view' | 'visit' | 'explore' | 'drag' | 'read';
 
 const stateConfig: Record<CursorState, { size: number; label?: string }> = {
   default: { size: 32 },
-  view: { size: 48, label: 'View' },
-  visit: { size: 48, label: 'Visit' },
-  explore: { size: 48, label: 'Explore' },
-  drag: { size: 48, label: 'Drag' },
-  read: { size: 48, label: 'Read' },
+  view: { size: 56, label: 'View' },
+  visit: { size: 56, label: 'Visit' },
+  explore: { size: 56, label: 'Explore' },
+  drag: { size: 56, label: 'Drag' },
+  read: { size: 56, label: 'Read' },
 };
 
 function CustomCursor() {
@@ -20,29 +20,33 @@ function CustomCursor() {
   const labelRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef<CursorState>('default');
   const posRef = useRef({ x: -100, y: -100 });
+  const magneticRef = useRef({ x: 0, y: 0 });
 
   const updateCursor = useCallback((e: MouseEvent) => {
     const { clientX, clientY } = e;
     posRef.current = { x: clientX, y: clientY };
 
-    // Dot follows instantly
-    gsap.set(dotRef.current, { x: clientX, y: clientY });
+    const targetX = clientX + magneticRef.current.x;
+    const targetY = clientY + magneticRef.current.y;
 
-    // Ring follows with slight lag
+    // Dot follows instantly with magnetic offset
+    gsap.set(dotRef.current, { x: targetX, y: targetY });
+
+    // Ring follows with spring physics
     gsap.to(ringRef.current, {
-      x: clientX,
-      y: clientY,
-      duration: 0.15,
-      ease: 'power2.out',
+      x: targetX,
+      y: targetY,
+      duration: 0.4,
+      ease: 'elastic.out(1, 0.3)',
       overwrite: 'auto',
     });
 
-    // Label follows ring
+    // Label follows
     gsap.to(labelRef.current, {
-      x: clientX + 20,
-      y: clientY - 20,
-      duration: 0.15,
-      ease: 'power2.out',
+      x: targetX + 20,
+      y: targetY - 20,
+      duration: 0.3,
+      ease: 'power3.out',
       overwrite: 'auto',
     });
   }, []);
@@ -52,23 +56,45 @@ function CustomCursor() {
     stateRef.current = state;
     const config = stateConfig[state];
 
-    gsap.to(ringRef.current, {
+    // Ring size with pulse: briefly overshoot then settle
+    const tl = gsap.timeline();
+    tl.to(ringRef.current, {
+      width: config.size * 1.15,
+      height: config.size * 1.15,
+      duration: 0.15,
+      ease: 'power2.out',
+      overwrite: 'auto',
+    });
+    tl.to(ringRef.current, {
       width: config.size,
       height: config.size,
+      duration: 0.4,
+      ease: 'elastic.out(1, 0.3)',
+    });
+
+    // Dot shrink on hover
+    gsap.to(dotRef.current, {
+      scale: state === 'default' ? 1 : 0.6,
       duration: 0.3,
       ease: 'power3.out',
       overwrite: 'auto',
     });
 
+    // Label with slide-up
     gsap.to(labelRef.current, {
       opacity: config.label ? 1 : 0,
-      duration: 0.2,
+      y: config.label ? 0 : 8,
+      duration: 0.3,
+      ease: 'power3.out',
       overwrite: 'auto',
     });
 
     if (config.label) {
       const el = labelRef.current;
-      if (el) el.textContent = config.label;
+      if (el) {
+        el.textContent = config.label;
+        gsap.set(el, { y: 8 });
+      }
     }
   }, []);
 
@@ -82,28 +108,32 @@ function CustomCursor() {
     document.body.classList.add('custom-cursor-active');
     window.addEventListener('mousemove', updateCursor);
 
-    // Event delegation: listen on document instead of individual elements
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const cursorEl = target.closest('[data-cursor]') as HTMLElement | null;
       if (cursorEl) {
         const attr = cursorEl.getAttribute('data-cursor') as CursorState | null;
         if (attr && stateConfig[attr]) {
+          // Magnetic pull toward element center
+          const rect = cursorEl.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (cx - posRef.current.x) * 0.15;
+          const dy = (cy - posRef.current.y) * 0.15;
+          magneticRef.current = { x: dx, y: dy };
+
           setCursorState(attr);
           return;
         }
       }
-      // If hovering over any link or button without data-cursor, show pointer state
-      const interactive = target.closest('a, button, [role="button"]');
-      if (interactive && stateRef.current !== 'default') {
-        // Keep current state if set by data-cursor
-      }
+      magneticRef.current = { x: 0, y: 0 };
+      setCursorState('default');
     };
 
     const handleMouseOut = (e: MouseEvent) => {
       const related = e.relatedTarget as HTMLElement | null;
-      // Only reset if not moving to another data-cursor element
       if (!related || !related.closest('[data-cursor]')) {
+        magneticRef.current = { x: 0, y: 0 };
         setCursorState('default');
       }
     };
