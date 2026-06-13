@@ -73,13 +73,13 @@ function FloatingNav() {
       >
         <div className="flex w-5 flex-col items-center gap-[5px]">
           <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
-            mobileOpen ? 'translate-y-[3.5px] rotate-45' : ''
+            mobileOpen ? 'translate-y-[7px] rotate-45' : ''
           }`} />
           <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
             mobileOpen ? 'opacity-0' : ''
           }`} />
           <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
-            mobileOpen ? '-translate-y-[3.5px] -rotate-45' : ''
+            mobileOpen ? '-translate-y-[7px] -rotate-45' : ''
           }`} />
         </div>
       </button>
