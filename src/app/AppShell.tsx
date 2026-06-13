@@ -1,32 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-import FooterContent from '@/components/footer/Content';
+import Footer from '@/components/layout/Footer';
 import Navigation from '@/components/header/navigation';
+import useScrollPosition from '@/hooks/useScrollPosition';
 
 function AppShell({ children }: { children: React.ReactNode }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const isScrolled = useScrollPosition(50);
 
   return (
-    <div className="">
+    <div>
       <header
-        className={`desk-navbar${
+        className={`desk-navbar flex h-20 w-full items-center justify-between shadow-md md:shadow-none${
           isScrolled ? ' scrolled' : ''
-        } flex h-16 w-full items-center justify-between shadow-md md:shadow-none`}
+        }`}
       >
         <Navigation />
       </header>
       <main className="container z-10 mx-auto mt-[65px]">{children}</main>
-      <footer className="">
-        <FooterContent />
-      </footer>
+      <Footer />
     </div>
   );
 }
