@@ -79,7 +79,7 @@ function CareerJourney() {
                 data-cursor="explore"
                 className="relative pl-10 md:pl-0 md:odd:pr-[52%] md:even:pl-[52%]"
               >
-                <div className="timeline-dot absolute left-2.5 top-1.5 h-3 w-3 rounded-full border-2 border-brand-primary bg-transparent md:left-1/2 md:-translate-x-1/2" />
+                <div className="timeline-dot absolute left-[10px] top-1.5 h-3 w-3 rounded-full border-2 border-brand-primary bg-transparent md:left-1/2 md:-translate-x-1/2" />
                 <div className="rounded-[20px] bg-surface-1 p-5 border border-white/[0.05]">
                   <p className="text-xs font-medium text-brand-primary">
                     {entry.period}

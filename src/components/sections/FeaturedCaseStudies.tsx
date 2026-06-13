@@ -113,8 +113,8 @@ function FeaturedCaseStudies() {
                   <h3 className="text-xl font-bold text-text-primary">
                     {project.name}
                   </h3>
-                  <p className="text-sm text-text-muted">Role: {project.role}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="hidden md:block text-sm text-text-muted">Role: {project.role}</p>
+                  <div className="hidden md:flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <Badge key={tech}>{tech}</Badge>
                     ))}
