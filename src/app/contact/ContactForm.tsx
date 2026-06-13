@@ -91,7 +91,7 @@ function ContactForm() {
     }`;
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 py-16 md:py-24">
+    <div className="mx-auto max-w-[1200px] px-4 pt-[72px] pb-16 md:pt-24 md:pb-24">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left: Contact Info */}
         <div>
