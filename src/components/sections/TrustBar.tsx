@@ -11,7 +11,7 @@ const METRICS = [
   { value: 6, suffix: '+', label: 'Years Experience' },
   { value: 50, suffix: '+', label: 'Projects Delivered' },
   { value: 4, suffix: '+', label: 'Enterprise Brands' },
-  { value: 42, suffix: 'M+', label: 'Users Reached' },
+  { value: 0, suffix: '', label: 'Millions of Users Reached', text: 'Millions' },
 ];
 
 function TrustBar() {
@@ -56,8 +56,14 @@ function TrustBar() {
           {METRICS.map((metric) => (
             <div key={metric.label} className="text-center">
               <span className="block text-4xl font-bold text-text-primary md:text-5xl">
-                <span data-count={metric.value}>0</span>
-                {metric.suffix}
+                {metric.text ? (
+                  metric.text
+                ) : (
+                  <>
+                    <span data-count={metric.value}>0</span>
+                    {metric.suffix}
+                  </>
+                )}
               </span>
               <span className="mt-1 block text-sm text-text-muted">
                 {metric.label}

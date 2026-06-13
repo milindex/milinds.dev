@@ -70,7 +70,7 @@ function ExperienceTimeline() {
         </div>
         <div className="mt-8 text-center">
           <Link
-            href="/timeline"
+            href="/experience"
             className="inline-flex items-center gap-1 text-sm font-medium text-brand-primary hover:underline"
           >
             View Full Timeline
