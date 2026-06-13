@@ -41,7 +41,7 @@ function FloatingCTA() {
         <div className="flex flex-col items-end gap-2">
           <Link
             href="/contact"
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-brand-primary px-5 text-sm font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-brand-hover hover:scale-[1.02]"
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-cta-primary px-5 text-sm font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover hover:scale-[1.02]"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             Get In Touch
@@ -59,7 +59,7 @@ function FloatingCTA() {
       )}
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary text-white shadow-lg transition-all duration-200 hover:bg-brand-hover hover:scale-105 active:scale-95"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-cta-primary text-white shadow-lg transition-all duration-200 hover:bg-cta-hover hover:scale-105 active:scale-95"
         aria-label={open ? 'Close quick actions' : 'Quick actions'}
       >
         <svg
