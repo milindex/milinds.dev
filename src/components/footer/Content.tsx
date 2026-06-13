@@ -1,5 +1,3 @@
-import React from 'react';
-
 // get current year
 const year = new Date().getFullYear();
 

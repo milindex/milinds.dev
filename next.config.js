@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  eslint: {
-    dirs: ['.'],
-  },
   poweredByHeader: false,
   trailingSlash: true,
   reactStrictMode: true,

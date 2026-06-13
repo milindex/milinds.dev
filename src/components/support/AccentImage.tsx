@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 /* eslint-disable tailwindcss/no-custom-classname */
