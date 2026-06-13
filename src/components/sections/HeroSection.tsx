@@ -18,7 +18,7 @@ function HeroSection() {
   });
 
   return (
-    <section id="hero" className="relative min-h-[90svh] overflow-hidden bg-bg-primary pt-24 pb-12">
+    <section id="hero" className="relative min-h-[90svh] overflow-hidden bg-bg-primary pt-32 pb-12">
       <GradientMesh />
 
       <div
