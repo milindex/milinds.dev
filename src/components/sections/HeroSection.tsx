@@ -52,7 +52,7 @@ function HeroSection() {
           <TrustRow />
         </div>
 
-        <div className="lg:flex-shrink-0">
+        <div className="hidden lg:block lg:flex-shrink-0">
           <Portrait />
         </div>
       </div>
