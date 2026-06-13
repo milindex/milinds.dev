@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 import Badge from '@/components/ui/Badge';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -65,7 +66,8 @@ function CareerJourney() {
   }, []);
 
   return (
-    <Section id="timeline" heading="Career Journey" className="section-beam">
+    <Section id="timeline" heading="Career Journey" className="section-beam relative">
+      <SectionHeadingBg text="JOURNEY" />
       <Container>
         <div className="relative">
           <div className="absolute left-4 top-0 h-full w-px bg-white/[0.08] md:left-1/2 md:-translate-x-px" />

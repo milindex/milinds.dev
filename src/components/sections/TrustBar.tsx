@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Container from '@/components/ui/Container';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,7 +48,8 @@ function TrustBar() {
   }, []);
 
   return (
-    <section id="trust" className="section-grid-bg border-t border-white/[0.05] bg-bg-primary py-8 md:py-12">
+    <section id="trust" className="section-grid-bg relative border-t border-white/[0.05] bg-bg-primary py-8 md:py-12">
+      <SectionHeadingBg text="TRUST" />
       <Container>
         <div
           ref={ref}

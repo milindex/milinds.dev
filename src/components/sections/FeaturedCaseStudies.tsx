@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 
@@ -87,8 +88,9 @@ function FeaturedCaseStudies() {
       id="work"
       heading="Selected Work"
       subheading="A selection of projects where I helped businesses solve technical challenges, improve performance and deliver better user experiences."
-      className="section-radial-glow"
+      className="section-radial-glow relative"
     >
+      <SectionHeadingBg text="WORK" />
       <Container>
         <div
           ref={containerRef}

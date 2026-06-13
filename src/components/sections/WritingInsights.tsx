@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 
@@ -34,8 +35,9 @@ function WritingInsights() {
       id="writing"
       heading="Writing & Insights"
       subheading="Thoughts on engineering, architecture, performance and building products."
-      className="section-noise"
+      className="section-noise relative"
     >
+      <SectionHeadingBg text="WRITE" />
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
           {ARTICLES.map((article) => (

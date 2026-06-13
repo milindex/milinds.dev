@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Container from '@/components/ui/Container';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 
 gsap.registerPlugin(ScrollTrigger);
 import Section from '@/components/ui/Section';
@@ -96,7 +97,9 @@ function Testimonials() {
       id="testimonials"
       heading="What People Say"
       subheading="Feedback from clients, colleagues and teams I've worked with throughout my career."
+      className="relative"
     >
+      <SectionHeadingBg text="VOICE" />
       <Container>
         <div className="overflow-hidden">
           <div ref={trackRef} className="flex gap-6">

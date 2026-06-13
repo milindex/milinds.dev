@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 
 function ContactCTA() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,6 +30,7 @@ function ContactCTA() {
 
   return (
     <div id="contact" className="relative overflow-hidden border-t border-white/[0.05] bg-bg-primary">
+      <SectionHeadingBg text="CONTACT" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]" />
       </div>

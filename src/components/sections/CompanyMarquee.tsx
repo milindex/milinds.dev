@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Container from '@/components/ui/Container';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 
 const COMPANIES = ['HDFC Sky', 'Angel One', 'Kapiva', 'Atomberg'];
 
@@ -41,7 +42,8 @@ function CompanyMarquee() {
   }, []);
 
   return (
-    <section id="clients" className="border-t border-white/[0.05] bg-bg-primary py-8 md:py-10">
+    <section id="clients" className="relative border-t border-white/[0.05] bg-bg-primary py-8 md:py-10">
+      <SectionHeadingBg text="CLIENTS" />
       <Container>
         <p className="mb-4 text-left text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
           Worked With

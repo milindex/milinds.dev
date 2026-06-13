@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 import Badge from '@/components/ui/Badge';
 
 const OPPORTUNITIES = ['Freelance', 'Consulting', 'Contract', 'Full Time'];
 
 function Availability() {
   return (
-    <Section id="availability" heading="Available For New Opportunities" className="section-ambient-glow">
+    <Section id="availability" heading="Available For New Opportunities" className="section-ambient-glow relative">
+      <SectionHeadingBg text="HIRE" />
       <Container>
         <div className="max-w-2xl">
           <p className="text-lg leading-relaxed text-text-secondary">

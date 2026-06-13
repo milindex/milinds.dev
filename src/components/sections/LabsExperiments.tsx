@@ -1,5 +1,6 @@
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 
@@ -30,8 +31,9 @@ function LabsExperiments() {
       id="experiments"
       heading="Labs & Experiments"
       subheading="Projects, experiments and contributions that help me explore new technologies and ideas."
-      className="section-dot-grid"
+      className="section-dot-grid relative"
     >
+      <SectionHeadingBg text="BUILD" />
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
           {REPOS.map((repo) => (

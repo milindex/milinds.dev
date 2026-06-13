@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import SectionHeadingBg from '@/components/animations/SectionHeadingBg';
 import Badge from '@/components/ui/Badge';
 
 const CATEGORIES = [
@@ -50,7 +51,9 @@ function TechnologyStack() {
       id="tech"
       heading="Technologies I Work With"
       subheading="A modern toolkit built around performance, scalability and long-term maintainability."
+      className="relative"
     >
+      <SectionHeadingBg text="TECH" />
       <Container>
         <div className="section-particle-container">
           <div className="particle-dot" style={{ top: '20%', left: '15%', animation: 'float-up 6s ease-in-out infinite' }} />
