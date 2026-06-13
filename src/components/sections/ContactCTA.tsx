@@ -35,8 +35,8 @@ function ContactCTA() {
         <div className="h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]" />
       </div>
       <Section
-        heading="Let&apos;s Build Something Great"
-        subheading="Whether you need help building a product, improving performance or solving complex technical challenges, let&apos;s start a conversation."
+        heading="Have a product to build or a problem to solve?"
+        subheading="Whether you\'re launching a new product, improving an existing platform or looking for technical leadership, I\'d be happy to discuss how I can help."
         className="relative z-10 py-16 md:py-24"
       >
         <Container>
@@ -46,7 +46,7 @@ function ContactCTA() {
                 href="/contact"
                 className="inline-flex h-[52px] items-center justify-center rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover hover:scale-[1.02]"
               >
-                Get In Touch
+                Start a Conversation
               </Link>
             </div>
           </div>

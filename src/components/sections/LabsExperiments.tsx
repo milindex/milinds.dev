@@ -6,20 +6,20 @@ import Badge from '@/components/ui/Badge';
 
 const REPOS = [
   {
-    name: 'Repository Placeholder',
-    description: 'A description of an open source project or tool will appear here.',
+    name: 'PDF Platform',
+    description: 'A modern suite of PDF tools focused on speed, privacy and usability. Built to explore large-scale document processing and conversion workflows.',
     language: 'TypeScript',
     stars: '--',
   },
   {
-    name: 'Experiment Placeholder',
-    description: 'A lab experiment or creative coding project will be showcased here.',
+    name: 'AI Workflow Experiments',
+    description: 'A collection of experiments around AI agents, automation workflows and productivity systems designed to reduce repetitive engineering tasks.',
     language: 'TypeScript',
     stars: '--',
   },
   {
-    name: 'Tool Placeholder',
-    description: 'A developer tool or utility library will be featured here.',
+    name: 'Performance Toolkit',
+    description: 'A set of utilities and internal tools used to audit websites, identify bottlenecks and improve Core Web Vitals across production applications.',
     language: 'TypeScript',
     stars: '--',
   },
@@ -40,7 +40,7 @@ function LabsExperiments() {
           {REPOS.map((repo, i) => (
             <Card key={repo.name} as="article" className={`transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,87,53,0.1)] hover:brightness-110 ${i >= 2 ? 'hidden md:block' : ''}`}>
               <div className="flex flex-col gap-3">
-                <Badge variant="default">Placeholder Content</Badge>
+                <Badge variant="default">In Development</Badge>
                 <h3 className="text-lg font-bold text-text-primary">
                   {repo.name}
                 </h3>

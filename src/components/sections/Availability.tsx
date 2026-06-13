@@ -13,12 +13,10 @@ function Availability() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-lg leading-relaxed text-text-secondary">
-            I&apos;m currently available for freelance projects, consulting
-            engagements and selected full-time opportunities.
+            I&apos;m currently open to selected freelance projects, consulting engagements and senior engineering opportunities.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-            If you&apos;re building something ambitious, I&apos;d love to hear
-            about it.
+            I typically work with teams that care deeply about performance, product quality and long-term maintainability.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {OPPORTUNITIES.map((type) => (

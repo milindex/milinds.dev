@@ -1,5 +1,5 @@
 export const SiteConfig = {
-  tagline: 'Building products that are fast, scalable and designed to last.',
+  tagline: 'Engineering products that scale, perform and create measurable business impact.',
   copyright: `© ${new Date().getFullYear()} Milind Sonawane. All rights reserved.`,
   email: 'connect@milinds.dev',
   social: {

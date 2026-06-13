@@ -14,21 +14,18 @@ import Badge from '@/components/ui/Badge';
 const PLACEHOLDER_TESTIMONIALS = [
   {
     initials: 'PT',
-    name: 'Placeholder Testimonial',
-    quote:
-      'This section will showcase feedback from clients, colleagues and stakeholders once testimonials are collected.',
+    name: 'Sample Testimonial',
+    quote: 'Milind consistently approached problems from both technical and business perspectives. His ability to balance performance, maintainability and user experience made him a valuable part of the team.',
   },
   {
     initials: 'PT',
-    name: 'Placeholder Testimonial',
-    quote:
-      'This section will showcase feedback from clients, colleagues and stakeholders once testimonials are collected.',
+    name: 'Sample Testimonial',
+    quote: 'One of the strongest qualities Milind brings is ownership. From architecture discussions to production releases, he focuses on delivering solutions rather than simply completing tasks.',
   },
   {
     initials: 'PT',
-    name: 'Placeholder Testimonial',
-    quote:
-      'This section will showcase feedback from clients, colleagues and stakeholders once testimonials are collected.',
+    name: 'Sample Testimonial',
+    quote: 'Working with Milind was straightforward and efficient. Communication was clear, timelines were respected and the final implementation exceeded expectations.',
   },
 ];
 
@@ -118,7 +115,7 @@ function Testimonials() {
                   as="article"
                 >
                   <div className="flex flex-col gap-4">
-                    <Badge variant="default">Coming Soon</Badge>
+                    <Badge variant="default">Sample Testimonial</Badge>
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-2 text-sm font-bold text-text-muted">
                         {item.initials}

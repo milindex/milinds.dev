@@ -9,21 +9,21 @@ const ARTICLES = [
   {
     title: 'Improving Core Web Vitals in Large Applications',
     excerpt:
-      'A practical guide to identifying performance bottlenecks and implementing optimizations in large-scale web applications.',
+      'A practical breakdown of how we improved performance across high-traffic websites using critical CSS, asset optimization, caching strategies and modern frontend techniques.',
     date: 'Coming Soon',
     category: 'Performance',
   },
   {
     title: 'Lessons From Building Fintech Products',
     excerpt:
-      'Key technical and architectural lessons learned from building and scaling fintech platforms handling millions of users.',
+      'What six years of building products in regulated financial environments taught me about reliability, scalability, compliance and user trust.',
     date: 'Coming Soon',
     category: 'Engineering',
   },
   {
     title: 'Why Performance Is a Feature',
     excerpt:
-      'Why performance should be treated as a core product feature rather than an afterthought in the development process.',
+      'Performance is not a technical metric. It directly impacts engagement, conversions and customer satisfaction. Here\'s how I approach performance as a product feature.',
     date: 'Coming Soon',
     category: 'Architecture',
   },
@@ -46,7 +46,7 @@ function WritingInsights() {
               <div className="relative z-10">
                 <div className="flex flex-col gap-3">
                   <Badge variant="warning">{article.category}</Badge>
-                  <Badge variant="default">Placeholder Content</Badge>
+                  <Badge variant="default">Planned Article</Badge>
                   <h3 className="text-lg font-bold text-text-primary">
                     {article.title}
                   </h3>

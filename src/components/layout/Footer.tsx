@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { SiteConfig } from '@/constants';
 
 const navLinks = [
-  { href: '/projects', label: 'Work' },
-  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/timeline', label: 'Timeline' },
   { href: '/writing', label: 'Writing' },
   { href: '/contact', label: 'Contact' },
 ];

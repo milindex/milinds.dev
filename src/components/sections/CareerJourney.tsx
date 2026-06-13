@@ -13,31 +13,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ENTRIES = [
   {
-    period: 'Jun 2024 - Present',
+    period: '2024 — Present',
     company: 'HDFC Sky (HDFC Securities)',
     role: 'Senior Frontend Developer / Tech Lead',
-    achievement: 'Leading frontend architecture and team for India\'s leading trading platform',
+    achievement: 'Leading frontend architecture, mentoring developers and helping scale one of India\'s fastest-growing trading platforms.',
     technologies: ['Next.js', 'Node.js', 'Docker', 'Redis'],
   },
   {
-    period: 'Jul 2018 - Jun 2024',
+    period: '2018 — 2024',
     company: 'Angel One',
     role: 'Full Stack Developer',
-    achievement: 'Optimized website to 90+ PageSpeed score, implemented Elasticsearch',
+    achievement: 'Delivered performance optimizations, search improvements and platform enhancements across high-traffic digital properties.',
     technologies: ['WordPress', 'Elasticsearch', 'AMP', 'Gulp'],
   },
   {
-    period: 'May 2019 - Jul 2021',
     company: 'Kapiva',
     role: 'Full Stack Developer',
-    achievement: 'Built custom checkout and payment gateway for BigCommerce store',
+    achievement: 'Built custom checkout experiences and payment integrations for a rapidly growing D2C health and wellness brand.',
     technologies: ['VueJS', 'BigCommerce', 'NodeRED'],
   },
   {
-    period: 'Feb 2020 - May 2022',
     company: 'Atomberg Technologies',
     role: 'Full Stack Developer',
-    achievement: 'Revamped website with custom WordPress theme and lead management system',
+    achievement: 'Modernized digital experiences through custom WordPress development, performance optimization and lead generation systems.',
     technologies: ['WordPress', 'VueJS', 'Critical CSS'],
   },
 ];
@@ -66,7 +64,7 @@ function CareerJourney() {
   }, []);
 
   return (
-    <Section id="timeline" heading="Career Journey" className="section-beam relative">
+    <Section id="timeline" heading="Career Journey" subheading="A snapshot of the companies, products and teams I\'ve worked with over the last six years." className="section-beam relative">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-primary/[0.02] to-transparent" />
       <SectionHeadingBg text="JOURNEY" />
       <Container>

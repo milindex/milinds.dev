@@ -26,8 +26,7 @@ const PROJECTS: Project[] = [
     role: 'Tech Lead',
     technologies: ['Node.js', 'Next.js', 'Docker', 'Redis'],
     impact: [
-      'Leading full-stack team for HDFC Securities trading platform',
-      'Architected scalable infrastructure with Docker + Redis',
+      'Leading full-stack development initiatives, improving scalability and helping deliver a modern trading experience for one of India\'s leading financial platforms.',
     ],
   },
   {
@@ -37,19 +36,17 @@ const PROJECTS: Project[] = [
     role: 'Full Stack Developer',
     technologies: ['WordPress', 'Elasticsearch', 'AMP'],
     impact: [
-      'Achieved 90+ Google PageSpeed score',
-      'Implemented Elasticsearch for search and AMP pages',
+      'Improved website performance to 90+ PageSpeed scores, implemented Elasticsearch-powered search and optimized mobile experiences through AMP.',
     ],
   },
   {
     slug: 'atomberg',
     name: 'Atomberg 2.0',
-    industry: 'E-Commerce',
+    industry: 'Consumer Technology',
     role: 'Full Stack Developer',
-    technologies: ['WordPress', 'VueJS', 'Critical CSS'],
+    technologies: ['WordPress', 'Vue.js', 'Critical CSS'],
     impact: [
-      'Built custom lead management system',
-      'Implemented Critical CSS system for Core Web Vitals',
+      'Developed a custom lead management system and implemented performance improvements that significantly enhanced Core Web Vitals.',
     ],
   },
 ];
