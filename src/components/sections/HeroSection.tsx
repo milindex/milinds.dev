@@ -13,8 +13,29 @@ import ScrollIndicator from '@/components/sections/hero/ScrollIndicator';
 
 function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-bg-primary py-12">
+    <section id="hero" className="relative min-h-[90svh] overflow-hidden bg-bg-primary py-12">
       <GradientMesh />
+
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 40px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: '600px',
+          height: '400px',
+          background: 'radial-gradient(ellipse, rgba(253,87,53,0.15), transparent 70%)',
+        }}
+      />
+
+      <div className="pointer-events-none absolute -right-32 -top-32 h-64 w-64 animate-blob-float rounded-full bg-brand-primary/10 blur-[80px]" />
+      <div className="pointer-events-none absolute -bottom-32 -left-32 h-48 w-48 animate-blob-float rounded-full bg-accent/10 blur-[80px]" style={{ animationDelay: '-7s' }} />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex-1">
