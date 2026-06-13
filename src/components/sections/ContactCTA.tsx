@@ -3,9 +3,12 @@ import Container from '@/components/ui/Container';
 
 function ContactCTA() {
   return (
-    <section className="border-t border-white/[0.05] bg-bg-primary py-12 md:py-16">
+    <section className="border-t border-white/[0.05] bg-bg-primary py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]" />
+      </div>
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center relative z-10">
           <h2 className="text-4xl font-bold text-text-primary md:text-5xl">
             Let&apos;s Build Something Great
           </h2>
