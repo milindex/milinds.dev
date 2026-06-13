@@ -39,7 +39,7 @@ function Headline() {
   return (
     <h1
       ref={ref}
-      className="text-5xl font-extrabold leading-tight text-text-primary md:text-6xl lg:text-7xl"
+      className="text-4xl font-extrabold leading-tight text-text-primary md:text-5xl lg:text-6xl"
     >
       {HEADLINE_TEXT}
     </h1>
