@@ -13,7 +13,7 @@ import ScrollIndicator from '@/components/sections/hero/ScrollIndicator';
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-bg-primary px-4 py-12 md:px-8">
+    <section className="relative overflow-hidden bg-bg-primary py-12">
       <GradientMesh />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
