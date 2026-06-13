@@ -15,23 +15,35 @@ const stateConfig: Record<CursorState, { size: number; label?: string }> = {
 };
 
 function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef<CursorState>('default');
+  const posRef = useRef({ x: -100, y: -100 });
 
   const updateCursor = useCallback((e: MouseEvent) => {
-    gsap.to(cursorRef.current, {
-      x: e.clientX,
-      y: e.clientY,
-      duration: 0,
-      ease: 'none',
-    });
+    const { clientX, clientY } = e;
+    posRef.current = { x: clientX, y: clientY };
+
+    // Dot follows instantly
+    gsap.set(dotRef.current, { x: clientX, y: clientY });
+
+    // Ring follows with slight lag
     gsap.to(ringRef.current, {
-      x: e.clientX,
-      y: e.clientY,
-      duration: 0.1,
+      x: clientX,
+      y: clientY,
+      duration: 0.15,
       ease: 'power2.out',
+      overwrite: 'auto',
+    });
+
+    // Label follows ring
+    gsap.to(labelRef.current, {
+      x: clientX + 20,
+      y: clientY - 20,
+      duration: 0.15,
+      ease: 'power2.out',
+      overwrite: 'auto',
     });
   }, []);
 
@@ -43,20 +55,20 @@ function CustomCursor() {
     gsap.to(ringRef.current, {
       width: config.size,
       height: config.size,
-      marginLeft: -(config.size / 2),
-      marginTop: -(config.size / 2),
       duration: 0.3,
       ease: 'power3.out',
+      overwrite: 'auto',
     });
 
-    if (labelRef.current) {
-      gsap.to(labelRef.current, {
-        opacity: config.label ? 1 : 0,
-        duration: 0.2,
-      });
-      if (config.label) {
-        labelRef.current.textContent = config.label;
-      }
+    gsap.to(labelRef.current, {
+      opacity: config.label ? 1 : 0,
+      duration: 0.2,
+      overwrite: 'auto',
+    });
+
+    if (config.label) {
+      const el = labelRef.current;
+      if (el) el.textContent = config.label;
     }
   }, []);
 
@@ -70,76 +82,74 @@ function CustomCursor() {
     document.body.classList.add('custom-cursor-active');
     window.addEventListener('mousemove', updateCursor);
 
-    const handleMouseEnter = (e: MouseEvent) => {
+    // Event delegation: listen on document instead of individual elements
+    const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const cursorAttr = target.closest('[data-cursor]')?.getAttribute('data-cursor') as CursorState | null;
-      if (cursorAttr && stateConfig[cursorAttr]) {
-        setCursorState(cursorAttr);
+      const cursorEl = target.closest('[data-cursor]') as HTMLElement | null;
+      if (cursorEl) {
+        const attr = cursorEl.getAttribute('data-cursor') as CursorState | null;
+        if (attr && stateConfig[attr]) {
+          setCursorState(attr);
+          return;
+        }
+      }
+      // If hovering over any link or button without data-cursor, show pointer state
+      const interactive = target.closest('a, button, [role="button"]');
+      if (interactive && stateRef.current !== 'default') {
+        // Keep current state if set by data-cursor
       }
     };
 
-    const handleMouseLeave = () => setCursorState('default');
+    const handleMouseOut = (e: MouseEvent) => {
+      const related = e.relatedTarget as HTMLElement | null;
+      // Only reset if not moving to another data-cursor element
+      if (!related || !related.closest('[data-cursor]')) {
+        setCursorState('default');
+      }
+    };
 
-    document.querySelectorAll('[data-cursor]').forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnter as EventListener);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node instanceof HTMLElement) {
-            node.querySelectorAll('[data-cursor]').forEach((el) => {
-              el.addEventListener('mouseenter', handleMouseEnter as EventListener);
-              el.addEventListener('mouseleave', handleMouseLeave);
-            });
-          }
-        });
-      });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
 
     return () => {
       document.body.classList.remove('custom-cursor-active');
       window.removeEventListener('mousemove', updateCursor);
-      observer.disconnect();
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
     };
   }, [updateCursor, setCursorState]);
 
   return (
-    <>
+    <div className="pointer-events-none fixed inset-0 z-[9999]">
+      {/* Inner dot */}
       <div
-        ref={cursorRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999]"
-        style={{ transform: 'translate3d(0, 0, 0)' }}
-      >
-        <div
-          ref={ringRef}
-          className="flex items-center justify-center rounded-full border"
-          style={{
-            width: 32,
-            height: 32,
-            borderColor: 'rgba(253, 87, 53, 0.5)',
-            marginLeft: -16,
-            marginTop: -16,
-          }}
-        >
-          <div
-            className="rounded-full"
-            style={{
-              width: 8,
-              height: 8,
-              background: '#FD5735',
-            }}
-          />
-        </div>
-      </div>
+        ref={dotRef}
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          width: 8,
+          height: 8,
+          background: '#FD5735',
+        }}
+      />
+
+      {/* Ring */}
+      <div
+        ref={ringRef}
+        className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full border"
+        style={{
+          width: 32,
+          height: 32,
+          borderColor: 'rgba(253, 87, 53, 0.5)',
+        }}
+      />
+
+      {/* Label */}
       <span
         ref={labelRef}
-        className="pointer-events-none fixed z-[9999] text-sm font-medium opacity-0"
+        className="absolute text-sm font-medium opacity-0"
         style={{ color: '#FD5735' }}
       />
-    </>
+    </div>
   );
 }
 
