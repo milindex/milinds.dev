@@ -47,7 +47,7 @@ function CompanyMarquee() {
           Worked With
         </p>
         <div className="overflow-hidden">
-          <div ref={ref} className="flex gap-12">
+          <div ref={ref} data-cursor="drag" className="flex gap-12">
             {[...COMPANIES, ...COMPANIES].map((company, i) => (
               <span
                 key={`${company}-${i}`}

@@ -39,7 +39,7 @@ function WritingInsights() {
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
           {ARTICLES.map((article) => (
-            <Card key={article.title} as="article">
+            <Card key={article.title} data-cursor="read" as="article">
               <div className="flex flex-col gap-3">
                 <Badge variant="warning">{article.category}</Badge>
                 <Badge variant="default">Placeholder Content</Badge>

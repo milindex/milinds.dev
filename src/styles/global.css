@@ -146,4 +146,12 @@ html::-webkit-scrollbar-thumb:hover {
   50% { transform: translateY(-20px); }
 }
 
+/* Custom cursor — desktop only */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
 

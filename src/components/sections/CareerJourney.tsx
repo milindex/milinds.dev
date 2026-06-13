@@ -44,6 +44,7 @@ function CareerJourney() {
             {ENTRIES.map((entry) => (
               <div
                 key={entry.period}
+                data-cursor="explore"
                 className="relative pl-10 md:pl-0 md:odd:pr-[52%] md:even:pl-[52%]"
               >
                 <div className="absolute left-2.5 top-1.5 h-3 w-3 rounded-full border-2 border-brand-primary bg-bg-primary md:left-1/2 md:-translate-x-1/2" />

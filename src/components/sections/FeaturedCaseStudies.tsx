@@ -63,6 +63,7 @@ function FeaturedCaseStudies() {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
+              data-cursor="view"
               className="group block"
             >
               <Card variant="interactive" as="article">
