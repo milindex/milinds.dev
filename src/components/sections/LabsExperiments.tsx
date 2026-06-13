@@ -24,10 +24,10 @@ const REPOS = [
   },
 ];
 
-function OpenSource() {
+function LabsExperiments() {
   return (
     <Section
-      heading="Open Source & Experiments"
+      heading="Labs & Experiments"
       subheading="Projects, experiments and contributions that help me explore new technologies and ideas."
     >
       <Container>
@@ -53,4 +53,4 @@ function OpenSource() {
   );
 }
 
-export default OpenSource;
+export default LabsExperiments;

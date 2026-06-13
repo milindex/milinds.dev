@@ -5,7 +5,7 @@ import FeaturedCaseStudies from '@/components/sections/FeaturedCaseStudies';
 import CareerJourney from '@/components/sections/CareerJourney';
 import TechnologyStack from '@/components/sections/TechnologyStack';
 import WritingInsights from '@/components/sections/WritingInsights';
-import OpenSource from '@/components/sections/OpenSource';
+import LabsExperiments from '@/components/sections/LabsExperiments';
 import Testimonials from '@/components/sections/Testimonials';
 import Availability from '@/components/sections/Availability';
 import ContactCTA from '@/components/sections/ContactCTA';
@@ -20,7 +20,7 @@ const Index = () => {
       <CareerJourney />
       <TechnologyStack />
       <WritingInsights />
-      <OpenSource />
+      <LabsExperiments />
       <Testimonials />
       <Availability />
       <ContactCTA />
