@@ -63,36 +63,21 @@ function ContactForm() {
   const [debouncedSenderMessage] = useDebounce(senderMessage, 50);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (introRef.current) {
-        gsap.from(introRef.current, {
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          ease: 'power3.out',
-        });
-      }
-      if (cardsRef.current) {
-        gsap.from(cardsRef.current.children, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: 'power3.out',
-          delay: 0.3,
-        });
-      }
-      if (formRef.current) {
-        gsap.from(formRef.current, {
-          y: 40,
-          opacity: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          delay: 0.2,
-        });
-      }
-    });
-    return () => ctx.revert();
+    const tl = gsap.timeline();
+    tl.set(introRef.current, { opacity: 0, y: 30 })
+      .to(introRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+
+    if (cardsRef.current) {
+      tl.set(cardsRef.current.children, { opacity: 0, y: 20 }, '>-0.4')
+        .to(cardsRef.current.children, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' }, '>');
+    }
+
+    if (formRef.current) {
+      tl.set(formRef.current, { opacity: 0, y: 40 }, '>-0.3')
+        .to(formRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '>');
+    }
+
+    return () => { tl.kill(); };
   }, []);
 
   useEffect(() => {
