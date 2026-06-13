@@ -41,8 +41,8 @@ function WritingInsights() {
       <SectionHeadingBg text="WRITE" />
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
-          {ARTICLES.map((article) => (
-            <Card key={article.title} data-cursor="read" as="article" className="group relative overflow-hidden">
+          {ARTICLES.map((article, i) => (
+            <Card key={article.title} data-cursor="read" as="article" className={`group relative overflow-hidden ${i >= 2 ? 'hidden md:block' : ''}`}>
               <div className="relative z-10">
                 <div className="flex flex-col gap-3">
                   <Badge variant="warning">{article.category}</Badge>
