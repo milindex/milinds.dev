@@ -34,9 +34,9 @@ const ENTRIES = [
   },
 ];
 
-function ExperienceTimeline() {
+function CareerJourney() {
   return (
-    <Section heading="Experience Timeline">
+    <Section heading="Career Journey">
       <Container>
         <div className="relative">
           <div className="absolute left-4 top-0 h-full w-px bg-white/[0.08] md:left-1/2 md:-translate-x-px" />
@@ -70,7 +70,7 @@ function ExperienceTimeline() {
         </div>
         <div className="mt-8 text-center">
           <Link
-            href="/experience"
+            href="/timeline"
             className="inline-flex items-center gap-1 text-sm font-medium text-brand-primary hover:underline"
           >
             View Full Timeline
@@ -81,4 +81,4 @@ function ExperienceTimeline() {
   );
 }
 
-export default ExperienceTimeline;
+export default CareerJourney;
