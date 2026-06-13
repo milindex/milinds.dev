@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ContactForm from './ContactForm';
 
 export const metadata: Metadata = {
-  title: "Let's work together & make something awesome | Milind Sonawane",
+  title: 'Contact | Milind Sonawane',
   description:
-    "Get in touch with me to discuss your project. I'm available for freelance work.",
+    "Get in touch with Milind Sonawane for freelance projects, consulting engagements, or senior engineering opportunities.",
 };
 
 const Contact = () => <ContactForm />;
