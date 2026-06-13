@@ -58,7 +58,7 @@ function AccordionGroup({
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ${
-          open ? 'max-h-40 pb-4' : 'max-h-0 lg:!max-h-40 lg:!pb-0'
+          open ? 'max-h-[500px] pb-4' : 'max-h-0 lg:!max-h-[500px] lg:!pb-0'
         }`}
       >
         <ul className="space-y-3">
