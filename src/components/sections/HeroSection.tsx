@@ -8,7 +8,6 @@ import HeroCTA from '@/components/sections/hero/HeroCTA';
 import Portrait from '@/components/sections/hero/Portrait';
 import AvailabilityBadge from '@/components/sections/hero/AvailabilityBadge';
 import TrustRow from '@/components/sections/hero/TrustRow';
-import ScrollIndicator from '@/components/sections/hero/ScrollIndicator';
 import { useScrollStory } from '@/hooks/useScrollStory';
 
 function HeroSection() {
@@ -57,7 +56,6 @@ function HeroSection() {
         </div>
       </div>
 
-      <ScrollIndicator />
     </section>
   );
 }
