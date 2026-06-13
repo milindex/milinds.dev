@@ -11,7 +11,7 @@ type ButtonProps = {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-brand-primary text-white hover:bg-brand-hover active:bg-brand-active',
+    'bg-brand-primary text-white hover:bg-brand-hover hover:scale-[1.02] active:bg-brand-active',
   secondary:
     'border border-white/20 text-white hover:bg-surface-1 hover:border-white/30',
   ghost:
