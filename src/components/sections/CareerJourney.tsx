@@ -73,11 +73,11 @@ function CareerJourney() {
         <div className="relative">
           <div className="absolute left-4 top-0 h-full w-px bg-white/[0.08] md:left-1/2 md:-translate-x-px" />
           <div className="space-y-8">
-            {ENTRIES.map((entry) => (
+            {ENTRIES.map((entry, i) => (
               <div
                 key={entry.period}
                 data-cursor="explore"
-                className="relative pl-10 md:pl-0 md:odd:pr-[52%] md:even:pl-[52%]"
+                className={`relative pl-10 md:pl-0 md:odd:pr-[52%] md:even:pl-[52%] ${i >= 2 ? 'hidden md:block' : ''}`}
               >
                 <div className="timeline-dot absolute left-[10px] top-1.5 h-3 w-3 rounded-full border-2 border-brand-primary bg-transparent md:left-1/2 md:-translate-x-1/2" />
                 <div className="rounded-[20px] bg-surface-1 p-5 border border-white/[0.05]">

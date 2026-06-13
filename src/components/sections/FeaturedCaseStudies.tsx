@@ -99,13 +99,13 @@ function FeaturedCaseStudies() {
           className="grid gap-6 md:grid-cols-3"
           style={{ perspective: '1000px' }}
         >
-          {PROJECTS.map((project) => (
+          {PROJECTS.map((project, i) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
               data-cursor="view"
               data-tilt
-              className="group block"
+              className={`group block ${i >= 2 ? 'hidden md:block' : ''}`}
             >
               <Card variant="interactive" as="article">
                 <div className="flex flex-col gap-3">
