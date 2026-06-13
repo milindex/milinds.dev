@@ -82,13 +82,19 @@ function Testimonials() {
 
     const handleMouseEnter = () => tweenRef.current?.timeScale(0);
     const handleMouseLeave = () => tweenRef.current?.timeScale(1);
+    const handleTouchStart = () => tweenRef.current?.timeScale(0);
+    const handleTouchEnd = () => tweenRef.current?.timeScale(1);
     track.addEventListener('mouseenter', handleMouseEnter);
     track.addEventListener('mouseleave', handleMouseLeave);
+    track.addEventListener('touchstart', handleTouchStart, { passive: true });
+    track.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       ctx.revert();
       track.removeEventListener('mouseenter', handleMouseEnter);
       track.removeEventListener('mouseleave', handleMouseLeave);
+      track.removeEventListener('touchstart', handleTouchStart);
+      track.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
 

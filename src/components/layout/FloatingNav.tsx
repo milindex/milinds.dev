@@ -67,19 +67,21 @@ function FloatingNav() {
         ))}
       </nav>
       <button
-        className="flex h-8 w-8 flex-col items-center justify-center gap-[5px] md:hidden"
+        className="flex h-11 w-11 items-center justify-center md:hidden"
         onClick={() => setMobileOpen(!mobileOpen)}
         aria-label="Toggle menu"
       >
-        <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
-          mobileOpen ? 'translate-y-[3.5px] rotate-45' : ''
-        }`} />
-        <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
-          mobileOpen ? 'opacity-0' : ''
-        }`} />
-        <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
-          mobileOpen ? '-translate-y-[3.5px] -rotate-45' : ''
-        }`} />
+        <div className="flex w-5 flex-col items-center gap-[5px]">
+          <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
+            mobileOpen ? 'translate-y-[3.5px] rotate-45' : ''
+          }`} />
+          <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
+            mobileOpen ? 'opacity-0' : ''
+          }`} />
+          <span className={`h-[2px] w-5 bg-text-primary transition-all duration-200 ${
+            mobileOpen ? '-translate-y-[3.5px] -rotate-45' : ''
+          }`} />
+        </div>
       </button>
       {mobileOpen && (
         <div className="fixed inset-x-0 top-[72px] mx-auto w-[calc(100%-32px)] max-w-[1200px] md:hidden">
