@@ -10,8 +10,14 @@ import AvailabilityBadge from '@/components/sections/hero/AvailabilityBadge';
 import TrustRow from '@/components/sections/hero/TrustRow';
 import HeroMetrics from '@/components/sections/hero/HeroMetrics';
 import ScrollIndicator from '@/components/sections/hero/ScrollIndicator';
+import { useScrollStory } from '@/hooks/useScrollStory';
 
 function HeroSection() {
+  const storyRef = useScrollStory({
+    trigger: '#hero',
+    stagger: 0.1,
+  });
+
   return (
     <section id="hero" className="relative min-h-[90svh] overflow-hidden bg-bg-primary py-12">
       <GradientMesh />
@@ -37,7 +43,7 @@ function HeroSection() {
       <div className="pointer-events-none absolute -right-32 -top-32 h-64 w-64 animate-blob-float rounded-full bg-brand-primary/10 blur-[80px]" />
       <div className="pointer-events-none absolute -bottom-32 -left-32 h-48 w-48 animate-blob-float rounded-full bg-accent/10 blur-[80px]" style={{ animationDelay: '-7s' }} />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+      <div ref={storyRef} className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex-1">
           <Eyebrow />
           <Headline />
