@@ -28,7 +28,7 @@ function ContactCTA() {
   }, []);
 
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-white/[0.05] bg-bg-primary py-16 md:py-24">
+    <div id="contact" className="relative overflow-hidden border-t border-white/[0.05] bg-bg-primary py-16 md:py-24">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]" />
       </div>
@@ -46,7 +46,7 @@ function ContactCTA() {
           </Section>
         </div>
       </Container>
-    </section>
+    </div>
   );
 }
 
