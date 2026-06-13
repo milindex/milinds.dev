@@ -28,13 +28,17 @@ function ContactCTA() {
   }, []);
 
   return (
-    <div id="contact" className="relative overflow-hidden border-t border-white/[0.05] bg-bg-primary py-16 md:py-24">
+    <div id="contact" className="relative overflow-hidden border-t border-white/[0.05] bg-bg-primary">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[400px] w-[600px] rounded-full bg-brand-primary/5 blur-[120px]" />
       </div>
-      <Container>
-        <div ref={ref} className="relative z-10">
-          <Section heading="Let&apos;s Build Something Great" subheading="Whether you need help building a product, improving performance or solving complex technical challenges, let&apos;s start a conversation.">
+      <Section
+        heading="Let&apos;s Build Something Great"
+        subheading="Whether you need help building a product, improving performance or solving complex technical challenges, let&apos;s start a conversation."
+        className="py-16 md:py-24"
+      >
+        <Container>
+          <div ref={ref} className="relative z-10">
             <div className="mt-8">
               <Link
                 href="/contact"
@@ -43,9 +47,9 @@ function ContactCTA() {
                 Get In Touch
               </Link>
             </div>
-          </Section>
-        </div>
-      </Container>
+          </div>
+        </Container>
+      </Section>
     </div>
   );
 }
