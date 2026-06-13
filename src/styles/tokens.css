@@ -17,8 +17,8 @@
   --color-error: #EF4444;
   --color-accent: #60A5FA;
 
-  --font-family-sans: Inter, sans-serif;
-  --font-family-mono: JetBrains Mono, monospace;
+  --font-sans: Inter, sans-serif;
+  --font-mono: JetBrains Mono, monospace;
 
   --spacing-0\.5: 4px;
   --spacing-1: 8px;
@@ -30,6 +30,7 @@
   --spacing-12: 96px;
   --spacing-16: 128px;
 
+  --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
