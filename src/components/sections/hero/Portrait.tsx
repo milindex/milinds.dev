@@ -35,7 +35,7 @@ function Portrait() {
         className="overflow-hidden rounded-3xl shadow-2xl shadow-[0_0_60px_rgba(253,87,53,0.15)] max-lg:w-[280px] lg:w-[400px]"
       >
         <Image
-          src="/assets/images/portrait.jpg"
+          src="/assets/images/Milind-Sonawane.jpg"
           alt="Milind Sonawane"
           width={400}
           height={500}
