@@ -252,7 +252,7 @@ function ContactForm() {
             </div>
 
             {/* Right: Form Card */}
-            <div id="contact-form" ref={formRef} className="rounded-[20px] border border-white/[0.05] bg-surface-1 p-6 shadow-lg md:p-8">
+            <div id="contact-form" ref={formRef} className="rounded-[20px] bg-surface-1 p-6 shadow-lg md:p-8">
               <div className="space-y-5">
                 {/* Name */}
                 <div>
