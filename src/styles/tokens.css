@@ -1,0 +1,37 @@
+@theme {
+  --color-brand-primary: #FD5735;
+  --color-brand-hover: #FF6B4A;
+  --color-brand-active: #E54A28;
+
+  --color-bg-primary: #0A0A0A;
+  --color-surface-1: #111111;
+  --color-surface-2: #171717;
+  --color-surface-3: #1F1F1F;
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-accent: #60A5FA;
+
+  --font-family-sans: Inter, sans-serif;
+  --font-family-mono: JetBrains Mono, monospace;
+
+  --spacing-0\.5: 4px;
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-6: 48px;
+  --spacing-8: 64px;
+  --spacing-12: 96px;
+  --spacing-16: 128px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+}
