@@ -29,7 +29,7 @@ function HeroCTA() {
       <MagneticButton
         as="a"
         href="/projects"
-        className="inline-flex h-[52px] items-center justify-center rounded-[12px] bg-brand-primary px-6 text-base font-medium text-white transition-colors hover:bg-brand-hover active:bg-brand-active"
+        className="inline-flex h-[52px] items-center justify-center rounded-[12px] bg-brand-primary px-6 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-colors hover:bg-brand-hover active:bg-brand-active"
       >
         View Case Studies
       </MagneticButton>
