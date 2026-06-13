@@ -203,7 +203,7 @@ function ContactForm() {
           </div>
 
           {/* Two Column Layout — form first on mobile */}
-          <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-10 grid gap-8 md:mt-16 md:gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Form Card (first on mobile, right on desktop) */}
             <div id="contact-form" ref={formRef} className="lg:order-2 rounded-[20px] bg-surface-1 p-6 shadow-lg md:p-8">
               <div className="space-y-5">
