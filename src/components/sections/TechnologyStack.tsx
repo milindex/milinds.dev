@@ -52,6 +52,12 @@ function TechnologyStack() {
       subheading="A modern toolkit built around performance, scalability and long-term maintainability."
     >
       <Container>
+        <div className="section-particle-container">
+          <div className="particle-dot" style={{ top: '20%', left: '15%', animation: 'float-up 6s ease-in-out infinite' }} />
+          <div className="particle-dot" style={{ top: '60%', right: '20%', animation: 'float-up 8s ease-in-out infinite 1s' }} />
+          <div className="particle-dot" style={{ top: '30%', right: '35%', animation: 'float-up 7s ease-in-out infinite 2s' }} />
+          <div className="particle-dot" style={{ top: '70%', left: '25%', animation: 'float-up 9s ease-in-out infinite 0.5s' }} />
+        </div>
         <div className="grid gap-8 md:grid-cols-4">
           {CATEGORIES.map((category) => (
             <div key={category.name}>

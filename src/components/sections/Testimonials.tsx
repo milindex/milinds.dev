@@ -77,7 +77,7 @@ function Testimonials() {
               (item, i) => (
                 <Card
                   key={i}
-                  className="w-[350px] shrink-0 md:w-[400px]"
+                  className="w-[350px] shrink-0 md:w-[400px] bg-[rgba(17,17,17,0.6)] backdrop-blur-[12px]"
                   as="article"
                 >
                   <div className="flex flex-col gap-4">

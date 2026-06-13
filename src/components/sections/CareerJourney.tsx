@@ -36,7 +36,7 @@ const ENTRIES = [
 
 function CareerJourney() {
   return (
-    <Section id="timeline" heading="Career Journey">
+    <Section id="timeline" heading="Career Journey" className="section-beam">
       <Container>
         <div className="relative">
           <div className="absolute left-4 top-0 h-full w-px bg-white/[0.08] md:left-1/2 md:-translate-x-px" />

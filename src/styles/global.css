@@ -64,4 +64,86 @@ html::-webkit-scrollbar-thumb:hover {
   66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
+/* Section background utilities */
+.section-grid-bg {
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.02) 40px);
+  background-size: 40px 40px;
+}
+
+.section-radial-glow {
+  background: radial-gradient(ellipse at 50% 0%, rgba(253,87,53,0.06), transparent 60%);
+}
+
+.section-beam {
+  position: relative;
+}
+
+.section-beam::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(253,87,53,0.15), transparent);
+  animation: beam-pulse 3s ease-in-out infinite, beam-shift 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes beam-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes beam-shift {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 0% 100%; }
+}
+
+.section-noise {
+  position: relative;
+}
+
+.section-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+}
+
+.section-dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.section-ambient-glow {
+  background: radial-gradient(ellipse at 50% 100%, rgba(253,87,53,0.04), transparent 60%);
+}
+
+/* Floating particles */
+.particle-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(253, 87, 53, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.section-particle-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
 

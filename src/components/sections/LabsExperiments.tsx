@@ -30,6 +30,7 @@ function LabsExperiments() {
       id="experiments"
       heading="Labs & Experiments"
       subheading="Projects, experiments and contributions that help me explore new technologies and ideas."
+      className="section-dot-grid"
     >
       <Container>
         <div className="grid gap-6 md:grid-cols-3">

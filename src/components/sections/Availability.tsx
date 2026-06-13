@@ -7,7 +7,7 @@ const OPPORTUNITIES = ['Freelance', 'Consulting', 'Contract', 'Full Time'];
 
 function Availability() {
   return (
-    <Section id="availability" heading="Available For New Opportunities">
+    <Section id="availability" heading="Available For New Opportunities" className="section-ambient-glow">
       <Container>
         <div className="max-w-2xl">
           <p className="text-lg leading-relaxed text-text-secondary">

@@ -55,6 +55,7 @@ function FeaturedCaseStudies() {
       id="work"
       heading="Selected Work"
       subheading="A selection of projects where I helped businesses solve technical challenges, improve performance and deliver better user experiences."
+      className="section-radial-glow"
     >
       <Container>
         <div className="grid gap-6 md:grid-cols-3">

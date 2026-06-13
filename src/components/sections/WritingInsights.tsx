@@ -34,6 +34,7 @@ function WritingInsights() {
       id="writing"
       heading="Writing & Insights"
       subheading="Thoughts on engineering, architecture, performance and building products."
+      className="section-noise"
     >
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
