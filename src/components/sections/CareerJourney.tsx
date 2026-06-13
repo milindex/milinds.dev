@@ -1,7 +1,14 @@
+'use client';
+
+import { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Badge from '@/components/ui/Badge';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ENTRIES = [
   {
@@ -35,6 +42,28 @@ const ENTRIES = [
 ];
 
 function CareerJourney() {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      document.querySelectorAll('.timeline-dot').forEach((dot) => {
+        gsap.fromTo(dot,
+          { scale: 0, background: 'transparent' },
+          {
+            scale: 1,
+            background: '#FD5735',
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: dot,
+              start: 'top 80%',
+              end: 'top 50%',
+              scrub: 1,
+            },
+          }
+        );
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <Section id="timeline" heading="Career Journey" className="section-beam">
       <Container>
@@ -47,7 +76,7 @@ function CareerJourney() {
                 data-cursor="explore"
                 className="relative pl-10 md:pl-0 md:odd:pr-[52%] md:even:pl-[52%]"
               >
-                <div className="absolute left-2.5 top-1.5 h-3 w-3 rounded-full border-2 border-brand-primary bg-bg-primary md:left-1/2 md:-translate-x-1/2" />
+                <div className="timeline-dot absolute left-2.5 top-1.5 h-3 w-3 rounded-full border-2 border-brand-primary bg-transparent md:left-1/2 md:-translate-x-1/2" />
                 <div className="rounded-[20px] bg-surface-1 p-5 border border-white/[0.05]">
                   <p className="text-xs font-medium text-brand-primary">
                     {entry.period}

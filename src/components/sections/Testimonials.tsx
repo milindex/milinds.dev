@@ -2,7 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Container from '@/components/ui/Container';
+
+gsap.registerPlugin(ScrollTrigger);
 import Section from '@/components/ui/Section';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
@@ -31,6 +34,30 @@ const PLACEHOLDER_TESTIMONIALS = [
 function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null);
   const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = document.querySelectorAll('.testimonial-card');
+      cards.forEach((card, i) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 70%',
+          end: 'top 30%',
+          onEnter: () => {
+            cards.forEach((c, j) => {
+              gsap.to(c, {
+                scale: j === i ? 1.02 : 0.95,
+                opacity: j === i ? 1 : 0.6,
+                duration: 0.4,
+                ease: 'power3.out',
+              });
+            });
+          },
+        });
+      });
+    });
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -75,9 +102,9 @@ function Testimonials() {
           <div ref={trackRef} className="flex gap-6">
             {[...PLACEHOLDER_TESTIMONIALS, ...PLACEHOLDER_TESTIMONIALS].map(
               (item, i) => (
-                <Card
+                  <Card
                   key={i}
-                  className="w-[350px] shrink-0 md:w-[400px] bg-[rgba(17,17,17,0.6)] backdrop-blur-[12px]"
+                  className="testimonial-card w-[350px] shrink-0 md:w-[400px] bg-[rgba(17,17,17,0.6)] backdrop-blur-[12px]"
                   as="article"
                 >
                   <div className="flex flex-col gap-4">

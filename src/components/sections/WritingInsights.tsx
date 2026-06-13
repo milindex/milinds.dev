@@ -39,18 +39,23 @@ function WritingInsights() {
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
           {ARTICLES.map((article) => (
-            <Card key={article.title} data-cursor="read" as="article">
-              <div className="flex flex-col gap-3">
-                <Badge variant="warning">{article.category}</Badge>
-                <Badge variant="default">Placeholder Content</Badge>
-                <h3 className="text-lg font-bold text-text-primary">
-                  {article.title}
-                </h3>
-                <p className="text-sm text-text-secondary">{article.excerpt}</p>
-                <span className="mt-auto pt-2 text-xs text-text-muted">
-                  {article.date}
-                </span>
+            <Card key={article.title} data-cursor="read" as="article" className="group relative overflow-hidden">
+              <div className="relative z-10">
+                <div className="flex flex-col gap-3">
+                  <Badge variant="warning">{article.category}</Badge>
+                  <Badge variant="default">Placeholder Content</Badge>
+                  <h3 className="text-lg font-bold text-text-primary">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-text-secondary">{article.excerpt}</p>
+                  <span className="mt-auto pt-2 text-xs text-text-muted">
+                    {article.date}
+                  </span>
+                </div>
               </div>
+              <span className="absolute bottom-0 left-0 right-0 translate-y-full bg-brand-primary/10 px-4 py-2 text-xs text-brand-primary transition-transform duration-300 group-hover:translate-y-0">
+                5 min read
+              </span>
             </Card>
           ))}
         </div>

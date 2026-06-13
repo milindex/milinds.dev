@@ -74,7 +74,7 @@ function TechnologyStack() {
                   >
                     <Badge
                       variant={hovered === item.name ? 'brand' : 'default'}
-                      className="cursor-default transition-colors"
+                      className="cursor-default transition-all hover:shadow-[0_0_12px_rgba(253,87,53,0.15)]"
                     >
                       {item.name}
                       {hovered === item.name && (

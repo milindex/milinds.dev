@@ -35,7 +35,7 @@ function LabsExperiments() {
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
           {REPOS.map((repo) => (
-            <Card key={repo.name} as="article">
+            <Card key={repo.name} as="article" className="transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,87,53,0.1)] hover:brightness-110">
               <div className="flex flex-col gap-3">
                 <Badge variant="default">Placeholder Content</Badge>
                 <h3 className="text-lg font-bold text-text-primary">

@@ -1,3 +1,7 @@
+'use client';
+
+import { useCallback, useRef } from 'react';
+import gsap from 'gsap';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
@@ -50,6 +54,34 @@ const PROJECTS: Project[] = [
 ];
 
 function FeaturedCaseStudies() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const card = (e.target as HTMLElement).closest('[data-tilt]') as HTMLElement | null;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    gsap.to(card, {
+      rotationX: -y * 6,
+      rotationY: x * 6,
+      duration: 0.4,
+      ease: 'power3.out',
+      overwrite: 'auto',
+    });
+  }, []);
+
+  const handleMouseLeave = useCallback((e: React.MouseEvent) => {
+    const card = (e.target as HTMLElement).closest('[data-tilt]') as HTMLElement | null;
+    if (!card) return;
+    gsap.to(card, {
+      rotationX: 0,
+      rotationY: 0,
+      duration: 0.4,
+      ease: 'elastic.out(1, 0.3)',
+    });
+  }, []);
+
   return (
     <Section
       id="work"
@@ -58,12 +90,19 @@ function FeaturedCaseStudies() {
       className="section-radial-glow"
     >
       <Container>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="grid gap-6 md:grid-cols-3"
+          style={{ perspective: '1000px' }}
+        >
           {PROJECTS.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
               data-cursor="view"
+              data-tilt
               className="group block"
             >
               <Card variant="interactive" as="article">
