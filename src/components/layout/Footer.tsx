@@ -13,6 +13,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-muted transition-colors hover:text-text-primary"
+            aria-label="GitHub"
             title="GitHub"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -24,6 +25,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-muted transition-colors hover:text-text-primary"
+            aria-label="LinkedIn"
             title="LinkedIn"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -33,6 +35,7 @@ function Footer() {
           <a
             href={`mailto:${SiteConfig.email}`}
             className="text-text-muted transition-colors hover:text-text-primary"
+            aria-label="Email"
             title="Email"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
