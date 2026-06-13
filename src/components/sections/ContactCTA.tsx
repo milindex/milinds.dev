@@ -37,10 +37,10 @@ function ContactCTA() {
       <Section
         heading="Let&apos;s Build Something Great"
         subheading="Whether you need help building a product, improving performance or solving complex technical challenges, let&apos;s start a conversation."
-        className="py-16 md:py-24"
+        className="relative z-10 py-16 md:py-24"
       >
         <Container>
-          <div ref={ref} className="relative z-10">
+          <div ref={ref} className="relative">
             <div className="mt-8 flex justify-center">
               <Link
                 href="/contact"
