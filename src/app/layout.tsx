@@ -3,6 +3,7 @@ import '../styles/global.css';
 import type { Metadata } from 'next';
 
 import { AppConfig } from '@/utils/AppConfig';
+import AppShell from './AppShell';
 
 export const metadata: Metadata = {
   title: AppConfig.title,
@@ -30,7 +31,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang={AppConfig.locale}>
-      <body className="dark">{children}</body>
+      <body className="dark">
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }
