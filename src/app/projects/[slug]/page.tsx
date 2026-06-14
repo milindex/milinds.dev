@@ -222,6 +222,120 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
+
+      {/* Timeline */}
+      <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
+        <Container>
+          <Section heading="Project Timeline" subheading={project.timelineOverview}>
+            {/* Interactive Timeline */}
+            <div className="mt-12 relative">
+              {/* Vertical line */}
+              <div className="absolute left-[19px] top-0 h-full w-px bg-white/[0.08] md:left-1/2 md:-translate-x-px" />
+
+              <div className="space-y-12">
+                {project.timelinePhases.map((phase) => (
+                  <div key={phase.phase} className="relative md:odd:pr-[52%] md:even:pl-[52%] md:even:text-right">
+                    {/* Timeline dot */}
+                    <div className="absolute left-[13px] top-1 h-3 w-3 rounded-full border-2 border-brand-primary bg-bg-primary md:left-1/2 md:-translate-x-1/2" />
+
+                    {/* Phase indicator */}
+                    <div className="pl-10 md:pl-0 md:odd:pr-10 md:even:pl-10">
+                      <span className="inline-block rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-medium text-brand-primary">
+                        {phase.phase}
+                      </span>
+                      <span className="ml-2 text-xs text-text-muted">{phase.period}</span>
+                      <h3 className="mt-2 text-lg font-bold text-text-primary">{phase.title}</h3>
+                      <p className="mt-1 text-sm text-text-secondary">{phase.objectives}</p>
+
+                      {/* Activities */}
+                      <details className="group mt-3">
+                        <summary className="flex cursor-pointer items-center gap-1 text-xs font-medium text-brand-primary hover:underline">
+                          <span>View activities</span>
+                          <svg className="h-3 w-3 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                        </summary>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {phase.activities.map((a) => (
+                            <span key={a} className="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs text-text-secondary">{a}</span>
+                          ))}
+                        </div>
+                      </details>
+
+                      {/* Skills */}
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {phase.skills.map((skill) => (
+                          <span key={skill} className="rounded-full bg-brand-primary/10 px-2.5 py-0.5 text-xs text-brand-primary">{skill}</span>
+                        ))}
+                      </div>
+
+                      {/* Outcome */}
+                      <p className="mt-3 text-xs italic text-text-muted">{phase.outcome}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Section>
+        </Container>
+      </section>
+
+      {/* Milestones */}
+      <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
+        <Container>
+          <Section heading="Key Milestones">
+            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {project.milestones.map((milestone) => (
+                <div key={milestone.title} className="rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 transition-all duration-300 hover:border-brand-primary/20">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FD5735" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-text-primary">{milestone.title}</h3>
+                      <p className="mt-1 text-xs text-text-secondary">{milestone.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </Container>
+      </section>
+
+      {/* Responsibility Evolution */}
+      <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
+        <Container>
+          <Section heading="Responsibility Evolution" subheading="How my role evolved over six years on the project.">
+            <div className="mt-8 relative">
+              <div className="grid gap-6 md:grid-cols-4">
+                {project.responsibilityEvolution.map((stage, i) => (
+                  <div key={stage.stage} className="relative">
+                    {i < project.responsibilityEvolution.length - 1 && (
+                      <div className="hidden md:block absolute -right-3 top-4 text-text-muted">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                      </div>
+                    )}
+                    <div className="rounded-[16px] border border-white/[0.05] bg-surface-1 p-5 h-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10 text-xs font-bold text-brand-primary">{i + 1}</span>
+                        <h3 className="text-sm font-semibold text-text-primary">{stage.stage}</h3>
+                      </div>
+                      <ul className="space-y-1.5">
+                        {stage.focus.map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-xs text-text-secondary">
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-primary" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Section>
+        </Container>
+      </section>
+
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="Results" subheading="Engineering outcomes and business impact delivered throughout the engagement.">

@@ -203,6 +203,67 @@ export const angelOneData = {
   
   featuredQuote: 'Large-scale engineering isn\'t just about writing code\u2014it\'s about creating systems that enable teams to move faster while delivering better experiences for millions of users.',
 
+  timelineOverview: 'My engagement with Angel One spanned more than six years, providing the opportunity to work on one of India\'s largest fintech platforms through multiple phases of growth. Unlike short-term client projects, the platform continuously evolved with new business initiatives, product launches, technology upgrades, and engineering improvements.',
+
+  timelinePhases: [
+    {
+      phase: 'Phase 1',
+      period: 'Jul 2018 – Mar 2019',
+      title: 'Platform Onboarding & Feature Development',
+      objectives: 'Understand the existing platform architecture and begin contributing to customer-facing features.',
+      activities: ['Frontend implementation', 'WordPress theme development', 'Landing page development', 'Bug fixes', 'Responsive layouts', 'UI enhancements'],
+      modules: ['Homepage', 'Product Pages', 'Marketing Pages', 'Blog', 'Navigation'],
+      skills: ['Enterprise WordPress', 'Frontend Engineering', 'HTML', 'CSS', 'JavaScript', 'PHP'],
+      outcome: 'Established familiarity with the product ecosystem and contributed to day-to-day feature delivery.',
+    },
+    {
+      phase: 'Phase 2',
+      period: 'Apr 2019 – Dec 2020',
+      title: 'Website Expansion & CMS Development',
+      objectives: 'The platform expanded significantly, requiring scalable engineering practices and reusable systems.',
+      activities: ['New feature development', 'CMS improvements', 'Template standardization', 'Landing page architecture', 'Component reuse', 'Campaign implementation'],
+      modules: ['Research', 'Knowledge Center', 'Company Pages', 'IPO Pages', 'Blog', 'Product Landing Pages'],
+      skills: ['WordPress Architecture', 'Reusable Components', 'Template System', 'CMS Improvements'],
+      outcome: 'Transitioned from individual page development to scalable component-based implementation.',
+    },
+    {
+      phase: 'Phase 3',
+      period: 'Jan 2021 – Dec 2022',
+      title: 'Search, SEO & Performance Engineering',
+      objectives: 'The engineering focus shifted toward improving scalability, discoverability, and user experience.',
+      activities: ['Performance engineering', 'Technical SEO', 'Enterprise search implementation', 'API integration'],
+      modules: ['Trading', 'Market Data', 'Research', 'Knowledge Center', 'Search', 'APIs'],
+      skills: ['Performance Engineering', 'Technical SEO', 'Elasticsearch', 'AMP', 'REST APIs', 'Component Architecture'],
+      outcome: 'Engineering responsibilities expanded beyond implementation into platform optimization and long-term maintainability.',
+    },
+    {
+      phase: 'Phase 4',
+      period: 'Jan 2023 – Jun 2024',
+      title: 'Platform Optimization & Engineering Maturity',
+      objectives: 'This phase emphasized platform stability, engineering quality, and long-term maintainability.',
+      activities: ['Performance optimization', 'Architecture improvements', 'Production support', 'Refactoring', 'Code quality', 'Cross-team collaboration'],
+      modules: ['Website improvements', 'Performance tuning', 'Search enhancements', 'CMS optimization', 'Bug resolution', 'Technical planning'],
+      skills: ['Reusable Systems', 'Platform Optimization', 'Developer Experience', 'Maintainability', 'Production Engineering'],
+      outcome: 'The role evolved into a broader engineering position focused on platform quality, reusable systems, and sustainable development practices.',
+    },
+  ],
+
+  responsibilityEvolution: [
+    { stage: 'Initial Stage', focus: ['Frontend development', 'Feature implementation', 'Bug fixing'] },
+    { stage: 'Growth Stage', focus: ['WordPress development', 'CMS architecture', 'Reusable components', 'Landing pages'] },
+    { stage: 'Advanced Stage', focus: ['Performance engineering', 'Search implementation', 'SEO optimization', 'API integration', 'Technical planning'] },
+    { stage: 'Mature Stage', focus: ['Architecture discussions', 'Production support', 'Refactoring', 'Code quality', 'Engineering improvements', 'Cross-functional collaboration'] },
+  ],
+
+  milestones: [
+    { title: 'Platform Expansion', description: 'Contributed to the growth of a large-scale fintech platform through continuous feature development.' },
+    { title: 'Reusable Architecture', description: 'Introduced reusable templates and component-based development practices.' },
+    { title: 'Enterprise Search', description: 'Participated in implementing enterprise-grade search capabilities using Elasticsearch.' },
+    { title: 'Performance Engineering', description: 'Focused on improving website speed, rendering performance, and Core Web Vitals.' },
+    { title: 'Technical SEO', description: 'Supported long-term SEO initiatives through AMP improvements, metadata optimization, and search enhancements.' },
+    { title: 'Platform Stability', description: 'Contributed to production support, bug resolution, and continuous platform improvements.' },
+  ],
+
   recruiterSummary: {
     twoMinute: 'Angel One is one of the largest enterprise projects in my career — a six-year engagement spanning frontend development, WordPress engineering, performance optimization, enterprise search, SEO, API integration, and platform modernization. I worked across dozens of modules including trading, market data, research, and content publishing, supporting millions of users on one of India\'s largest fintech platforms.',
     fiveMinute: 'Over six years at Angel One, my role evolved from frontend feature development to full-stack engineering ownership. I built and maintained enterprise WordPress solutions, implemented Elasticsearch for content discovery, automated AMP page generation, optimized Core Web Vitals, integrated financial data APIs, and developed reusable component systems that accelerated marketing campaigns. The project demonstrates sustained engineering impact on a high-traffic, business-critical fintech ecosystem. I collaborated across engineering, product, SEO, marketing, and design teams while balancing feature velocity with platform stability.',
