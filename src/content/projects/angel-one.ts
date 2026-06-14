@@ -202,6 +202,71 @@ export const angelOneData = {
   tags: ['FinTech', 'WordPress', 'Performance', 'SEO', 'Elasticsearch', 'AMP', 'JavaScript', 'PHP', 'Enterprise CMS', 'Component Architecture', 'Core Web Vitals', 'Full Stack'],
   
   featuredQuote: 'Large-scale engineering isn\'t just about writing code\u2014it\'s about creating systems that enable teams to move faster while delivering better experiences for millions of users.',
+
+  recruiterSummary: {
+    twoMinute: 'Angel One is one of the largest enterprise projects in my career — a six-year engagement spanning frontend development, WordPress engineering, performance optimization, enterprise search, SEO, API integration, and platform modernization. I worked across dozens of modules including trading, market data, research, and content publishing, supporting millions of users on one of India\'s largest fintech platforms.',
+    fiveMinute: 'Over six years at Angel One, my role evolved from frontend feature development to full-stack engineering ownership. I built and maintained enterprise WordPress solutions, implemented Elasticsearch for content discovery, automated AMP page generation, optimized Core Web Vitals, integrated financial data APIs, and developed reusable component systems that accelerated marketing campaigns. The project demonstrates sustained engineering impact on a high-traffic, business-critical fintech ecosystem. I collaborated across engineering, product, SEO, marketing, and design teams while balancing feature velocity with platform stability.',
+    interviewTopics: [
+      { topic: 'Enterprise WordPress at Scale', description: 'Building and maintaining custom themes, Gutenberg blocks, and reusable template systems for a platform with thousands of pages across multiple business domains.' },
+      { topic: 'Performance Engineering', description: 'Improving Core Web Vitals through JavaScript optimization, critical CSS, lazy loading, image optimization, and rendering improvements on a high-traffic website.' },
+      { topic: 'Enterprise Search Implementation', description: 'Adopting Elasticsearch with ElasticPress to replace default CMS search, enabling fast and relevant content discovery across a large content ecosystem.' },
+      { topic: 'AMP Architecture', description: 'Developing and maintaining AMP templates, automating AMP generation, and ensuring AMP validation and SEO compliance for mobile traffic.' },
+      { topic: 'SEO as Engineering', description: 'Treating technical SEO as an engineering concern — metadata standards, structured content, crawlability, indexing, and search visibility.' },
+      { topic: 'API-Driven Architecture', description: 'Integrating REST APIs for real-time market data, financial information, and dynamic content across multiple product modules.' },
+      { topic: 'Balancing Velocity and Stability', description: 'Shipping features continuously on a production platform while maintaining code quality, performance, and reliability over six years.' },
+      { topic: 'Cross-Functional Collaboration', description: 'Working alongside product managers, designers, SEO specialists, and marketing teams to align engineering work with business objectives.' },
+    ],
+    resumeBullets: [
+      'Developed and maintained enterprise WordPress solutions for one of India\'s largest fintech platforms, serving millions of users across thousands of pages.',
+      'Improved Core Web Vitals through frontend performance optimization including JavaScript optimization, critical CSS, lazy loading, and image optimization.',
+      'Implemented Elasticsearch with ElasticPress to power enterprise search, improving content discovery across a large financial content ecosystem.',
+      'Built reusable component architecture and template systems that enabled marketing teams to launch campaigns rapidly without custom development.',
+      'Automated AMP page generation and maintained AMP templates to improve mobile performance and search visibility.',
+      'Integrated REST APIs for real-time market data, financial information, and dynamic content across trading, research, and educational modules.',
+    ],
+    technologies: ['WordPress', 'PHP', 'JavaScript', 'HTML5/CSS3', 'SCSS', 'Elasticsearch', 'AMP', 'REST APIs', 'Gulp', 'Webpack', 'Git', 'CI/CD'],
+    achievements: [
+      '6+ years of continuous engineering on a single platform',
+      '6165+ logged work entries across dozens of modules',
+      'Enterprise search implementation serving thousands of content pages',
+      'AMP automation for improved mobile performance and SEO',
+      'Reusable component architecture used across hundreds of landing pages',
+      'Production support for one of India\'s largest fintech websites',
+    ],
+  },
+
+  clientSummary: {
+    businessOverview: 'Angel One is one of India\'s leading fintech platforms, providing stock trading, mutual funds, IPO investments, and financial education to millions of users. The public website serves as the primary customer acquisition channel, product education platform, and marketing engine for the business.',
+    challengesSolved: [
+      { challenge: 'Slow page performance affecting user experience and SEO', solution: 'Implemented frontend optimization including Critical CSS, lazy loading, JavaScript optimization, and AMP automation to improve page speed and Core Web Vitals.' },
+      { challenge: 'Difficulty finding content across thousands of pages', solution: 'Integrated Elasticsearch with ElasticPress to provide fast, relevant search across the entire content ecosystem.' },
+      { challenge: 'Marketing campaigns required rapid landing page development', solution: 'Built reusable component architecture and template systems that enabled non-technical teams to launch pages quickly.' },
+      { challenge: 'Mobile performance and SEO compliance', solution: 'Developed and maintained AMP templates with automated generation and validation for improved mobile search visibility.' },
+      { challenge: 'Managing a growing content ecosystem', solution: 'Enhanced the WordPress CMS with custom Gutenberg blocks, reusable templates, and streamlined publishing workflows.' },
+    ],
+    valueDelivered: [
+      'Faster page load times through systematic performance optimization',
+      'Better content discovery via enterprise-grade search',
+      'Rapid campaign launches through reusable component systems',
+      'Improved mobile experience with AMP automation',
+      'Better SEO performance through structured content and technical optimization',
+      'Reduced development effort through standardized templates and components',
+    ],
+    relevantExperience: [
+      'Full Stack Development (6+ years)',
+      'Enterprise WordPress Architecture',
+      'Performance Engineering & Core Web Vitals',
+      'Enterprise Search (Elasticsearch)',
+      'Technical SEO',
+      'API Integration',
+      'Frontend Architecture & Component Design',
+    ],
+    cta: {
+      text: 'Want to discuss how I can help with your platform?',
+      button: 'Start a Conversation',
+      link: '/contact',
+    },
+  },
 };
 
 export default angelOneData;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useParams } from 'next/navigation';
@@ -47,6 +47,7 @@ function ProjectPage() {
   }
 
   const { name, subtitle, role, duration, industry, team, heroSummary, about, challenges, responsibilities, engineeringHighlights, engineeringDecisions, results, techStack, lessons, tags, featuredQuote } = project;
+  const [activeTab, setActiveTab] = useState<'case-study' | 'recruiter' | 'client'>('case-study');
 
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -78,7 +79,33 @@ function ProjectPage() {
         </Container>
       </section>
 
-      {/* About */}
+      {/* Tab Navigation */}
+      <div className="sticky top-20 z-10 border-b border-white/[0.05] bg-bg-primary/80 backdrop-blur-xl">
+        <Container>
+          <div className="flex gap-0">
+            {[
+              { id: 'case-study', label: 'Case Study' },
+              { id: 'recruiter', label: 'For Recruiters' },
+              { id: 'client', label: 'For Clients' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                className={`px-5 py-3 text-sm font-medium transition-colors duration-200 border-b-2 ${
+                  activeTab === tab.id
+                    ? 'border-brand-primary text-text-primary'
+                    : 'border-transparent text-text-muted hover:text-text-secondary'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      {activeTab === 'case-study' && (
+      <>
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="About Angel One" subheading={about}>
@@ -87,7 +114,6 @@ function ProjectPage() {
         </Container>
       </section>
 
-      {/* The Challenge */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="The Challenge">
@@ -102,8 +128,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Responsibilities */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="My Responsibilities" subheading="Throughout the engagement I contributed across multiple engineering disciplines.">
@@ -125,8 +149,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Engineering Highlights */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="Engineering Highlights">
@@ -146,8 +168,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Engineering Decisions */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="Engineering Decisions" subheading="Key technical choices made throughout the project and the reasoning behind them.">
@@ -202,8 +222,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Results */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="Results" subheading="Engineering outcomes and business impact delivered throughout the engagement.">
@@ -228,8 +246,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Tech Stack */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="Technology Stack">
@@ -248,8 +264,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Lessons Learned */}
       <section className="reveal-section border-t border-white/[0.05] py-16 md:py-24">
         <Container>
           <Section heading="Lessons Learned">
@@ -264,8 +278,6 @@ function ProjectPage() {
           </Section>
         </Container>
       </section>
-
-      {/* Quote */}
       <section className="border-t border-white/[0.05] bg-surface-1 py-16 md:py-24">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
@@ -276,8 +288,6 @@ function ProjectPage() {
           </div>
         </Container>
       </section>
-
-      {/* Tags */}
       <section className="border-t border-white/[0.05] py-12">
         <Container>
           <div className="flex flex-wrap justify-center gap-2">
@@ -287,6 +297,147 @@ function ProjectPage() {
           </div>
         </Container>
       </section>
+      </>
+      )}
+
+      {/* Recruiter View */}
+      {activeTab === 'recruiter' && (
+        <div className="py-16 md:py-24">
+          <Container>
+            <Section heading="For Recruiters" subheading="A quick overview of the Angel One engagement for recruiters and hiring managers.">
+              {/* 2-Minute Summary */}
+              <Card className="mt-8 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">2-Minute Summary</h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">{project.recruiterSummary.twoMinute}</p>
+              </Card>
+
+              {/* 5-Minute Summary */}
+              <details className="group mt-4 rounded-[16px] border border-white/[0.05] bg-surface-1">
+                <summary className="flex cursor-pointer items-center justify-between p-5 text-sm font-semibold text-text-primary md:p-6">
+                  5-Minute Summary
+                  <svg className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <div className="border-t border-white/[0.05] px-5 pb-5 md:px-6 md:pb-6">
+                  <p className="mt-4 text-sm leading-relaxed text-text-secondary">{project.recruiterSummary.fiveMinute}</p>
+                </div>
+              </details>
+
+              {/* Resume Bullets */}
+              <Card className="mt-6 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">Resume Bullets</h3>
+                <ul className="mt-3 space-y-2">
+                  {project.recruiterSummary.resumeBullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2 text-sm text-text-secondary">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-primary" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              {/* Technologies */}
+              <Card className="mt-6 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">Technologies</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.recruiterSummary.technologies.map((tech) => (
+                    <Badge key={tech}>{tech}</Badge>
+                  ))}
+                </div>
+              </Card>
+
+              {/* Achievements */}
+              <Card className="mt-6 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">Key Achievements</h3>
+                <ul className="mt-3 space-y-2">
+                  {project.recruiterSummary.achievements.map((achievement) => (
+                    <li key={achievement} className="flex items-start gap-2 text-sm text-text-secondary">
+                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              {/* Interview Topics */}
+              <Card className="mt-6 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-text-muted">Interview Topics</h3>
+                <p className="mt-1 text-xs text-text-muted">These topics are indexed for interview preparation but not publicly displayed.</p>
+                <div className="mt-4 space-y-3">
+                  {project.recruiterSummary.interviewTopics.map((topic) => (
+                    <details key={topic.topic} className="group rounded-[12px] border border-white/[0.05] bg-surface-2">
+                      <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">
+                        {topic.topic}
+                        <svg className="h-3 w-3 shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                      </summary>
+                      <div className="border-t border-white/[0.05] px-4 pb-3">
+                        <p className="mt-2 text-xs text-text-muted">{topic.description}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </Card>
+            </Section>
+          </Container>
+        </div>
+      )}
+
+      {/* Client View */}
+      {activeTab === 'client' && (
+        <div className="py-16 md:py-24">
+          <Container>
+            <Section heading="For Clients" subheading="How my experience at Angel One can help your business.">
+              {/* Business Overview */}
+              <Card className="mt-8 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">Business Overview</h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">{project.clientSummary.businessOverview}</p>
+              </Card>
+
+              {/* Challenges Solved */}
+              <h3 className="mt-10 text-lg font-bold text-text-primary">Challenges Solved</h3>
+              <div className="mt-4 space-y-3">
+                {project.clientSummary.challengesSolved.map((item) => (
+                  <Card key={item.challenge} variant="interactive" className="p-5">
+                    <p className="text-sm font-medium text-text-primary">{item.challenge}</p>
+                    <p className="mt-1 text-sm text-text-secondary">{item.solution}</p>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Value Delivered */}
+              <Card className="mt-8 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">Value Delivered</h3>
+                <ul className="mt-3 space-y-2">
+                  {project.clientSummary.valueDelivered.map((value) => (
+                    <li key={value} className="flex items-start gap-2 text-sm text-text-secondary">
+                      <svg className="mt-0.5 h-4 w-4 shrink-0 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      {value}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              {/* Relevant Experience */}
+              <Card className="mt-6 p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-primary">Relevant Experience</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.clientSummary.relevantExperience.map((exp) => (
+                    <Badge key={exp}>{exp}</Badge>
+                  ))}
+                </div>
+              </Card>
+
+              {/* CTA */}
+              <div className="mt-10 rounded-[20px] border border-white/[0.05] bg-surface-1 p-8 text-center">
+                <p className="text-lg font-medium text-text-primary">{project.clientSummary.cta.text}</p>
+                <a href={project.clientSummary.cta.link} className="mt-4 inline-flex h-[52px] items-center justify-center rounded-[12px] bg-cta-primary px-8 text-base font-medium text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.35)] transition-all duration-200 hover:bg-cta-hover hover:scale-[1.02]">
+                  {project.clientSummary.cta.button}
+                </a>
+              </div>
+            </Section>
+          </Container>
+        </div>
+      )}
+
     </div>
   );
 }
